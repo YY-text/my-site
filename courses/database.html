@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据库原理与应用 - 张茵茵的学习空间</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>张茵茵的学习空间</h1>
+            <ul class="nav-links">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="../index.html#courses">课程</a></li>
+                <li><a href="../learning-path.html">学习路径</a></li>
+                <li><a href="../index.html#about">关于我</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="sidebar-toggle" onclick="toggleSidebar()"></div>
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h4>📚 数据库原理与应用</h4>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第1章 数据库系统概述</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section1-1"><span class="sidebar-section-num">1.1</span> 数据与信息</a></li>
+                    <li><a href="#section1-2"><span class="sidebar-section-num">1.2</span> 数据库的基本概念</a></li>
+                    <li><a href="#section1-3"><span class="sidebar-section-num">1.3</span> 数据库管理系统</a></li>
+                    <li><a href="#section1-4"><span class="sidebar-section-num">1.4</span> 数据库系统的组成</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第2章 数据模型</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section2-1"><span class="sidebar-section-num">2.1</span> 数据模型的概念</a></li>
+                    <li><a href="#section2-2"><span class="sidebar-section-num">2.2</span> 层次模型</a></li>
+                    <li><a href="#section2-3"><span class="sidebar-section-num">2.3</span> 网状模型</a></li>
+                    <li><a href="#section2-4"><span class="sidebar-section-num">2.4</span> 关系模型</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第3章 关系数据库</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section3-1"><span class="sidebar-section-num">3.1</span> 关系的定义</a></li>
+                    <li><a href="#section3-2"><span class="sidebar-section-num">3.2</span> 关系的完整性</a></li>
+                    <li><a href="#section3-3"><span class="sidebar-section-num">3.3</span> 关系代数</a></li>
+                    <li><a href="#section3-4"><span class="sidebar-section-num">3.4</span> 关系演算</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第4章 SQL语言基础</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section4-1"><span class="sidebar-section-num">4.1</span> SQL概述</a></li>
+                    <li><a href="#section4-2"><span class="sidebar-section-num">4.2</span> 数据定义</a></li>
+                    <li><a href="#section4-3"><span class="sidebar-section-num">4.3</span> 数据查询</a></li>
+                    <li><a href="#section4-4"><span class="sidebar-section-num">4.4</span> 数据更新</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第5章 数据库设计</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section5-1"><span class="sidebar-section-num">5.1</span> 数据库设计概述</a></li>
+                    <li><a href="#section5-2"><span class="sidebar-section-num">5.2</span> 需求分析</a></li>
+                    <li><a href="#section5-3"><span class="sidebar-section-num">5.3</span> 概念结构设计</a></li>
+                    <li><a href="#section5-4"><span class="sidebar-section-num">5.4</span> 逻辑结构设计</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第6章 规范化理论</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section6-1"><span class="sidebar-section-num">6.1</span> 函数依赖</a></li>
+                    <li><a href="#section6-2"><span class="sidebar-section-num">6.2</span> 范式</a></li>
+                    <li><a href="#section6-3"><span class="sidebar-section-num">6.3</span> 规范化过程</a></li>
+                    <li><a href="#section6-4"><span class="sidebar-section-num">6.4</span> 数据依赖的公理系统</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第7章 数据库安全</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section7-1"><span class="sidebar-section-num">7.1</span> 安全控制</a></li>
+                    <li><a href="#section7-2"><span class="sidebar-section-num">7.2</span> 数据库完整性</a></li>
+                    <li><a href="#section7-3"><span class="sidebar-section-num">7.3</span> 并发控制</a></li>
+                    <li><a href="#section7-4"><span class="sidebar-section-num">7.4</span> 数据库恢复</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第8章 数据库编程</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section8-1"><span class="sidebar-section-num">8.1</span> 存储过程</a></li>
+                    <li><a href="#section8-2"><span class="sidebar-section-num">8.2</span> 触发器</a></li>
+                    <li><a href="#section8-3"><span class="sidebar-section-num">8.3</span> 视图</a></li>
+                    <li><a href="#section8-4"><span class="sidebar-section-num">8.4</span> 索引</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第9章 数据库应用开发</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section9-1"><span class="sidebar-section-num">9.1</span> 数据库连接</a></li>
+                    <li><a href="#section9-2"><span class="sidebar-section-num">9.2</span> 应用程序开发</a></li>
+                    <li><a href="#section9-3"><span class="sidebar-section-num">9.3</span> 性能优化</a></li>
+                    <li><a href="#section9-4"><span class="sidebar-section-num">9.4</span> 数据库备份与恢复</a></li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+
+    <section class="course-detail">
+        <div class="container">
+            <div class="course-content-wrapper">
+                <div class="course-header">
+                    <h2>数据库原理与应用</h2>
+                    <p>商务数据分析与应用专业核心课程</p>
+                </div>
+                
+                <div class="course-content">
+                    <h3>课程介绍</h3>
+                    <p>数据库原理与应用课程是商务数据分析与应用专业的基础课程，主要介绍数据库的基本原理、设计方法和应用技术。通过本课程的学习，学生将掌握数据库的基本概念、SQL语言、数据库设计和管理等核心知识，为后续的数据分析和应用开发打下基础。</p>
+                    
+                    <h3>课程目标</h3>
+                    <p>1. 理解数据库的基本概念和原理<br>
+                    2. 掌握SQL语言的使用<br>
+                    3. 学会数据库设计的方法和步骤<br>
+                    4. 了解数据库管理和维护的基本操作<br>
+                    5. 能够设计和实现简单的数据库应用</p>
+
+                    <!-- 课程目录 -->
+                    <div class="course-outline">
+                        <div class="course-outline-header">
+                            <h3>课程目录</h3>
+                        </div>
+                        <ul class="course-outline-list">
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="1">
+                                    <span class="chapter-name">第1章 数据库系统概述</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section1-1">1.1 数据与信息</a></li>
+                                    <li class="course-outline-section"><a href="#section1-2">1.2 数据库的基本概念</a></li>
+                                    <li class="course-outline-section"><a href="#section1-3">1.3 数据库管理系统</a></li>
+                                    <li class="course-outline-section"><a href="#section1-4">1.4 数据库系统的组成</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="2">
+                                    <span class="chapter-name">第2章 数据模型</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section2-1">2.1 数据模型的概念</a></li>
+                                    <li class="course-outline-section"><a href="#section2-2">2.2 层次模型</a></li>
+                                    <li class="course-outline-section"><a href="#section2-3">2.3 网状模型</a></li>
+                                    <li class="course-outline-section"><a href="#section2-4">2.4 关系模型</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="3">
+                                    <span class="chapter-name">第3章 关系数据库</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section3-1">3.1 关系的定义</a></li>
+                                    <li class="course-outline-section"><a href="#section3-2">3.2 关系的完整性</a></li>
+                                    <li class="course-outline-section"><a href="#section3-3">3.3 关系代数</a></li>
+                                    <li class="course-outline-section"><a href="#section3-4">3.4 关系演算</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="4">
+                                    <span class="chapter-name">第4章 SQL语言基础</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section4-1">4.1 SQL概述</a></li>
+                                    <li class="course-outline-section"><a href="#section4-2">4.2 数据定义</a></li>
+                                    <li class="course-outline-section"><a href="#section4-3">4.3 数据查询</a></li>
+                                    <li class="course-outline-section"><a href="#section4-4">4.4 数据更新</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="5">
+                                    <span class="chapter-name">第5章 数据库设计</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section5-1">5.1 数据库设计概述</a></li>
+                                    <li class="course-outline-section"><a href="#section5-2">5.2 需求分析</a></li>
+                                    <li class="course-outline-section"><a href="#section5-3">5.3 概念结构设计</a></li>
+                                    <li class="course-outline-section"><a href="#section5-4">5.4 逻辑结构设计</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="6">
+                                    <span class="chapter-name">第6章 规范化理论</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section6-1">6.1 函数依赖</a></li>
+                                    <li class="course-outline-section"><a href="#section6-2">6.2 范式</a></li>
+                                    <li class="course-outline-section"><a href="#section6-3">6.3 规范化过程</a></li>
+                                    <li class="course-outline-section"><a href="#section6-4">6.4 数据依赖的公理系统</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="7">
+                                    <span class="chapter-name">第7章 数据库安全</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section7-1">7.1 安全控制</a></li>
+                                    <li class="course-outline-section"><a href="#section7-2">7.2 数据库完整性</a></li>
+                                    <li class="course-outline-section"><a href="#section7-3">7.3 并发控制</a></li>
+                                    <li class="course-outline-section"><a href="#section7-4">7.4 数据库恢复</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="8">
+                                    <span class="chapter-name">第8章 数据库编程</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section8-1">8.1 存储过程</a></li>
+                                    <li class="course-outline-section"><a href="#section8-2">8.2 触发器</a></li>
+                                    <li class="course-outline-section"><a href="#section8-3">8.3 视图</a></li>
+                                    <li class="course-outline-section"><a href="#section8-4">8.4 索引</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="9">
+                                    <span class="chapter-name">第9章 数据库应用开发</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section9-1">9.1 数据库连接</a></li>
+                                    <li class="course-outline-section"><a href="#section9-2">9.2 应用程序开发</a></li>
+                                    <li class="course-outline-section"><a href="#section9-3">9.3 性能优化</a></li>
+                                    <li class="course-outline-section"><a href="#section9-4">9.4 数据库备份与恢复</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /课程目录 -->
+
+                    <!-- 提示信息 -->
+                    <div class="course-outline-hint">
+                        <div class="hint-icon">👆</div>
+                        <p>请点击上方目录中的小节开始学习</p>
+                    </div>
+
+                    <div class="chapter" id="chapter1">
+                        <h3 class="chapter-title">第1章 数据库系统概述</h3>
+                        
+                        <div class="section" id="section1-1">
+                            <h4 class="section-title">1.1 数据与信息</h4>
+                            
+                            <div class="explanation-box">
+                                <h5 class="explanation-title">通俗讲解</h5>
+                                <p class="explanation-text">数据就像记录下来的数字、文字等，而信息是经过处理后有意义的数据。比如记录了很多个学生的考试分数，这是数据；分析出平均分、最高分，这就变成了有用的信息。</p>
+                            </div>
+                            
+                            <div class="key-points-box">
+                                <h5 class="key-points-title">核心知识点</h5>
+                                <ul class="key-points-list">
+                                    <li>数据是客观事物的符号表示</li>
+                                    <li>信息是加工处理后的数据</li>
+                                    <li>数据与信息密不可分</li>
+                                    <li>数据具有多样性和时效性</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="example-box">
+                                <div class="example-header">
+                                    <span class="example-title">示例：数据与信息</span>
+                                    <button class="copy-btn" onclick="copyCode('code1-1')">复制</button>
+                                </div>
+                                <div class="example-code">
+                                    <pre id="code1-1"><code><span class="comment">-- 数据：学生成绩</span>
+张三 85
+李四 90
+王五 78
+赵六 92
+
+<span class="comment">-- 信息：分析结果</span>
+平均分: 86.25
+最高分: 92
+最低分: 78</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('db-section1-1')">标记已学习</button>
+                            </div>
+                            
+                            <div class="quiz-section">
+                                <h4 class="quiz-title">本节练习</h4>
+                                <div class="question">
+                                    <p class="question-text">1. 数据与信息的关系是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q1" id="q1-a" value="A"><label for="q1-a">A. 数据就是信息</label></li>
+                                        <li class="option"><input type="radio" name="q1" id="q1-b" value="B"><label for="q1-b">B. 信息是加工后的数据</label></li>
+                                        <li class="option"><input type="radio" name="q1" id="q1-c" value="C"><label for="q1-c">C. 信息就是数字</label></li>
+                                        <li class="option"><input type="radio" name="q1" id="q1-d" value="D"><label for="q1-d">D. 数据没有用处</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q1-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">2. 以下哪个是数据？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q2" id="q2-a" value="A"><label for="q2-a">A. 95分</label></li>
+                                        <li class="option"><input type="radio" name="q2" id="q2-b" value="B"><label for="q2-b">B. 优秀</label></li>
+                                        <li class="option"><input type="radio" name="q2" id="q2-c" value="C"><label for="q2-c">C. 进步很大</label></li>
+                                        <li class="option"><input type="radio" name="q2" id="q2-d" value="D"><label for="q2-d">D. 需要努力</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q2-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">3. 信息的主要特征是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q3" id="q3-a" value="A"><label for="q3-a">A. 无意义</label></li>
+                                        <li class="option"><input type="radio" name="q3" id="q3-b" value="B"><label for="q3-b">B. 有价值</label></li>
+                                        <li class="option"><input type="radio" name="q3" id="q3-c" value="C"><label for="q3-c">C. 永远不变</label></li>
+                                        <li class="option"><input type="radio" name="q3" id="q3-d" value="D"><label for="q3-d">D. 只能是文字</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q3-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">4. 数据处理的目的是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q4" id="q4-a" value="A"><label for="q4-a">A. 保存数据</label></li>
+                                        <li class="option"><input type="radio" name="q4" id="q4-b" value="B"><label for="q4-b">B. 获取信息</label></li>
+                                        <li class="option"><input type="radio" name="q4" id="q4-c" value="C"><label for="q4-c">C. 删除数据</label></li>
+                                        <li class="option"><input type="radio" name="q4" id="q4-d" value="D"><label for="q4-d">D. 复制数据</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q4-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">5. 数据的类型不包括？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q5" id="q5-a" value="A"><label for="q5-a">A. 数字</label></li>
+                                        <li class="option"><input type="radio" name="q5" id="q5-b" value="B"><label for="q5-b">B. 文字</label></li>
+                                        <li class="option"><input type="radio" name="q5" id="q5-c" value="C"><label for="q5-c">C. 图像</label></li>
+                                        <li class="option"><input type="radio" name="q5" id="q5-d" value="D"><label for="q5-d">D. 思想</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q5-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">6. 信息的价值体现在？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q6" id="q6-a" value="A"><label for="q6-a">A. 占用存储空间</label></li>
+                                        <li class="option"><input type="radio" name="q6" id="q6-b" value="B"><label for="q6-b">B. 帮助决策</label></li>
+                                        <li class="option"><input type="radio" name="q6" id="q6-c" value="C"><label for="q6-c">C. 数据量大</label></li>
+                                        <li class="option"><input type="radio" name="q6" id="q6-d" value="D"><label for="q6-d">D. 形式多样</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q6-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">7. 数据的时效性是指？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q7" id="q7-a" value="A"><label for="q7-a">A. 数据永远有效</label></li>
+                                        <li class="option"><input type="radio" name="q7" id="q7-b" value="B"><label for="q7-b">B. 数据在特定时间内有效</label></li>
+                                        <li class="option"><input type="radio" name="q7" id="q7-c" value="C"><label for="q7-c">C. 数据越快越好</label></li>
+                                        <li class="option"><input type="radio" name="q7" id="q7-d" value="D"><label for="q7-d">D. 数据越久越有价值</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q7-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">8. 以下哪个不是信息的特征？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q8" id="q8-a" value="A"><label for="q8-a">A. 可共享</label></li>
+                                        <li class="option"><input type="radio" name="q8" id="q8-b" value="B"><label for="q8-b">B. 可传递</label></li>
+                                        <li class="option"><input type="radio" name="q8" id="q8-c" value="C"><label for="q8-c">C. 可消耗</label></li>
+                                        <li class="option"><input type="radio" name="q8" id="q8-d" value="D"><label for="q8-d">D. 可存储</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q8-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">9. 数据处理的基本操作不包括？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q9" id="q9-a" value="A"><label for="q9-a">A. 收集</label></li>
+                                        <li class="option"><input type="radio" name="q9" id="q9-b" value="B"><label for="q9-b">B. 加工</label></li>
+                                        <li class="option"><input type="radio" name="q9" id="q9-c" value="C"><label for="q9-c">C. 遗忘</label></li>
+                                        <li class="option"><input type="radio" name="q9" id="q9-d" value="D"><label for="q9-d">D. 传输</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q9-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">10. 关于数据和信息，正确的说法是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q10" id="q10-a" value="A"><label for="q10-a">A. 数据一定能变成信息</label></li>
+                                        <li class="option"><input type="radio" name="q10" id="q10-b" value="B"><label for="q10-b">B. 信息不一定需要数据</label></li>
+                                        <li class="option"><input type="radio" name="q10" id="q10-c" value="C"><label for="q10-c">C. 数据经过处理才能成为信息</label></li>
+                                        <li class="option"><input type="radio" name="q10" id="q10-d" value="D"><label for="q10-d">D. 数据比信息更重要</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q10-explanation"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section" id="section1-2">
+                            <h4 class="section-title">1.2 数据库的基本概念</h4>
+                            
+                            <div class="explanation-box">
+                                <h5 class="explanation-title">通俗讲解</h5>
+                                <p class="explanation-text">数据库就像一个电子文件柜，里面存放着各种数据表格。每个表格里有行有列，记录着详细的信息。比如学生表、订单表等，我们可以快速找到需要的信息。</p>
+                            </div>
+                            
+                            <div class="key-points-box">
+                                <h5 class="key-points-title">核心知识点</h5>
+                                <ul class="key-points-list">
+                                    <li>数据库是长期存储在计算机内的有组织的数据集合</li>
+                                    <li>数据库具有共享性、独立性、完整性等特点</li>
+                                    <li>数据库中的数据按一定的数据模型组织</li>
+                                    <li>数据库可以被多个用户同时访问</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="example-box">
+                                <div class="example-header">
+                                    <span class="example-title">示例：简单的表格结构</span>
+                                    <button class="copy-btn" onclick="copyCode('code1-2')">复制</button>
+                                </div>
+                                <div class="example-code">
+                                    <pre id="code1-2"><code><span class="comment">-- 学生表结构</span>
+学号  | 姓名 | 年龄 | 性别
+------|------|------|------
+001   | 张三 |  20  | 男
+002   | 李四 |  19  | 女
+003   | 王五 |  21  | 男</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('db-section1-2')">标记已学习</button>
+                            </div>
+                        </div>
+                        
+                        <div class="section" id="section1-3">
+                            <h4 class="section-title">1.3 数据库管理系统</h4>
+                            
+                            <div class="explanation-box">
+                                <h5 class="explanation-title">通俗讲解</h5>
+                                <p class="explanation-text">数据库管理系统(DBMS)就像数据库的管理员，帮我们存放、查找、修改数据。常见的有MySQL、Oracle、SQL Server等。</p>
+                            </div>
+                            
+                            <div class="key-points-box">
+                                <h5 class="key-points-title">核心知识点</h5>
+                                <ul class="key-points-list">
+                                    <li>DBMS是介于用户和操作系统之间的数据管理软件</li>
+                                    <li>DBMS提供数据定义、操纵、控制等功能</li>
+                                    <li>常见的关系型DBMS有MySQL、Oracle、SQL Server</li>
+                                    <li>DBMS保证数据的安全性和完整性</li>
+                                </ul>
+                            </div>
+
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('db-section1-3')">标记已学习</button>
+                            </div>
+                        </div>
+                        
+                        <div class="section" id="section1-4">
+                            <h4 class="section-title">1.4 数据库系统的组成</h4>
+                            
+                            <div class="explanation-box">
+                                <h5 class="explanation-title">通俗讲解</h5>
+                                <p class="explanation-text">数据库系统就像一个完整的图书馆，有书库(数据库)、管理员(DBMS)、读者(用户)和借阅规则(应用程序)。</p>
+                            </div>
+                            
+                            <div class="key-points-box">
+                                <h5 class="key-points-title">核心知识点</h5>
+                                <ul class="key-points-list">
+                                    <li>数据库系统由数据库、DBMS、应用程序、用户组成</li>
+                                    <li>数据库是数据的集合</li>
+                                    <li>DBMS是管理数据库的软件</li>
+                                    <li>用户包括最终用户、应用程序员、数据库管理员</li>
+                                </ul>
+                            </div>
+
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('db-section1-4')">标记已学习</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter2">
+                        <h3 class="chapter-title">第2章 数据模型</h3>
+                        <div class="section" id="section2-1">
+                            <h4 class="section-title">2.1 数据模型的概念</h4>
+                            <p class="explanation-text">数据模型是现实世界数据特征的抽象，是数据库系统的核心和基础。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section2-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section2-2">
+                            <h4 class="section-title">2.2 层次模型</h4>
+                            <p class="explanation-text">层次模型用树形结构表示实体及其联系，像一棵倒长的树。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section2-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section2-3">
+                            <h4 class="section-title">2.3 网状模型</h4>
+                            <p class="explanation-text">网状模型用图结构表示实体及其联系，可以表示多对多关系。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section2-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section2-4">
+                            <h4 class="section-title">2.4 关系模型</h4>
+                            <p class="explanation-text">关系模型用二维表格表示实体及其联系，是目前最常用的数据模型。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section2-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter3">
+                        <h3 class="chapter-title">第3章 关系数据库</h3>
+                        <div class="section" id="section3-1">
+                            <h4 class="section-title">3.1 关系的定义</h4>
+                            <p class="explanation-text">关系就是二维表，行是元组，列是属性。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section3-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section3-2">
+                            <h4 class="section-title">3.2 关系的完整性</h4>
+                            <p class="explanation-text">包括实体完整性、参照完整性和用户定义完整性。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section3-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section3-3">
+                            <h4 class="section-title">3.3 关系代数</h4>
+                            <p class="explanation-text">关系代数是关系操作的理论基础，包括选择、投影、连接等操作。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section3-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section3-4">
+                            <h4 class="section-title">3.4 关系演算</h4>
+                            <p class="explanation-text">关系演算是另一种关系操作语言，分为元组关系演算和域关系演算。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section3-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter4">
+                        <h3 class="chapter-title">第4章 SQL语言基础</h3>
+                        <div class="section" id="section4-1">
+                            <h4 class="section-title">4.1 SQL概述</h4>
+                            <p class="explanation-text">SQL是结构化查询语言，是关系数据库的标准语言。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section4-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section4-2">
+                            <h4 class="section-title">4.2 数据定义</h4>
+                            <p class="explanation-text">包括CREATE、ALTER、DROP等语句。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section4-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section4-3">
+                            <h4 class="section-title">4.3 数据查询</h4>
+                            <p class="explanation-text">SELECT语句是SQL中最常用的语句，用于查询数据。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section4-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section4-4">
+                            <h4 class="section-title">4.4 数据更新</h4>
+                            <p class="explanation-text">包括INSERT、UPDATE、DELETE等语句。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section4-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter5">
+                        <h3 class="chapter-title">第5章 数据库设计</h3>
+                        <div class="section" id="section5-1">
+                            <h4 class="section-title">5.1 数据库设计概述</h4>
+                            <p class="explanation-text">数据库设计是建立数据库及其应用系统的技术。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section5-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section5-2">
+                            <h4 class="section-title">5.2 需求分析</h4>
+                            <p class="explanation-text">需求分析是数据库设计的第一步，要明确用户的需求。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section5-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section5-3">
+                            <h4 class="section-title">5.3 概念结构设计</h4>
+                            <p class="explanation-text">用E-R图表示概念模型，是需求分析的产物。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section5-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section5-4">
+                            <h4 class="section-title">5.4 逻辑结构设计</h4>
+                            <p class="explanation-text">将E-R图转换为关系模型。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section5-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter6">
+                        <h3 class="chapter-title">第6章 规范化理论</h3>
+                        <div class="section" id="section6-1">
+                            <h4 class="section-title">6.1 函数依赖</h4>
+                            <p class="explanation-text">函数依赖是关系模式中属性间的一种约束关系。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section6-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section6-2">
+                            <h4 class="section-title">6.2 范式</h4>
+                            <p class="explanation-text">范式是符合某一种级别的关系模式的集合，包括1NF、2NF、3NF等。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section6-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section6-3">
+                            <h4 class="section-title">6.3 规范化过程</h4>
+                            <p class="explanation-text">通过分解关系模式，逐步消除数据冗余和操作异常。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section6-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section6-4">
+                            <h4 class="section-title">6.4 数据依赖的公理系统</h4>
+                            <p class="explanation-text">Armstrong公理系统是推导函数依赖的工具。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section6-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter7">
+                        <h3 class="chapter-title">第7章 数据库安全</h3>
+                        <div class="section" id="section7-1">
+                            <h4 class="section-title">7.1 安全控制</h4>
+                            <p class="explanation-text">保护数据库免受未授权访问、恶意破坏和泄露。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section7-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section7-2">
+                            <h4 class="section-title">7.2 数据库完整性</h4>
+                            <p class="explanation-text">保证数据的正确性、有效性和一致性。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section7-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section7-3">
+                            <h4 class="section-title">7.3 并发控制</h4>
+                            <p class="explanation-text">协调多用户同时访问数据库，避免数据不一致。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section7-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section7-4">
+                            <h4 class="section-title">7.4 数据库恢复</h4>
+                            <p class="explanation-text">在故障发生后，将数据库恢复到正确状态。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section7-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter8">
+                        <h3 class="chapter-title">第8章 数据库编程</h3>
+                        <div class="section" id="section8-1">
+                            <h4 class="section-title">8.1 存储过程</h4>
+                            <p class="explanation-text">存储过程是预编译的SQL语句集合，提高执行效率。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section8-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section8-2">
+                            <h4 class="section-title">8.2 触发器</h4>
+                            <p class="explanation-text">触发器是特殊的存储过程，在特定事件发生时自动执行。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section8-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section8-3">
+                            <h4 class="section-title">8.3 视图</h4>
+                            <p class="explanation-text">视图是虚表，基于基本表导出，简化数据操作。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section8-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section8-4">
+                            <h4 class="section-title">8.4 索引</h4>
+                            <p class="explanation-text">索引提高数据查询效率，但会增加存储空间和维护成本。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section8-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter9">
+                        <h3 class="chapter-title">第9章 数据库应用开发</h3>
+                        <div class="section" id="section9-1">
+                            <h4 class="section-title">9.1 数据库连接</h4>
+                            <p class="explanation-text">应用程序通过驱动程序连接数据库。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section9-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section9-2">
+                            <h4 class="section-title">9.2 应用程序开发</h4>
+                            <p class="explanation-text">使用各种编程语言开发数据库应用。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section9-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section9-3">
+                            <h4 class="section-title">9.3 性能优化</h4>
+                            <p class="explanation-text">通过优化查询、索引、配置等提高数据库性能。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section9-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section9-4">
+                            <h4 class="section-title">9.4 数据库备份与恢复</h4>
+                            <p class="explanation-text">定期备份数据，防止数据丢失。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('db-section9-4')">标记已学习</button>
+                        </div>
+                    </div>
+                    
+                    <a href="../index.html#courses" class="back-link">返回课程列表</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 张茵茵的个人学习页面</p>
+        </div>
+    </footer>
+
+    <script>
+        const COURSE_ID = 'database-basic';
+        
+        const quizAnswers = {
+            q1: { answer: 'B', explanation: '信息是加工处理后有意义的数据。' },
+            q2: { answer: 'A', explanation: '95分是具体的数据，其他是信息或描述。' },
+            q3: { answer: 'B', explanation: '信息具有价值性，能够帮助人们做出决策。' },
+            q4: { answer: 'B', explanation: '数据处理的目的是从数据中提取有用的信息。' },
+            q5: { answer: 'D', explanation: '思想不是数据的类型，数据通常是可记录的符号。' },
+            q6: { answer: 'B', explanation: '信息的价值体现在能够帮助人们做出正确的决策。' },
+            q7: { answer: 'B', explanation: '数据的时效性是指数据在特定时间范围内才有效。' },
+            q8: { answer: 'C', explanation: '信息不会被消耗，可以反复使用。' },
+            q9: { answer: 'C', explanation: '数据处理的基本操作包括收集、加工、传输、存储等，不包括遗忘。' },
+            q10: { answer: 'C', explanation: '数据需要经过处理才能成为有价值的信息。' }
+        };
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initSidebar();
+            initCourseOutline();
+            initSectionsVisibility();
+            initSectionClicks();
+            loadLearnedSections();
+            initScrollToTop();
+            initQuiz();
+            highlightActiveSection();
+        });
+        
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            const toggle = document.querySelector('.sidebar-toggle');
+            
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+        
+        function initSidebar() {
+            const chapters = document.querySelectorAll('.sidebar-chapter');
+            chapters.forEach(chapter => {
+                const header = chapter.querySelector('.sidebar-chapter-header');
+                const toggleBtn = chapter.querySelector('.sidebar-toggle-btn');
+                
+                header.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    chapter.classList.toggle('collapsed');
+                    saveSidebarState();
+                });
+                
+                toggleBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    chapter.classList.toggle('collapsed');
+                    saveSidebarState();
+                });
+            });
+            
+            const sectionLinks = document.querySelectorAll('.sidebar-sections a');
+            sectionLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+                    if (window.innerWidth < 768) {
+                        toggleSidebar();
+                    }
+                });
+            });
+            
+            restoreSidebarState();
+        }
+        
+        function initCourseOutline() {
+            const items = document.querySelectorAll('.course-outline-item');
+            items.forEach((item, index) => {
+                const headerRow = item.querySelector('.course-outline-header-row');
+                const toggleBtn = item.querySelector('.course-outline-toggle');
+                if (index === 0) {
+                    item.classList.remove('collapsed');
+                    if (toggleBtn) toggleBtn.innerHTML = '<span class="toggle-icon">▼</span> 收起';
+                } else {
+                    item.classList.add('collapsed');
+                    if (toggleBtn) toggleBtn.innerHTML = '<span class="toggle-icon">▶</span> 展开';
+                }
+                headerRow.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    item.classList.toggle('collapsed');
+                    if (toggleBtn) {
+                        if (item.classList.contains('collapsed')) {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▶</span> 展开';
+                        } else {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▼</span> 收起';
+                        }
+                    }
+                });
+                if (toggleBtn) {
+                    toggleBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        item.classList.toggle('collapsed');
+                        if (item.classList.contains('collapsed')) {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▶</span> 展开';
+                        } else {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▼</span> 收起';
+                        }
+                    });
+                }
+            });
+            const sectionLinks = document.querySelectorAll('.course-outline-section a');
+            sectionLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
+
+        // 初始化小节可见性
+        function initSectionsVisibility() {
+            const sections = document.querySelectorAll('.section');
+            if (sections.length > 0) {
+                // 默认隐藏所有小节内容
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // 检查URL是否有锚点
+                const hash = window.location.hash;
+                if (hash) {
+                    const targetSection = document.querySelector(hash);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                        setTimeout(() => {
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 100);
+                    }
+                }
+            }
+        }
+
+        // 小节链接点击 - 显示对应内容
+        function initSectionClicks() {
+            const sectionLinks = document.querySelectorAll('.course-outline-section a');
+            sectionLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    const targetId = href.substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        // 隐藏所有小节
+                        document.querySelectorAll('.section').forEach(section => {
+                            section.classList.remove('active');
+                        });
+
+                        // 显示目标小节
+                        targetSection.classList.add('active');
+
+                        // 展开对应的章节
+                        const chapterItem = targetSection.closest('.chapter');
+                        if (chapterItem) {
+                            chapterItem.style.display = 'block';
+                        }
+
+                        // 平滑滚动到目标位置
+                        setTimeout(() => {
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 100);
+                    }
+                });
+            });
+        }
+        
+        function saveSidebarState() {
+            const chapters = document.querySelectorAll('.sidebar-chapter');
+            const state = {};
+            chapters.forEach((chapter, index) => {
+                state[index] = !chapter.classList.contains('collapsed');
+            });
+            localStorage.setItem(`${COURSE_ID}-sidebar`, JSON.stringify(state));
+        }
+        
+        function restoreSidebarState() {
+            const savedState = localStorage.getItem(`${COURSE_ID}-sidebar`);
+            if (savedState) {
+                const state = JSON.parse(savedState);
+                const chapters = document.querySelectorAll('.sidebar-chapter');
+                chapters.forEach((chapter, index) => {
+                    if (state[index] === false) {
+                        chapter.classList.add('collapsed');
+                    } else {
+                        chapter.classList.remove('collapsed');
+                    }
+                });
+            } else {
+                const chapters = document.querySelectorAll('.sidebar-chapter');
+                chapters.forEach(chapter => {
+                    chapter.classList.remove('collapsed');
+                });
+            }
+        }
+        
+        function highlightActiveSection() {
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('.section');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('.sidebar-sections a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                const activeLink = document.querySelector(`.sidebar-sections a[href="#${currentSection}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                    const chapter = activeLink.closest('.sidebar-chapter');
+                    if (chapter && chapter.classList.contains('collapsed')) {
+                        chapter.classList.remove('collapsed');
+                    }
+                }
+            });
+        }
+        
+        function loadLearnedSections() {
+            const learned = JSON.parse(localStorage.getItem(`${COURSE_ID}-learned`) || '[]');
+            learned.forEach(id => {
+                const btn = document.querySelector(`button[onclick="toggleLearned('${id}')"]`);
+                if (btn) {
+                    btn.classList.add('learned');
+                    btn.textContent = '✓ 已学习';
+                }
+            });
+        }
+        
+        function toggleLearned(sectionId) {
+            const btn = document.querySelector(`button[onclick="toggleLearned('${sectionId}')"]`);
+            let learned = JSON.parse(localStorage.getItem(`${COURSE_ID}-learned`) || '[]');
+            
+            if (learned.includes(sectionId)) {
+                learned = learned.filter(id => id !== sectionId);
+                btn.classList.remove('learned');
+                btn.textContent = '标记已学习';
+            } else {
+                learned.push(sectionId);
+                btn.classList.add('learned');
+                btn.textContent = '✓ 已学习';
+            }
+            
+            localStorage.setItem(`${COURSE_ID}-learned`, JSON.stringify(learned));
+        }
+        
+        function initScrollToTop() {
+            const btn = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            });
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const code = codeElement.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = codeElement.closest('.example-box')?.querySelector('.copy-btn');
+                if (btn) {
+                    btn.textContent = '✓ 已复制';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = '复制';
+                        btn.classList.remove('copied');
+                    }, 2000);
+                }
+            });
+        }
+        
+        function initQuiz() {
+            const savedAnswers = JSON.parse(localStorage.getItem(`${COURSE_ID}-quiz`) || '{}');
+            
+            Object.keys(savedAnswers).forEach(qId => {
+                const radio = document.querySelector(`input[name="${qId}"][value="${savedAnswers[qId]}"]`);
+                if (radio) {
+                    radio.checked = true;
+                    showExplanation(qId, savedAnswers[qId]);
+                }
+            });
+            
+            const radios = document.querySelectorAll('.question input[type="radio"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const qId = this.name;
+                    const userAnswer = this.value;
+                    showExplanation(qId, userAnswer);
+                    savedAnswers[qId] = userAnswer;
+                    localStorage.setItem(`${COURSE_ID}-quiz`, JSON.stringify(savedAnswers));
+                });
+            });
+        }
+        
+        function showExplanation(qId, userAnswer) {
+            const correctAnswer = quizAnswers[qId]?.answer;
+            const explanation = quizAnswers[qId]?.explanation || '练习题完善中...';
+            const explanationDiv = document.getElementById(`${qId}-explanation`);
+            const options = document.querySelectorAll(`input[name="${qId}"]`);
+            
+            options.forEach(opt => {
+                const li = opt.closest('.option');
+                li.classList.add('disabled');
+                if (correctAnswer && opt.value === correctAnswer) {
+                    li.classList.add('correct');
+                } else if (opt.checked && correctAnswer && opt.value !== correctAnswer) {
+                    li.classList.add('incorrect');
+                }
+            });
+            
+            if (explanationDiv) {
+                if (userAnswer === correctAnswer) {
+                    explanationDiv.innerHTML = `<strong>✓ 正确！</strong>${explanation}`;
+                    explanationDiv.classList.remove('incorrect');
+                    explanationDiv.classList.add('correct');
+                } else if (correctAnswer) {
+                    explanationDiv.innerHTML = `<strong>✗ 错误！</strong>正确答案是 ${correctAnswer}。${explanation}`;
+                    explanationDiv.classList.remove('correct');
+                    explanationDiv.classList.add('incorrect');
+                }
+                explanationDiv.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

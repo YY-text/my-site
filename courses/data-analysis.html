@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据分析技术 - 张茵茵的学习空间</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>张茵茵的学习空间</h1>
+            <ul class="nav-links">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="../index.html#courses">课程</a></li>
+                <li><a href="../learning-path.html">学习路径</a></li>
+                <li><a href="../index.html#about">关于我</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="sidebar-toggle" onclick="toggleSidebar()"></div>
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h4>📚 数据分析技术</h4>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-chapter">
+                <a href="#chapter1">第1章 数据分析概述</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section1-1">1.1 数据分析流程</a></li>
+                    <li><a href="#section1-2">1.2 分析方法分类</a></li>
+                    <li><a href="#section1-3">1.3 常用工具介绍</a></li>
+                    <li><a href="#section1-4">1.4 商业应用场景</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter2">第2章 描述性统计</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section2-1">2.1 集中趋势</a></li>
+                    <li><a href="#section2-2">2.2 离散程度</a></li>
+                    <li><a href="#section2-3">2.3 分布形态</a></li>
+                    <li><a href="#section2-4">2.4 统计表图</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter3">第3章 数据可视化</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section3-1">3.1 可视化原则</a></li>
+                    <li><a href="#section3-2">3.2 常用图表</a></li>
+                    <li><a href="#section3-3">3.3 配色设计</a></li>
+                    <li><a href="#section3-4">3.4 交互图表</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter4">第4章 相关性分析</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section4-1">4.1 相关系数</a></li>
+                    <li><a href="#section4-2">4.2 散点图分析</a></li>
+                    <li><a href="#section4-3">4.3 协方差矩阵</a></li>
+                    <li><a href="#section4-4">4.4 因果与相关</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter5">第5章 假设检验</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section5-1">5.1 基本概念</a></li>
+                    <li><a href="#section5-2">5.2 t检验</a></li>
+                    <li><a href="#section5-3">5.3 卡方检验</a></li>
+                    <li><a href="#section5-4">5.4 方差分析</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter6">第6章 回归分析</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section6-1">6.1 线性回归</a></li>
+                    <li><a href="#section6-2">6.2 多元回归</a></li>
+                    <li><a href="#section6-3">6.3 逻辑回归</a></li>
+                    <li><a href="#section6-4">6.4 模型评估</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter7">第7章 聚类分析</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section7-1">7.1 K-means聚类</a></li>
+                    <li><a href="#section7-2">7.2 层次聚类</a></li>
+                    <li><a href="#section7-3">7.3 DBSCAN</a></li>
+                    <li><a href="#section7-4">7.4 聚类评估</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter8">第8章 分类分析</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section8-1">8.1 决策树</a></li>
+                    <li><a href="#section8-2">8.2 随机森林</a></li>
+                    <li><a href="#section8-3">8.3 逻辑回归</a></li>
+                    <li><a href="#section8-4">8.4 模型评估指标</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter9">第9章 时间序列分析</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section9-1">9.1 时间序列分解</a></li>
+                    <li><a href="#section9-2">9.2 移动平均</a></li>
+                    <li><a href="#section9-3">9.3 ARIMA模型</a></li>
+                    <li><a href="#section9-4">9.4 预测方法</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter10">第10章 文本分析</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section10-1">10.1 文本预处理</a></li>
+                    <li><a href="#section10-2">10.2 词频统计</a></li>
+                    <li><a href="#section10-3">10.3 情感分析</a></li>
+                    <li><a href="#section10-4">10.4 主题模型</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter11">第11章 数据分析实战</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section11-1">11.1 项目流程</a></li>
+                    <li><a href="#section11-2">11.2 案例分析</a></li>
+                    <li><a href="#section11-3">11.3 报告撰写</a></li>
+                    <li><a href="#section11-4">11.4 结果展示</a></li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+
+    <section class="course-detail">
+        <div class="container">
+            <div class="course-content-wrapper">
+                <div class="course-header">
+                    <h2>数据分析技术</h2>
+                    <p>商务数据分析与应用专业核心课程</p>
+                </div>
+                
+                <div class="course-content">
+                    <h3>课程介绍</h3>
+                    <p>数据分析技术课程是商务数据分析与应用专业的核心课程，主要介绍数据分析的基本方法和技术。通过本课程的学习，学生将掌握数据清洗、统计分析、数据可视化等核心技能，能够运用这些技能解决实际商务问题。</p>
+                    
+                    <h3>课程目标</h3>
+                    <p>1. 掌握描述性统计和推断统计方法<br>
+                    2. 学会数据可视化技术<br>
+                    3. 掌握相关性分析和回归分析<br>
+                    4. 了解机器学习基础算法<br>
+                    5. 能够完成完整的数据分析项目</p>
+
+                    <!-- 课程目录 -->
+                    <div class="course-outline">
+                        <div class="course-outline-header">
+                            <h3>课程目录</h3>
+                        </div>
+                        <ul class="course-outline-list">
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="1">
+                                    <span class="chapter-name">第1章 数据分析概述</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section1-1">1.1 数据分析流程</a></li>
+                                    <li class="course-outline-section"><a href="#section1-2">1.2 分析方法分类</a></li>
+                                    <li class="course-outline-section"><a href="#section1-3">1.3 常用工具介绍</a></li>
+                                    <li class="course-outline-section"><a href="#section1-4">1.4 商业应用场景</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="2">
+                                    <span class="chapter-name">第2章 描述性统计</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section2-1">2.1 集中趋势</a></li>
+                                    <li class="course-outline-section"><a href="#section2-2">2.2 离散程度</a></li>
+                                    <li class="course-outline-section"><a href="#section2-3">2.3 分布形态</a></li>
+                                    <li class="course-outline-section"><a href="#section2-4">2.4 统计表图</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="3">
+                                    <span class="chapter-name">第3章 数据可视化</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section3-1">3.1 可视化原则</a></li>
+                                    <li class="course-outline-section"><a href="#section3-2">3.2 常用图表</a></li>
+                                    <li class="course-outline-section"><a href="#section3-3">3.3 配色设计</a></li>
+                                    <li class="course-outline-section"><a href="#section3-4">3.4 交互图表</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="4">
+                                    <span class="chapter-name">第4章 相关性分析</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section4-1">4.1 相关系数</a></li>
+                                    <li class="course-outline-section"><a href="#section4-2">4.2 散点图分析</a></li>
+                                    <li class="course-outline-section"><a href="#section4-3">4.3 协方差矩阵</a></li>
+                                    <li class="course-outline-section"><a href="#section4-4">4.4 因果与相关</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="5">
+                                    <span class="chapter-name">第5章 假设检验</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section5-1">5.1 基本概念</a></li>
+                                    <li class="course-outline-section"><a href="#section5-2">5.2 t检验</a></li>
+                                    <li class="course-outline-section"><a href="#section5-3">5.3 卡方检验</a></li>
+                                    <li class="course-outline-section"><a href="#section5-4">5.4 方差分析</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="6">
+                                    <span class="chapter-name">第6章 回归分析</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section6-1">6.1 线性回归</a></li>
+                                    <li class="course-outline-section"><a href="#section6-2">6.2 多元回归</a></li>
+                                    <li class="course-outline-section"><a href="#section6-3">6.3 逻辑回归</a></li>
+                                    <li class="course-outline-section"><a href="#section6-4">6.4 模型评估</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="7">
+                                    <span class="chapter-name">第7章 聚类分析</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section7-1">7.1 K-means聚类</a></li>
+                                    <li class="course-outline-section"><a href="#section7-2">7.2 层次聚类</a></li>
+                                    <li class="course-outline-section"><a href="#section7-3">7.3 DBSCAN</a></li>
+                                    <li class="course-outline-section"><a href="#section7-4">7.4 聚类评估</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="8">
+                                    <span class="chapter-name">第8章 分类分析</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section8-1">8.1 决策树</a></li>
+                                    <li class="course-outline-section"><a href="#section8-2">8.2 随机森林</a></li>
+                                    <li class="course-outline-section"><a href="#section8-3">8.3 逻辑回归</a></li>
+                                    <li class="course-outline-section"><a href="#section8-4">8.4 模型评估指标</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="9">
+                                    <span class="chapter-name">第9章 时间序列分析</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section9-1">9.1 时间序列分解</a></li>
+                                    <li class="course-outline-section"><a href="#section9-2">9.2 移动平均</a></li>
+                                    <li class="course-outline-section"><a href="#section9-3">9.3 ARIMA模型</a></li>
+                                    <li class="course-outline-section"><a href="#section9-4">9.4 预测方法</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="10">
+                                    <span class="chapter-name">第10章 文本分析</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section10-1">10.1 文本预处理</a></li>
+                                    <li class="course-outline-section"><a href="#section10-2">10.2 词频统计</a></li>
+                                    <li class="course-outline-section"><a href="#section10-3">10.3 情感分析</a></li>
+                                    <li class="course-outline-section"><a href="#section10-4">10.4 主题模型</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="11">
+                                    <span class="chapter-name">第11章 数据分析实战</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section11-1">11.1 项目流程</a></li>
+                                    <li class="course-outline-section"><a href="#section11-2">11.2 案例分析</a></li>
+                                    <li class="course-outline-section"><a href="#section11-3">11.3 报告撰写</a></li>
+                                    <li class="course-outline-section"><a href="#section11-4">11.4 结果展示</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /课程目录 -->
+
+                    <!-- 提示信息 -->
+                    <div class="course-outline-hint">
+                        <div class="hint-icon">👆</div>
+                        <p>请点击上方目录中的小节开始学习</p>
+                    </div>
+
+                    <div class="chapter" id="chapter1">
+                        <h3 class="chapter-title">第1章 数据分析概述</h3>
+                        
+                        <div class="section" id="section1-1">
+                            <h4 class="section-title">1.1 数据分析流程</h4>
+                            
+                            <div class="explanation-box">
+                                <h5 class="explanation-title">通俗讲解</h5>
+                                <p class="explanation-text">数据分析就像侦探破案，先要明确要解决什么问题，然后收集线索，整理线索，分析线索，最后得出结论。每一步都很重要，不能跳过。</p>
+                            </div>
+                            
+                            <div class="key-points-box">
+                                <h5 class="key-points-title">核心知识点</h5>
+                                <ul class="key-points-list">
+                                    <li>问题定义：明确分析目标和需求</li>
+                                    <li>数据收集：获取相关数据</li>
+                                    <li>数据清洗：处理缺失值、异常值</li>
+                                    <li>数据分析：运用统计和机器学习方法</li>
+                                    <li>结果呈现：可视化展示和报告</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="example-box">
+                                <div class="example-header">
+                                    <span class="example-title">示例：电商用户行为分析流程</span>
+                                    <button class="copy-btn" onclick="copyCode('code1-1')">复制</button>
+                                </div>
+                                <div class="example-code">
+                                    <pre id="code1-1"><code>1. 问题定义：
+   - 如何提高用户转化率？
+   - 哪些因素影响购买决策？
+
+2. 数据收集：
+   - 用户浏览记录
+   - 购买历史
+   - 用户画像数据
+
+3. 数据清洗：
+   - 处理缺失数据
+   - 去除异常值
+   - 格式统一
+
+4. 数据分析：
+   - 用户行为路径分析
+   - 转化率漏斗分析
+   - A/B测试
+
+5. 结果呈现：
+   - 可视化图表
+   - 分析报告
+   - 建议方案</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('da-section1-1')">标记已学习</button>
+                            </div>
+                            
+                            <div class="quiz-section">
+                                <h4 class="quiz-title">本节练习</h4>
+                                <div class="question">
+                                    <p class="question-text">1. 数据分析的第一步是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q1" id="q1-a" value="A"><label for="q1-a">A. 收集数据</label></li>
+                                        <li class="option"><input type="radio" name="q1" id="q1-b" value="B"><label for="q1-b">B. 确定问题</label></li>
+                                        <li class="option"><input type="radio" name="q1" id="q1-c" value="C"><label for="q1-c">C. 分析数据</label></li>
+                                        <li class="option"><input type="radio" name="q1" id="q1-d" value="D"><label for="q1-d">D. 画图展示</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q1-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">2. 数据清洗的目的是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q2" id="q2-a" value="A"><label for="q2-a">A. 让数据更美观</label></li>
+                                        <li class="option"><input type="radio" name="q2" id="q2-b" value="B"><label for="q2-b">B. 提高数据质量</label></li>
+                                        <li class="option"><input type="radio" name="q2" id="q2-c" value="C"><label for="q2-c">C. 减少数据量</label></li>
+                                        <li class="option"><input type="radio" name="q2" id="q2-d" value="D"><label for="q2-d">D. 加快分析速度</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q2-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">3. 以下哪个不是数据分析流程？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q3" id="q3-a" value="A"><label for="q3-a">A. 问题定义</label></li>
+                                        <li class="option"><input type="radio" name="q3" id="q3-b" value="B"><label for="q3-b">B. 数据收集</label></li>
+                                        <li class="option"><input type="radio" name="q3" id="q3-c" value="C"><label for="q3-c">C. 数据删除</label></li>
+                                        <li class="option"><input type="radio" name="q3" id="q3-d" value="D"><label for="q3-d">D. 结果呈现</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q3-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">4. 好的分析问题应该是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q4" id="q4-a" value="A"><label for="q4-a">A. 模糊不清</label></li>
+                                        <li class="option"><input type="radio" name="q4" id="q4-b" value="B"><label for="q4-b">B. 具体明确</label></li>
+                                        <li class="option"><input type="radio" name="q4" id="q4-c" value="C"><label for="q4-c">C. 范围广泛</label></li>
+                                        <li class="option"><input type="radio" name="q4" id="q4-d" value="D"><label for="q4-d">D. 难以回答</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q4-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">5. 结果呈现的主要方式是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q5" id="q5-a" value="A"><label for="q5-a">A. 仅用文字</label></li>
+                                        <li class="option"><input type="radio" name="q5" id="q5-b" value="B"><label for="q5-b">B. 可视化图表</label></li>
+                                        <li class="option"><input type="radio" name="q5" id="q5-c" value="C"><label for="q5-c">C. 原始数据</label></li>
+                                        <li class="option"><input type="radio" name="q5" id="q5-d" value="D"><label for="q5-d">D. 代码片段</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q5-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">6. 数据收集时应注意？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q6" id="q6-a" value="A"><label for="q6-a">A. 数据越多越好</label></li>
+                                        <li class="option"><input type="radio" name="q6" id="q6-b" value="B"><label for="q6-b">B. 数据与问题相关</label></li>
+                                        <li class="option"><input type="radio" name="q6" id="q6-c" value="C"><label for="q6-c">C. 只收集最新数据</label></li>
+                                        <li class="option"><input type="radio" name="q6" id="q6-d" value="D"><label for="q6-d">D. 只收集结构化数据</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q6-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">7. 探索性数据分析(EDA)的目的是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q7" id="q7-a" value="A"><label for="q7-a">A. 快速得出结论</label></li>
+                                        <li class="option"><input type="radio" name="q7" id="q7-b" value="B"><label for="q7-b">B. 了解数据特征</label></li>
+                                        <li class="option"><input type="radio" name="q7" id="q7-c" value="C"><label for="q7-c">C. 建立预测模型</label></li>
+                                        <li class="option"><input type="radio" name="q7" id="q7-d" value="D"><label for="q7-d">D. 生成最终报告</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q7-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">8. 以下哪个说法正确？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q8" id="q8-a" value="A"><label for="q8-a">A. 数据分析只要有数据就行</label></li>
+                                        <li class="option"><input type="radio" name="q8" id="q8-b" value="B"><label for="q8-b">B. 分析流程可以随意调整</label></li>
+                                        <li class="option"><input type="radio" name="q8" id="q8-c" value="C"><label for="q8-c">C. 每一步都很重要</label></li>
+                                        <li class="option"><input type="radio" name="q8" id="q8-d" value="D"><label for="q8-d">D. 可以跳过数据清洗</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q8-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">9. 数据分析报告应该？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q9" id="q9-a" value="A"><label for="q9-a">A. 包含所有技术细节</label></li>
+                                        <li class="option"><input type="radio" name="q9" id="q9-b" value="B"><label for="q9-b">B. 针对目标受众</label></li>
+                                        <li class="option"><input type="radio" name="q9" id="q9-c" value="C"><label for="q9-c">C. 越复杂越好</label></li>
+                                        <li class="option"><input type="radio" name="q9" id="q9-d" value="D"><label for="q9-d">D. 只展示图表</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q9-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">10. 关于数据分析，正确的理解是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q10" id="q10-a" value="A"><label for="q10-a">A. 是一门艺术，不是科学</label></li>
+                                        <li class="option"><input type="radio" name="q10" id="q10-b" value="B"><label for="q10-b">B. 只要工具熟练就够了</label></li>
+                                        <li class="option"><input type="radio" name="q10" id="q10-c" value="C"><label for="q10-c">C. 需要业务知识和技术结合</label></li>
+                                        <li class="option"><input type="radio" name="q10" id="q10-d" value="D"><label for="q10-d">D. 结果一定是确定的</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q10-explanation"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section" id="section1-2">
+                            <h4 class="section-title">1.2 分析方法分类</h4>
+                            
+                            <div class="explanation-box">
+                                <h5 class="explanation-title">通俗讲解</h5>
+                                <p class="explanation-text">分析方法就像看病的方法，有的是看过去的病历(描述性)，有的是诊断现在的问题(诊断性)，有的是预测未来(预测性)，有的是开药方(规范性)。</p>
+                            </div>
+                            
+                            <div class="key-points-box">
+                                <h5 class="key-points-title">核心知识点</h5>
+                                <ul class="key-points-list">
+                                    <li>描述性分析：发生了什么？</li>
+                                    <li>诊断性分析：为什么发生？</li>
+                                    <li>预测性分析：将要发生什么？</li>
+                                    <li>规范性分析：应该怎么做？</li>
+                                </ul>
+                            </div>
+
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('da-section1-2')">标记已学习</button>
+                            </div>
+                        </div>
+                        
+                        <div class="section" id="section1-3">
+                            <h4 class="section-title">1.3 常用工具介绍</h4>
+                            
+                            <div class="explanation-box">
+                                <h5 class="explanation-title">通俗讲解</h5>
+                                <p class="explanation-text">数据分析工具就像工具箱，有的简单易用(Excel)，有的功能强大(Python)，有的适合可视化(Tableau)，根据需求选择合适的工具。</p>
+                            </div>
+                            
+                            <div class="key-points-box">
+                                <h5 class="key-points-title">核心知识点</h5>
+                                <ul class="key-points-list">
+                                    <li>Excel：适合入门，快速分析</li>
+                                    <li>Python：灵活强大，适合编程</li>
+                                    <li>R：统计分析功能强</li>
+                                    <li>Tableau：可视化效果好</li>
+                                </ul>
+                            </div>
+
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('da-section1-3')">标记已学习</button>
+                            </div>
+                        </div>
+                        
+                        <div class="section" id="section1-4">
+                            <h4 class="section-title">1.4 商业应用场景</h4>
+                            
+                            <div class="explanation-box">
+                                <h5 class="explanation-title">通俗讲解</h5>
+                                <p class="explanation-text">数据分析在商业中应用广泛，就像给企业做体检，找出问题，预测未来，帮助企业做出更好的决策。</p>
+                            </div>
+                            
+                            <div class="key-points-box">
+                                <h5 class="key-points-title">核心知识点</h5>
+                                <ul class="key-points-list">
+                                    <li>用户画像与精准营销</li>
+                                    <li>销售预测与库存管理</li>
+                                    <li>风险识别与控制</li>
+                                    <li>运营优化与效率提升</li>
+                                </ul>
+                            </div>
+
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('da-section1-4')">标记已学习</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter2">
+                        <h3 class="chapter-title">第2章 描述性统计</h3>
+                        <div class="section" id="section2-1">
+                            <h4 class="section-title">2.1 集中趋势</h4>
+                            <p class="explanation-text">均值、中位数、众数描述数据的中心位置。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section2-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section2-2">
+                            <h4 class="section-title">2.2 离散程度</h4>
+                            <p class="explanation-text">方差、标准差、极差描述数据的分散程度。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section2-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section2-3">
+                            <h4 class="section-title">2.3 分布形态</h4>
+                            <p class="explanation-text">偏度、峰度描述数据分布的形状。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section2-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section2-4">
+                            <h4 class="section-title">2.4 统计表图</h4>
+                            <p class="explanation-text">用表格和图表直观展示数据特征。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section2-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter3">
+                        <h3 class="chapter-title">第3章 数据可视化</h3>
+                        <div class="section" id="section3-1">
+                            <h4 class="section-title">3.1 可视化原则</h4>
+                            <p class="explanation-text">简洁、准确、有效是好的可视化的关键。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section3-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section3-2">
+                            <h4 class="section-title">3.2 常用图表</h4>
+                            <p class="explanation-text">柱状图、折线图、散点图、饼图等各有用途。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section3-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section3-3">
+                            <h4 class="section-title">3.3 配色设计</h4>
+                            <p class="explanation-text">合理的配色让图表更清晰美观。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section3-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section3-4">
+                            <h4 class="section-title">3.4 交互图表</h4>
+                            <p class="explanation-text">交互式图表让用户可以探索数据细节。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section3-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter4">
+                        <h3 class="chapter-title">第4章 相关性分析</h3>
+                        <div class="section" id="section4-1">
+                            <h4 class="section-title">4.1 相关系数</h4>
+                            <p class="explanation-text">皮尔逊相关系数衡量线性相关程度。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section4-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section4-2">
+                            <h4 class="section-title">4.2 散点图分析</h4>
+                            <p class="explanation-text">散点图直观展示两个变量的关系。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section4-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section4-3">
+                            <h4 class="section-title">4.3 协方差矩阵</h4>
+                            <p class="explanation-text">协方差矩阵展示多个变量间的关系。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section4-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section4-4">
+                            <h4 class="section-title">4.4 因果与相关</h4>
+                            <p class="explanation-text">相关不等于因果，需要谨慎判断。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section4-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter5">
+                        <h3 class="chapter-title">第5章 假设检验</h3>
+                        <div class="section" id="section5-1">
+                            <h4 class="section-title">5.1 基本概念</h4>
+                            <p class="explanation-text">原假设、备择假设、p值是假设检验的核心。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section5-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section5-2">
+                            <h4 class="section-title">5.2 t检验</h4>
+                            <p class="explanation-text">t检验用于比较两组均值是否有显著差异。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section5-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section5-3">
+                            <h4 class="section-title">5.3 卡方检验</h4>
+                            <p class="explanation-text">卡方检验用于检验分类变量的独立性。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section5-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section5-4">
+                            <h4 class="section-title">5.4 方差分析</h4>
+                            <p class="explanation-text">方差分析用于比较多组均值。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section5-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter6">
+                        <h3 class="chapter-title">第6章 回归分析</h3>
+                        <div class="section" id="section6-1">
+                            <h4 class="section-title">6.1 线性回归</h4>
+                            <p class="explanation-text">用直线拟合自变量和因变量的关系。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section6-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section6-2">
+                            <h4 class="section-title">6.2 多元回归</h4>
+                            <p class="explanation-text">用多个自变量预测因变量。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section6-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section6-3">
+                            <h4 class="section-title">6.3 逻辑回归</h4>
+                            <p class="explanation-text">用于分类问题，预测概率。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section6-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section6-4">
+                            <h4 class="section-title">6.4 模型评估</h4>
+                            <p class="explanation-text">R方、MSE等指标评估模型好坏。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section6-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter7">
+                        <h3 class="chapter-title">第7章 聚类分析</h3>
+                        <div class="section" id="section7-1">
+                            <h4 class="section-title">7.1 K-means聚类</h4>
+                            <p class="explanation-text">K-means将数据分成K个簇。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section7-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section7-2">
+                            <h4 class="section-title">7.2 层次聚类</h4>
+                            <p class="explanation-text">层次聚类建立树状的聚类结构。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section7-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section7-3">
+                            <h4 class="section-title">7.3 DBSCAN</h4>
+                            <p class="explanation-text">DBSCAN基于密度聚类，可以发现任意形状。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section7-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section7-4">
+                            <h4 class="section-title">7.4 聚类评估</h4>
+                            <p class="explanation-text">轮廓系数等指标评估聚类效果。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section7-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter8">
+                        <h3 class="chapter-title">第8章 分类分析</h3>
+                        <div class="section" id="section8-1">
+                            <h4 class="section-title">8.1 决策树</h4>
+                            <p class="explanation-text">决策树用树形结构进行分类决策。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section8-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section8-2">
+                            <h4 class="section-title">8.2 随机森林</h4>
+                            <p class="explanation-text">随机森林集成多棵决策树，提高准确率。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section8-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section8-3">
+                            <h4 class="section-title">8.3 逻辑回归</h4>
+                            <p class="explanation-text">逻辑回归用于二分类问题。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section8-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section8-4">
+                            <h4 class="section-title">8.4 模型评估指标</h4>
+                            <p class="explanation-text">准确率、精确率、召回率、F1值。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section8-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter9">
+                        <h3 class="chapter-title">第9章 时间序列分析</h3>
+                        <div class="section" id="section9-1">
+                            <h4 class="section-title">9.1 时间序列分解</h4>
+                            <p class="explanation-text">将时间序列分解为趋势、季节、随机成分。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section9-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section9-2">
+                            <h4 class="section-title">9.2 移动平均</h4>
+                            <p class="explanation-text">移动平均平滑时间序列，消除噪声。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section9-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section9-3">
+                            <h4 class="section-title">9.3 ARIMA模型</h4>
+                            <p class="explanation-text">ARIMA是常用的时间序列预测模型。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section9-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section9-4">
+                            <h4 class="section-title">9.4 预测方法</h4>
+                            <p class="explanation-text">多种方法进行时间序列预测。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section9-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter10">
+                        <h3 class="chapter-title">第10章 文本分析</h3>
+                        <div class="section" id="section10-1">
+                            <h4 class="section-title">10.1 文本预处理</h4>
+                            <p class="explanation-text">分词、去停用词等文本预处理步骤。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section10-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section10-2">
+                            <h4 class="section-title">10.2 词频统计</h4>
+                            <p class="explanation-text">统计词频，了解文本内容。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section10-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section10-3">
+                            <h4 class="section-title">10.3 情感分析</h4>
+                            <p class="explanation-text">分析文本的情感倾向。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section10-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section10-4">
+                            <h4 class="section-title">10.4 主题模型</h4>
+                            <p class="explanation-text">LDA等模型发现文本主题。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section10-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter11">
+                        <h3 class="chapter-title">第11章 数据分析实战</h3>
+                        <div class="section" id="section11-1">
+                            <h4 class="section-title">11.1 项目流程</h4>
+                            <p class="explanation-text">完整数据分析项目的实施流程。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section11-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section11-2">
+                            <h4 class="section-title">11.2 案例分析</h4>
+                            <p class="explanation-text">通过实际案例学习数据分析。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section11-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section11-3">
+                            <h4 class="section-title">11.3 报告撰写</h4>
+                            <p class="explanation-text">如何撰写专业的数据分析报告。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section11-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section11-4">
+                            <h4 class="section-title">11.4 结果展示</h4>
+                            <p class="explanation-text">有效展示分析结果和建议。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('da-section11-4')">标记已学习</button>
+                        </div>
+                    </div>
+                    
+                    <a href="../index.html#courses" class="back-link">返回课程列表</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 张茵茵的个人学习页面</p>
+        </div>
+    </footer>
+
+    <script>
+        const COURSE_ID = 'data-analysis-tech';
+        
+        const quizAnswers = {
+            q1: { answer: 'B', explanation: '数据分析的第一步是确定要解决的问题。' },
+            q2: { answer: 'B', explanation: '数据清洗的目的是提高数据质量，去除错误和不一致。' },
+            q3: { answer: 'C', explanation: '数据删除不是标准的数据分析流程。' },
+            q4: { answer: 'B', explanation: '好的分析问题应该具体明确，可衡量。' },
+            q5: { answer: 'B', explanation: '可视化图表是结果呈现的主要方式，直观易懂。' },
+            q6: { answer: 'B', explanation: '数据收集时要确保数据与问题相关，不是越多越好。' },
+            q7: { answer: 'B', explanation: '探索性数据分析的目的是了解数据特征和规律。' },
+            q8: { answer: 'C', explanation: '数据分析流程中的每一步都很重要，相互关联。' },
+            q9: { answer: 'B', explanation: '数据分析报告应该针对目标受众，内容适当。' },
+            q10: { answer: 'C', explanation: '数据分析需要业务知识和技术能力的结合。' }
+        };
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initSidebar();
+            initCourseOutline();
+            initSectionsVisibility();
+            initSectionClicks();
+            loadLearnedSections();
+            initScrollToTop();
+            initQuiz();
+            highlightActiveSection();
+        });
+        
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            const toggle = document.querySelector('.sidebar-toggle');
+            
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+        
+        function initSidebar() {
+            const chapters = document.querySelectorAll('.sidebar-chapter');
+            chapters.forEach(chapter => {
+                const header = chapter.querySelector('.sidebar-chapter-header');
+                const toggleBtn = chapter.querySelector('.sidebar-toggle-btn');
+                
+                header.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    chapter.classList.toggle('collapsed');
+                    saveSidebarState();
+                });
+                
+                toggleBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    chapter.classList.toggle('collapsed');
+                    saveSidebarState();
+                });
+            });
+            
+            const sectionLinks = document.querySelectorAll('.sidebar-sections a');
+            sectionLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+                    if (window.innerWidth < 768) {
+                        toggleSidebar();
+                    }
+                });
+            });
+            
+            restoreSidebarState();
+        }
+        
+        function initCourseOutline() {
+            const items = document.querySelectorAll('.course-outline-item');
+            items.forEach((item, index) => {
+                const headerRow = item.querySelector('.course-outline-header-row');
+                const toggleBtn = item.querySelector('.course-outline-toggle');
+                if (index === 0) {
+                    item.classList.remove('collapsed');
+                    if (toggleBtn) toggleBtn.innerHTML = '<span class="toggle-icon">▼</span> 收起';
+                } else {
+                    item.classList.add('collapsed');
+                    if (toggleBtn) toggleBtn.innerHTML = '<span class="toggle-icon">▶</span> 展开';
+                }
+                headerRow.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    item.classList.toggle('collapsed');
+                    if (toggleBtn) {
+                        if (item.classList.contains('collapsed')) {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▶</span> 展开';
+                        } else {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▼</span> 收起';
+                        }
+                    }
+                });
+                if (toggleBtn) {
+                    toggleBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        item.classList.toggle('collapsed');
+                        if (item.classList.contains('collapsed')) {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▶</span> 展开';
+                        } else {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▼</span> 收起';
+                        }
+                    });
+                }
+            });
+            const sectionLinks = document.querySelectorAll('.course-outline-section a');
+            sectionLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
+
+        // 小节链接点击 - 显示对应内容
+        function initSectionClicks() {
+            const sectionLinks = document.querySelectorAll('.course-outline-section a');
+            sectionLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    const targetId = href.substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        // 隐藏所有小节
+                        document.querySelectorAll('.section').forEach(section => {
+                            section.classList.remove('active');
+                        });
+
+                        // 显示目标小节
+                        targetSection.classList.add('active');
+
+                        // 展开对应的章节
+                        const chapterItem = targetSection.closest('.chapter');
+                        if (chapterItem) {
+                            chapterItem.style.display = 'block';
+                        }
+
+                        // 平滑滚动到目标位置
+                        setTimeout(() => {
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 100);
+                    }
+                });
+            });
+        }
+
+        // 初始化小节可见性
+        function initSectionsVisibility() {
+            const sections = document.querySelectorAll('.section');
+            if (sections.length > 0) {
+                // 默认隐藏所有小节内容
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // 检查URL是否有锚点
+                const hash = window.location.hash;
+                if (hash) {
+                    const targetSection = document.querySelector(hash);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                        setTimeout(() => {
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 100);
+                    }
+                }
+            }
+        }
+
+        function saveSidebarState() {
+            const chapters = document.querySelectorAll('.sidebar-chapter');
+            const state = {};
+            chapters.forEach((chapter, index) => {
+                state[index] = !chapter.classList.contains('collapsed');
+            });
+            localStorage.setItem(`${COURSE_ID}-sidebar`, JSON.stringify(state));
+        }
+        
+        function restoreSidebarState() {
+            const savedState = localStorage.getItem(`${COURSE_ID}-sidebar`);
+            if (savedState) {
+                const state = JSON.parse(savedState);
+                const chapters = document.querySelectorAll('.sidebar-chapter');
+                chapters.forEach((chapter, index) => {
+                    if (state[index] === false) {
+                        chapter.classList.add('collapsed');
+                    } else {
+                        chapter.classList.remove('collapsed');
+                    }
+                });
+            } else {
+                const chapters = document.querySelectorAll('.sidebar-chapter');
+                chapters.forEach(chapter => {
+                    chapter.classList.remove('collapsed');
+                });
+            }
+        }
+        
+        function highlightActiveSection() {
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('.section');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('.sidebar-sections a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                const activeLink = document.querySelector(`.sidebar-sections a[href="#${currentSection}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                    const chapter = activeLink.closest('.sidebar-chapter');
+                    if (chapter && chapter.classList.contains('collapsed')) {
+                        chapter.classList.remove('collapsed');
+                    }
+                }
+            });
+        }
+        
+        function loadLearnedSections() {
+            const learned = JSON.parse(localStorage.getItem(`${COURSE_ID}-learned`) || '[]');
+            learned.forEach(id => {
+                const btn = document.querySelector(`button[onclick="toggleLearned('${id}')"]`);
+                if (btn) {
+                    btn.classList.add('learned');
+                    btn.textContent = '✓ 已学习';
+                }
+            });
+        }
+        
+        function toggleLearned(sectionId) {
+            const btn = document.querySelector(`button[onclick="toggleLearned('${sectionId}')"]`);
+            let learned = JSON.parse(localStorage.getItem(`${COURSE_ID}-learned`) || '[]');
+            
+            if (learned.includes(sectionId)) {
+                learned = learned.filter(id => id !== sectionId);
+                btn.classList.remove('learned');
+                btn.textContent = '标记已学习';
+            } else {
+                learned.push(sectionId);
+                btn.classList.add('learned');
+                btn.textContent = '✓ 已学习';
+            }
+            
+            localStorage.setItem(`${COURSE_ID}-learned`, JSON.stringify(learned));
+        }
+        
+        function initScrollToTop() {
+            const btn = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            });
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const code = codeElement.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = codeElement.closest('.example-box')?.querySelector('.copy-btn');
+                if (btn) {
+                    btn.textContent = '✓ 已复制';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = '复制';
+                        btn.classList.remove('copied');
+                    }, 2000);
+                }
+            });
+        }
+        
+        function initQuiz() {
+            const savedAnswers = JSON.parse(localStorage.getItem(`${COURSE_ID}-quiz`) || '{}');
+            
+            Object.keys(savedAnswers).forEach(qId => {
+                const radio = document.querySelector(`input[name="${qId}"][value="${savedAnswers[qId]}"]`);
+                if (radio) {
+                    radio.checked = true;
+                    showExplanation(qId, savedAnswers[qId]);
+                }
+            });
+            
+            const radios = document.querySelectorAll('.question input[type="radio"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const qId = this.name;
+                    const userAnswer = this.value;
+                    showExplanation(qId, userAnswer);
+                    savedAnswers[qId] = userAnswer;
+                    localStorage.setItem(`${COURSE_ID}-quiz`, JSON.stringify(savedAnswers));
+                });
+            });
+        }
+        
+        function showExplanation(qId, userAnswer) {
+            const correctAnswer = quizAnswers[qId]?.answer;
+            const explanation = quizAnswers[qId]?.explanation || '练习题完善中...';
+            const explanationDiv = document.getElementById(`${qId}-explanation`);
+            const options = document.querySelectorAll(`input[name="${qId}"]`);
+            
+            options.forEach(opt => {
+                const li = opt.closest('.option');
+                li.classList.add('disabled');
+                if (correctAnswer && opt.value === correctAnswer) {
+                    li.classList.add('correct');
+                } else if (opt.checked && correctAnswer && opt.value !== correctAnswer) {
+                    li.classList.add('incorrect');
+                }
+            });
+            
+            if (explanationDiv) {
+                if (userAnswer === correctAnswer) {
+                    explanationDiv.innerHTML = `<strong>✓ 正确！</strong>${explanation}`;
+                    explanationDiv.classList.remove('incorrect');
+                    explanationDiv.classList.add('correct');
+                } else if (correctAnswer) {
+                    explanationDiv.innerHTML = `<strong>✗ 错误！</strong>正确答案是 ${correctAnswer}。${explanation}`;
+                    explanationDiv.classList.remove('correct');
+                    explanationDiv.classList.add('incorrect');
+                }
+                explanationDiv.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

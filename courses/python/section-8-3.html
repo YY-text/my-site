@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改查询 - Python基础</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>张茵茵的学习空间</h1>
+            <ul class="nav-links">
+                <li><a href="../../index.html">首页</a></li>
+                <li><a href="../../index.html#courses">课程</a></li>
+                <li><a href="../../learning-path.html">学习路径</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="sidebar-toggle" onclick="toggleSidebar()"></div>
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h4>📚 Python基础 列表</h4>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-back">
+                <a href="../python-catalog.html">← 返回目录</a>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter1">第1章 Python入门认知</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section1-1" class="">1.1 语言简介</a></li>
+                    <li><a href="#section1-2" class="">1.2 环境安装</a></li>
+                    <li><a href="#section1-3" class="">1.3 运行方式</a></li>
+                    <li><a href="#section1-4" class="">1.4 编辑器使用</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter2">第2章 基础输出与注释</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section2-1" class="">2.1 print输出</a></li>
+                    <li><a href="#section2-2" class="">2.2 格式输出</a></li>
+                    <li><a href="#section2-3" class="">2.3 单行注释</a></li>
+                    <li><a href="#section2-4" class="">2.4 多行注释</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter3">第3章 变量与命名规范</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section3-1" class="">3.1 变量定义</a></li>
+                    <li><a href="#section3-2" class="">3.2 命名规则</a></li>
+                    <li><a href="#section3-3" class="">3.3 变量赋值</a></li>
+                    <li><a href="#section3-4" class="">3.4 变量交换</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter4">第4章 基础数据类型</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section4-1" class="">4.1 整数类型</a></li>
+                    <li><a href="#section4-2" class="">4.2 浮点类型</a></li>
+                    <li><a href="#section4-3" class="">4.3 字符串类型</a></li>
+                    <li><a href="#section4-4" class="">4.4 布尔类型</a></li>
+                    <li><a href="#section4-5" class="">4.5 类型转换</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter5">第5章 输入与运算符</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section5-1" class="">5.1 input输入</a></li>
+                    <li><a href="#section5-2" class="">5.2 算术运算符</a></li>
+                    <li><a href="#section5-3" class="">5.3 比较运算符</a></li>
+                    <li><a href="#section5-4" class="">5.4 逻辑运算符</a></li>
+                    <li><a href="#section5-5" class="">5.5 运算符优先级</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter6">第6章 条件判断语句</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section6-1" class="">6.1 if单分支</a></li>
+                    <li><a href="#section6-2" class="">6.2 if-else双分支</a></li>
+                    <li><a href="#section6-3" class="">6.3 if-elif多分支</a></li>
+                    <li><a href="#section6-4" class="">6.4 条件语句嵌套</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter7">第7章 循环语句</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section7-1" class="">7.1 for循环基础</a></li>
+                    <li><a href="#section7-2" class="">7.2 range函数</a></li>
+                    <li><a href="#section7-3" class="">7.3 while循环</a></li>
+                    <li><a href="#section7-4" class="">7.4 break跳出循环</a></li>
+                    <li><a href="#section7-5" class="">7.5 continue跳过循环</a></li>
+                    <li><a href="#section7-6" class="">7.6 循环嵌套</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter8">第8章 列表使用</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section8-1" class="">8.1 列表创建</a></li>
+                    <li><a href="#section8-2" class="">8.2 增删操作</a></li>
+                    <li><a href="#section8-3" class="active">8.3 修改查询</a></li>
+                    <li><a href="#section8-4" class="">8.4 列表常用方法</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter9">第9章 字典使用</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section9-1" class="">9.1 字典创建</a></li>
+                    <li><a href="#section9-2" class="">9.2 键值查询</a></li>
+                    <li><a href="#section9-3" class="">9.3 增删改操作</a></li>
+                    <li><a href="#section9-4" class="">9.4 字典遍历</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter10">第10章 函数基础</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section10-1" class="">10.1 函数定义</a></li>
+                    <li><a href="#section10-2" class="">10.2 参数传递</a></li>
+                    <li><a href="#section10-3" class="">10.3 返回值</a></li>
+                    <li><a href="#section10-4" class="">10.4 作用域</a></li>
+                    <li><a href="#section10-5" class="">10.5 匿名函数</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter11">第11章 综合实战项目</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section11-1" class="">11.1 项目准备</a></li>
+                    <li><a href="#section11-2" class="">11.2 数据分析</a></li>
+                    <li><a href="#section11-3" class="">11.3 数据展示</a></li>
+                    <li><a href="#section11-4" class="">11.4 项目总结</a></li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+
+    <section class="course-detail">
+        <div class="container">
+            <div class="course-content-wrapper">
+                <div class="section-nav-top">
+                    <a href="../python-catalog.html" class="back-to-catalog">← 返回课程目录</a>
+                </div>
+                
+                <div class="chapter" id="chapter8">
+                    <h3 class="chapter-title">第8章 列表使用</h3>
+                    
+                    <div class="section active" id="section8-3">
+                        <h4 class="section-title">8.3 修改查询</h4>
+                        
+                        <div class="explanation-box">
+                            <h5 class="explanation-title">通俗讲解</h5>
+                            <p class="explanation-text">修改查询是列表使用中的重要内容。本节将详细介绍修改查询的各个方面，帮助你全面理解并掌握这一知识点。</p>
+                        </div>
+                        
+                        <div class="key-points-box">
+                            <h5 class="key-points-title">核心知识点</h5>
+<ul class="key-points-list">
+                                <li>索引访问：list[0]</li>
+                                <li>切片访问：list[1:3]</li>
+                                <li>修改：list[0] = 新值</li>
+                                <li>in检查元素是否存在</li>
+                                <li>count()统计元素个数</li>
+                                <li>index()查找元素位置</li>
+                                <li>复制：list.copy()或list[:]</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="example-box">
+                            <div class="example-header">
+                                <span class="example-title">示例代码</span>
+                                <button class="copy-btn" onclick="copyCode('example-code')">复制</button>
+                            </div>
+                            <div class="example-code">
+                                <pre id="example-code"><code># 修改查询示例
+# 这是修改查询的示例代码
+# 建议动手实践加深理解</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="section-progress">
+                            <button class="mark-learned-btn" onclick="toggleLearned('python-section-8-3')">标记已学习</button>
+                            <span class="progress-text" id="progress-python-section-8-3"></span>
+                        </div>
+
+                        <div class="quiz-card-wrapper">
+                            <a href="quiz-8-3.html" class="quiz-card quiz-card-link">
+                                <div class="quiz-card-icon">📝</div>
+                                <div class="quiz-card-content">
+                                    <div class="quiz-card-title">本节练习</div>
+                                    <div class="quiz-card-desc">10道单选题 · 检测掌握程度 →</div>
+                                </div>
+                                <div class="quiz-card-arrow">→</div>
+                            </a>
+                        </div>
+
+                        <div class="quiz-card-wrapper">
+                            <a href="practice-8-3.html" class="quiz-card quiz-card-link practice-card">
+                                <div class="quiz-card-icon">💻</div>
+                                <div class="quiz-card-content">
+                                    <div class="quiz-card-title">Python实操</div>
+                                    <div class="quiz-card-desc">1道代码实操题 · 动手实践 →</div>
+                                </div>
+                                <div class="quiz-card-arrow">→</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-navigation">
+                    <a href="section-8-2.html" class="nav-btn prev-btn">← 上一节<br><small>第8章 列表使用 - 增删操作</small></a>
+                    <a href="section-8-4.html" class="nav-btn next-btn">下一节 →<br><small>第8章 列表使用 - 列表常用方法</small></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>张茵茵的学习空间</p>
+    </footer>
+
+    <script>
+        // 答题记录
+        const sectionId = "python-section-8-3";
+        const correctAnswers = {'q1': 'A', 'q2': 'C', 'q3': 'B', 'q4': 'B', 'q5': 'D', 'q6': 'B', 'q7': 'C', 'q8': 'C', 'q9': 'C', 'q10': 'B'};
+        const explanations = {'q1': '索引访问：list[0]', 'q2': '复制：list.copy()或list[:]', 'q3': '边学边练是最好的学习方法，可以加深理解和记忆。', 'q4': '切片访问：list[1:3]', 'q5': '掌握修改查询后可以进行多种应用和发展。', 'q6': '修改：list[0] = 新值', 'q7': '可以通过做题和实践来评估修改查询的掌握程度。', 'q8': 'in检查元素是否存在', 'q9': '学习修改查询需要坚持练习，多思考多总结。', 'q10': '修改查询的主要作用是解决实际问题。'};
+
+        function submitQuiz() {
+            let score = 0;
+            let answered = 0;
+            
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const explanationEl = document.getElementById(`q${i}-explanation`);
+                
+                if (selected) {
+                    answered++;
+                    const selectedValue = selected.value;
+                    const correctValue = correctAnswers[`q${i}`];
+                    
+                    if (selectedValue === correctValue) {
+                        score++;
+                        explanationEl.innerHTML = `<span class="correct">✓ 回答正确！</span> ${explanations[`q${i}`]}`;
+                        selected.parentElement.classList.add('correct-answer');
+                    } else {
+                        explanationEl.innerHTML = `<span class="wrong">✗ 回答错误！</span> ${explanations[`q${i}`]}`;
+                        selected.parentElement.classList.add('wrong-answer');
+                        const correctOption = document.querySelector(`input[name="q${i}"][value="${correctValue}"]`);
+                        if (correctOption) {
+                            correctOption.parentElement.classList.add('correct-answer');
+                        }
+                    }
+                } else {
+                    explanationEl.innerHTML = `<span class="wrong">请先选择答案！</span>`;
+                }
+            }
+            
+            alert(`你答对了 ${score}/10 题！`);
+            
+            // 保存答题记录
+            const quizResult = {
+                sectionId: sectionId,
+                score: score,
+                total: 10,
+                answers: {}
+            };
+            
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                quizResult.answers[`q${i}`] = selected ? selected.value : null;
+            }
+            
+            localStorage.setItem(`quiz-${sectionId}`, JSON.stringify(quizResult));
+        }
+        
+        function resetQuiz() {
+            for (let i = 1; i <= 10; i++) {
+                const options = document.querySelectorAll(`input[name="q${i}"]`);
+                options.forEach(opt => {
+                    opt.checked = false;
+                    opt.parentElement.classList.remove('correct-answer', 'wrong-answer');
+                });
+                document.getElementById(`q${i}-explanation`).innerHTML = '';
+            }
+        }
+        
+        function loadQuizResult() {
+            const saved = localStorage.getItem(`quiz-${sectionId}`);
+            if (saved) {
+                const quizResult = JSON.parse(saved);
+                for (let i = 1; i <= 10; i++) {
+                    const answer = quizResult.answers[`q${i}`];
+                    if (answer) {
+                        const radio = document.querySelector(`input[name="q${i}"][value="${answer}"]`);
+                        if (radio) radio.checked = true;
+                    }
+                }
+            }
+        }
+        
+        function toggleLearned(id) {
+            let learned = JSON.parse(localStorage.getItem('learned') || '[]');
+            const index = learned.indexOf(id);
+            
+            if (index > -1) {
+                learned.splice(index, 1);
+                document.getElementById(`progress-${id}`).textContent = '';
+                document.querySelector(`button[onclick="toggleLearned('${id}')"]`).textContent = '标记已学习';
+            } else {
+                learned.push(id);
+                document.getElementById(`progress-${id}`).textContent = '✓ 已学习';
+                document.querySelector(`button[onclick="toggleLearned('${id}')"]`).textContent = '取消标记';
+            }
+            
+            localStorage.setItem('learned', JSON.stringify(learned));
+            
+            const sidebarLink = document.querySelector(`.sidebar a[href="#section${section['id']}"]`);
+            if (sidebarLink) {
+                sidebarLink.classList.toggle('learned', index === -1);
+            }
+        }
+        
+        function copyCode(elementId) {
+            const code = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('代码已复制到剪贴板！');
+            });
+        }
+        
+        function toggleSidebar() {
+            document.body.classList.toggle('sidebar-open');
+        }
+
+        // 练习题在独立子页面中，点击卡片跳转
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuizResult();
+            
+            const learned = JSON.parse(localStorage.getItem('learned') || '[]');
+            if (learned.includes(sectionId)) {
+                document.getElementById(`progress-${sectionId}`).textContent = '✓ 已学习';
+                document.querySelector(`button[onclick="toggleLearned('${sectionId}')"]`).textContent = '取消标记';
+            }
+            
+            if (window.innerWidth < 768) {
+                const sidebarLinks = document.querySelectorAll('.sidebar a');
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        document.body.classList.remove('sidebar-open');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

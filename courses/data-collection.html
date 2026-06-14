@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据采集与处理 - 张茵茵的学习空间</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>张茵茵的学习空间</h1>
+            <ul class="nav-links">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="../index.html#courses">课程</a></li>
+                <li><a href="../learning-path.html">学习路径</a></li>
+                <li><a href="../index.html#about">关于我</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="sidebar-toggle" onclick="toggleSidebar()"></div>
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h4>📚 数据采集与处理</h4>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第1章 数据采集概述</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section1-1"><span class="sidebar-section-num">1.1</span> 数据来源</a></li>
+                    <li><a href="#section1-2"><span class="sidebar-section-num">1.2</span> 数据类型</a></li>
+                    <li><a href="#section1-3"><span class="sidebar-section-num">1.3</span> 采集原则</a></li>
+                    <li><a href="#section1-4"><span class="sidebar-section-num">1.4</span> 质量要求</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第2章 网络爬虫基础</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section2-1"><span class="sidebar-section-num">2.1</span> HTTP协议</a></li>
+                    <li><a href="#section2-2"><span class="sidebar-section-num">2.2</span> HTML基础</a></li>
+                    <li><a href="#section2-3"><span class="sidebar-section-num">2.3</span> 爬虫原理</a></li>
+                    <li><a href="#section2-4"><span class="sidebar-section-num">2.4</span> 反爬虫策略</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第3章 爬虫工具与库</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section3-1"><span class="sidebar-section-num">3.1</span> Requests库</a></li>
+                    <li><a href="#section3-2"><span class="sidebar-section-num">3.2</span> Beautiful Soup</a></li>
+                    <li><a href="#section3-3"><span class="sidebar-section-num">3.3</span> Scrapy框架</a></li>
+                    <li><a href="#section3-4"><span class="sidebar-section-num">3.4</span> Selenium自动化</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第4章 API数据采集</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section4-1"><span class="sidebar-section-num">4.1</span> API概述</a></li>
+                    <li><a href="#section4-2"><span class="sidebar-section-num">4.2</span> RESTful API</a></li>
+                    <li><a href="#section4-3"><span class="sidebar-section-num">4.3</span> 认证方式</a></li>
+                    <li><a href="#section4-4"><span class="sidebar-section-num">4.4</span> JSON解析</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第5章 文件数据采集</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section5-1"><span class="sidebar-section-num">5.1</span> CSV文件</a></li>
+                    <li><a href="#section5-2"><span class="sidebar-section-num">5.2</span> Excel文件</a></li>
+                    <li><a href="#section5-3"><span class="sidebar-section-num">5.3</span> JSON文件</a></li>
+                    <li><a href="#section5-4"><span class="sidebar-section-num">5.4</span> XML文件</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第6章 数据库数据采集</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section6-1"><span class="sidebar-section-num">6.1</span> 连接数据库</a></li>
+                    <li><a href="#section6-2"><span class="sidebar-section-num">6.2</span> 执行查询</a></li>
+                    <li><a href="#section6-3"><span class="sidebar-section-num">6.3</span> 数据导出</a></li>
+                    <li><a href="#section6-4"><span class="sidebar-section-num">6.4</span> 数据迁移</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第7章 数据清洗</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section7-1"><span class="sidebar-section-num">7.1</span> 缺失值处理</a></li>
+                    <li><a href="#section7-2"><span class="sidebar-section-num">7.2</span> 异常值检测</a></li>
+                    <li><a href="#section7-3"><span class="sidebar-section-num">7.3</span> 重复值处理</a></li>
+                    <li><a href="#section7-4"><span class="sidebar-section-num">7.4</span> 数据类型转换</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第8章 数据转换</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section8-1"><span class="sidebar-section-num">8.1</span> 数据标准化</a></li>
+                    <li><a href="#section8-2"><span class="sidebar-section-num">8.2</span> 数据归一化</a></li>
+                    <li><a href="#section8-3"><span class="sidebar-section-num">8.3</span> 特征编码</a></li>
+                    <li><a href="#section8-4"><span class="sidebar-section-num">8.4</span> 数据分箱</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第9章 数据集成</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section9-1"><span class="sidebar-section-num">9.1</span> 数据合并</a></li>
+                    <li><a href="#section9-2"><span class="sidebar-section-num">9.2</span> 数据连接</a></li>
+                    <li><a href="#section9-3"><span class="sidebar-section-num">9.3</span> 实体对齐</a></li>
+                    <li><a href="#section9-4"><span class="sidebar-section-num">9.4</span> 数据融合</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第10章 数据存储与管理</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section10-1"><span class="sidebar-section-num">10.1</span> 文件存储</a></li>
+                    <li><a href="#section10-2"><span class="sidebar-section-num">10.2</span> 数据库存储</a></li>
+                    <li><a href="#section10-3"><span class="sidebar-section-num">10.3</span> 数据仓库</a></li>
+                    <li><a href="#section10-4"><span class="sidebar-section-num">10.4</span> 数据安全</a></li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+
+    <section class="course-detail">
+        <div class="container">
+            <div class="course-content-wrapper">
+                <div class="course-header">
+                    <h2>数据采集与处理</h2>
+                    <p>商务数据分析与应用专业核心课程</p>
+                </div>
+                
+                <div class="course-content">
+                    <h3>课程介绍</h3>
+                    <p>数据采集与处理课程是商务数据分析与应用专业的重要课程，主要介绍如何从各种来源采集数据，并进行预处理和清洗。通过本课程的学习，学生将掌握数据采集的方法和工具，以及数据预处理的技术，为后续的数据分析做准备。</p>
+                    
+                    <h3>课程目标</h3>
+                    <p>1. 掌握数据采集的基本方法和工具<br>
+                    2. 学会使用网络爬虫技术获取数据<br>
+                    3. 掌握数据清洗和预处理技术<br>
+                    4. 了解数据集成和存储方法<br>
+                    5. 能够处理实际中的数据问题</p>
+
+                    <!-- 课程目录 -->
+                    <div class="course-outline">
+                        <div class="course-outline-header">
+                            <h3>课程目录</h3>
+                        </div>
+                        <ul class="course-outline-list">
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="1">
+                                    <span class="chapter-name">第1章 数据采集概述</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section1-1">1.1 数据来源</a></li>
+                                    <li class="course-outline-section"><a href="#section1-2">1.2 数据类型</a></li>
+                                    <li class="course-outline-section"><a href="#section1-3">1.3 采集原则</a></li>
+                                    <li class="course-outline-section"><a href="#section1-4">1.4 质量要求</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="2">
+                                    <span class="chapter-name">第2章 网络爬虫基础</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section2-1">2.1 HTTP协议</a></li>
+                                    <li class="course-outline-section"><a href="#section2-2">2.2 HTML基础</a></li>
+                                    <li class="course-outline-section"><a href="#section2-3">2.3 爬虫原理</a></li>
+                                    <li class="course-outline-section"><a href="#section2-4">2.4 反爬虫策略</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="3">
+                                    <span class="chapter-name">第3章 爬虫工具与库</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section3-1">3.1 Requests库</a></li>
+                                    <li class="course-outline-section"><a href="#section3-2">3.2 Beautiful Soup</a></li>
+                                    <li class="course-outline-section"><a href="#section3-3">3.3 Scrapy框架</a></li>
+                                    <li class="course-outline-section"><a href="#section3-4">3.4 Selenium自动化</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="4">
+                                    <span class="chapter-name">第4章 API数据采集</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section4-1">4.1 API概述</a></li>
+                                    <li class="course-outline-section"><a href="#section4-2">4.2 RESTful API</a></li>
+                                    <li class="course-outline-section"><a href="#section4-3">4.3 认证方式</a></li>
+                                    <li class="course-outline-section"><a href="#section4-4">4.4 JSON解析</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="5">
+                                    <span class="chapter-name">第5章 文件数据采集</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section5-1">5.1 CSV文件</a></li>
+                                    <li class="course-outline-section"><a href="#section5-2">5.2 Excel文件</a></li>
+                                    <li class="course-outline-section"><a href="#section5-3">5.3 JSON文件</a></li>
+                                    <li class="course-outline-section"><a href="#section5-4">5.4 XML文件</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="6">
+                                    <span class="chapter-name">第6章 数据库数据采集</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section6-1">6.1 连接数据库</a></li>
+                                    <li class="course-outline-section"><a href="#section6-2">6.2 执行查询</a></li>
+                                    <li class="course-outline-section"><a href="#section6-3">6.3 数据导出</a></li>
+                                    <li class="course-outline-section"><a href="#section6-4">6.4 数据迁移</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="7">
+                                    <span class="chapter-name">第7章 数据清洗</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section7-1">7.1 缺失值处理</a></li>
+                                    <li class="course-outline-section"><a href="#section7-2">7.2 异常值检测</a></li>
+                                    <li class="course-outline-section"><a href="#section7-3">7.3 重复值处理</a></li>
+                                    <li class="course-outline-section"><a href="#section7-4">7.4 数据类型转换</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="8">
+                                    <span class="chapter-name">第8章 数据转换</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section8-1">8.1 数据标准化</a></li>
+                                    <li class="course-outline-section"><a href="#section8-2">8.2 数据归一化</a></li>
+                                    <li class="course-outline-section"><a href="#section8-3">8.3 特征编码</a></li>
+                                    <li class="course-outline-section"><a href="#section8-4">8.4 数据分箱</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="9">
+                                    <span class="chapter-name">第9章 数据集成</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section9-1">9.1 数据合并</a></li>
+                                    <li class="course-outline-section"><a href="#section9-2">9.2 数据连接</a></li>
+                                    <li class="course-outline-section"><a href="#section9-3">9.3 实体对齐</a></li>
+                                    <li class="course-outline-section"><a href="#section9-4">9.4 数据融合</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="10">
+                                    <span class="chapter-name">第10章 数据存储与管理</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section10-1">10.1 文件存储</a></li>
+                                    <li class="course-outline-section"><a href="#section10-2">10.2 数据库存储</a></li>
+                                    <li class="course-outline-section"><a href="#section10-3">10.3 数据仓库</a></li>
+                                    <li class="course-outline-section"><a href="#section10-4">10.4 数据安全</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /课程目录 -->
+
+                    <!-- 提示信息 -->
+                    <div class="course-outline-hint">
+                        <div class="hint-icon">👆</div>
+                        <p>请点击上方目录中的小节开始学习</p>
+                    </div>
+
+                    <div class="chapter" id="chapter1">
+                        <h3 class="chapter-title">第1章 数据采集概述</h3>
+                        
+                        <div class="section" id="section1-1">
+                            <h4 class="section-title">1.1 数据来源</h4>
+                            
+                            <div class="explanation-box">
+                                <h5 class="explanation-title">通俗讲解</h5>
+                                <p class="explanation-text">数据来源就像我们收集信息的渠道，有的来自网络，有的来自数据库，有的来自Excel表格。就像做饭一样，不同的食材需要从不同的地方采购。</p>
+                            </div>
+                            
+                            <div class="key-points-box">
+                                <h5 class="key-points-title">核心知识点</h5>
+                                <ul class="key-points-list">
+                                    <li>内部数据：企业内部系统产生的数据</li>
+                                    <li>外部数据：政府、第三方机构、公开数据</li>
+                                    <li>网络数据：网站、社交媒体、电商平台</li>
+                                    <li>传感器数据：物联网设备产生的数据</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="example-box">
+                                <div class="example-header">
+                                    <span class="example-title">示例：常见数据来源</span>
+                                    <button class="copy-btn" onclick="copyCode('code1-1')">复制</button>
+                                </div>
+                                <div class="example-code">
+                                    <pre id="code1-1"><code>数据来源分类：
+
+1. 公开数据平台：
+   - 国家统计局
+   - 世界银行开放数据
+   - Kaggle数据集
+
+2. 网络数据：
+   - 电商网站商品信息
+   - 社交媒体评论
+   - 新闻网站文章
+
+3. 企业内部：
+   - 销售记录
+   - 客户信息
+   - 财务报表</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('dc-section1-1')">标记已学习</button>
+                            </div>
+                            
+                            <div class="quiz-section">
+                                <h4 class="quiz-title">本节练习</h4>
+                                <div class="question">
+                                    <p class="question-text">1. 以下哪个不是数据来源？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q1" id="q1-a" value="A"><label for="q1-a">A. 网站</label></li>
+                                        <li class="option"><input type="radio" name="q1" id="q1-b" value="B"><label for="q1-b">B. 数据库</label></li>
+                                        <li class="option"><input type="radio" name="q1" id="q1-c" value="C"><label for="q1-c">C. 云朵</label></li>
+                                        <li class="option"><input type="radio" name="q1" id="q1-d" value="D"><label for="q1-d">D. 传感器</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q1-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">2. 企业销售记录属于？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q2" id="q2-a" value="A"><label for="q2-a">A. 内部数据</label></li>
+                                        <li class="option"><input type="radio" name="q2" id="q2-b" value="B"><label for="q2-b">B. 外部数据</label></li>
+                                        <li class="option"><input type="radio" name="q2" id="q2-c" value="C"><label for="q2-c">C. 网络数据</label></li>
+                                        <li class="option"><input type="radio" name="q2" id="q2-d" value="D"><label for="q2-d">D. 公开数据</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q2-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">3. Kaggle数据集属于？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q3" id="q3-a" value="A"><label for="q3-a">A. 商业数据</label></li>
+                                        <li class="option"><input type="radio" name="q3" id="q3-b" value="B"><label for="q3-b">B. 公开数据</label></li>
+                                        <li class="option"><input type="radio" name="q3" id="q3-c" value="C"><label for="q3-c">C. 私有数据</label></li>
+                                        <li class="option"><input type="radio" name="q3" id="q3-d" value="D"><label for="q3-d">D. 机密数据</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q3-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">4. 社交媒体评论属于？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q4" id="q4-a" value="A"><label for="q4-a">A. 结构化数据</label></li>
+                                        <li class="option"><input type="radio" name="q4" id="q4-b" value="B"><label for="q4-b">B. 非结构化数据</label></li>
+                                        <li class="option"><input type="radio" name="q4" id="q4-c" value="C"><label for="q4-c">C. 半结构化数据</label></li>
+                                        <li class="option"><input type="radio" name="q4" id="q4-d" value="D"><label for="q4-d">D. 无结构数据</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q4-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">5. 选择数据来源时应优先考虑？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q5" id="q5-a" value="A"><label for="q5-a">A. 数据是否免费</label></li>
+                                        <li class="option"><input type="radio" name="q5" id="q5-b" value="B"><label for="q5-b">B. 数据是否最新</label></li>
+                                        <li class="option"><input type="radio" name="q5" id="q5-c" value="C"><label for="q5-c">C. 数据是否可靠</label></li>
+                                        <li class="option"><input type="radio" name="q5" id="q5-d" value="D"><label for="q5-d">D. 数据是否美观</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q5-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">6. 以下哪个属于传感器数据？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q6" id="q6-a" value="A"><label for="q6-a">A. 天气预报</label></li>
+                                        <li class="option"><input type="radio" name="q6" id="q6-b" value="B"><label for="q6-b">B. 智能手环心率</label></li>
+                                        <li class="option"><input type="radio" name="q6" id="q6-c" value="C"><label for="q6-c">C. 商品价格</label></li>
+                                        <li class="option"><input type="radio" name="q6" id="q6-d" value="D"><label for="q6-d">D. 新闻标题</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q6-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">7. 政府公开数据的特点是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q7" id="q7-a" value="A"><label for="q7-a">A. 完全不可信</label></li>
+                                        <li class="option"><input type="radio" name="q7" id="q7-b" value="B"><label for="q7-b">B. 权威性高</label></li>
+                                        <li class="option"><input type="radio" name="q7" id="q7-c" value="C"><label for="q7-c">C. 实时更新</label></li>
+                                        <li class="option"><input type="radio" name="q7" id="q7-d" value="D"><label for="q7-d">D. 格式统一</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q7-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">8. 数据采集的第一步是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q8" id="q8-a" value="A"><label for="q8-a">A. 编写代码</label></li>
+                                        <li class="option"><input type="radio" name="q8" id="q8-b" value="B"><label for="q8-b">B. 明确需求</label></li>
+                                        <li class="option"><input type="radio" name="q8" id="q8-c" value="C"><label for="q8-c">C. 购买工具</label></li>
+                                        <li class="option"><input type="radio" name="q8" id="q8-d" value="D"><label for="q8-d">D. 存储数据</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q8-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">9. 内部数据相比外部数据的优势是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q9" id="q9-a" value="A"><label for="q9-a">A. 数据量大</label></li>
+                                        <li class="option"><input type="radio" name="q9" id="q9-b" value="B"><label for="q9-b">B. 获取容易</label></li>
+                                        <li class="option"><input type="radio" name="q9" id="q9-c" value="C"><label for="q9-c">C. 相关性高</label></li>
+                                        <li class="option"><input type="radio" name="q9" id="q9-d" value="D"><label for="q9-d">D. 更新快</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q9-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">10. 关于数据来源，正确的说法是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q10" id="q10-a" value="A"><label for="q10-a">A. 网络数据最可靠</label></li>
+                                        <li class="option"><input type="radio" name="q10" id="q10-b" value="B"><label for="q10-b">B. 公开数据都免费</label></li>
+                                        <li class="option"><input type="radio" name="q10" id="q10-c" value="C"><label for="q10-c">C. 需要评估数据的质量和适用性</label></li>
+                                        <li class="option"><input type="radio" name="q10" id="q10-d" value="D"><label for="q10-d">D. 数据越多越好</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q10-explanation"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section" id="section1-2">
+                            <h4 class="section-title">1.2 数据类型</h4>
+                            
+                            <div class="explanation-box">
+                                <h5 class="explanation-title">通俗讲解</h5>
+                                <p class="explanation-text">数据类型就像食材分类，有的是蔬菜，有的是肉类，有的是调料。结构化数据像超市货架上整齐的商品，非结构化数据像菜市场上摆放的各种食材。</p>
+                            </div>
+                            
+                            <div class="key-points-box">
+                                <h5 class="key-points-title">核心知识点</h5>
+                                <ul class="key-points-list">
+                                    <li>结构化数据：表格形式，如数据库、Excel</li>
+                                    <li>非结构化数据：文本、图片、音频、视频</li>
+                                    <li>半结构化数据：JSON、XML等格式</li>
+                                    <li>不同类型需要不同的处理方法</li>
+                                </ul>
+                            </div>
+
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('dc-section1-2')">标记已学习</button>
+                            </div>
+                        </div>
+                        
+                        <div class="section" id="section1-3">
+                            <h4 class="section-title">1.3 采集原则</h4>
+                            
+                            <div class="explanation-box">
+                                <h5 class="explanation-title">通俗讲解</h5>
+                                <p class="explanation-text">数据采集就像买菜，要新鲜、适量、符合需求。不能买太多吃不完，也不能买太少不够用，还要注意食材的质量。</p>
+                            </div>
+                            
+                            <div class="key-points-box">
+                                <h5 class="key-points-title">核心知识点</h5>
+                                <ul class="key-points-list">
+                                    <li>合法性：遵守法律法规和网站规则</li>
+                                    <li>必要性：只采集需要的数据</li>
+                                    <li>时效性：及时更新数据</li>
+                                    <li>完整性：保证数据全面完整</li>
+                                </ul>
+                            </div>
+
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('dc-section1-3')">标记已学习</button>
+                            </div>
+                        </div>
+                        
+                        <div class="section" id="section1-4">
+                            <h4 class="section-title">1.4 质量要求</h4>
+                            
+                            <div class="explanation-box">
+                                <h5 class="explanation-title">通俗讲解</h5>
+                                <p class="explanation-text">数据质量就像食材的新鲜度，新鲜的食材做出的菜才好吃。好的数据才能得出可靠的分析结果。</p>
+                            </div>
+                            
+                            <div class="key-points-box">
+                                <h5 class="key-points-title">核心知识点</h5>
+                                <ul class="key-points-list">
+                                    <li>准确性：数据真实可靠</li>
+                                    <li>完整性：没有缺失值</li>
+                                    <li>一致性：数据格式统一</li>
+                                    <li>及时性：数据及时更新</li>
+                                </ul>
+                            </div>
+
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('dc-section1-4')">标记已学习</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter2">
+                        <h3 class="chapter-title">第2章 网络爬虫基础</h3>
+                        <div class="section" id="section2-1">
+                            <h4 class="section-title">2.1 HTTP协议</h4>
+                            <p class="explanation-text">HTTP是浏览器和服务器通信的协议，就像邮递员送信的规则。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section2-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section2-2">
+                            <h4 class="section-title">2.2 HTML基础</h4>
+                            <p class="explanation-text">HTML是网页的骨架，用标签组织内容，爬虫需要解析这些标签。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section2-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section2-3">
+                            <h4 class="section-title">2.3 爬虫原理</h4>
+                            <p class="explanation-text">爬虫模拟浏览器访问网页，解析内容，提取需要的数据。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section2-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section2-4">
+                            <h4 class="section-title">2.4 反爬虫策略</h4>
+                            <p class="explanation-text">网站会通过验证码、User-Agent检测等方式防止爬虫，需要合理应对。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section2-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter3">
+                        <h3 class="chapter-title">第3章 爬虫工具与库</h3>
+                        <div class="section" id="section3-1">
+                            <h4 class="section-title">3.1 Requests库</h4>
+                            <p class="explanation-text">Requests是Python最常用的HTTP请求库，简单易用。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section3-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section3-2">
+                            <h4 class="section-title">3.2 Beautiful Soup</h4>
+                            <p class="explanation-text">Beautiful Soup用于解析HTML和XML文档，方便提取数据。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section3-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section3-3">
+                            <h4 class="section-title">3.3 Scrapy框架</h4>
+                            <p class="explanation-text">Scrapy是强大的爬虫框架，适合大规模数据采集。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section3-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section3-4">
+                            <h4 class="section-title">3.4 Selenium自动化</h4>
+                            <p class="explanation-text">Selenium可以模拟真实浏览器操作，处理动态网页。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section3-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter4">
+                        <h3 class="chapter-title">第4章 API数据采集</h3>
+                        <div class="section" id="section4-1">
+                            <h4 class="section-title">4.1 API概述</h4>
+                            <p class="explanation-text">API是应用程序接口，提供标准化的数据访问方式。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section4-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section4-2">
+                            <h4 class="section-title">4.2 RESTful API</h4>
+                            <p class="explanation-text">RESTful是一种API设计风格，使用HTTP方法操作资源。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section4-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section4-3">
+                            <h4 class="section-title">4.3 认证方式</h4>
+                            <p class="explanation-text">常见的API认证方式有API Key、OAuth等。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section4-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section4-4">
+                            <h4 class="section-title">4.4 JSON解析</h4>
+                            <p class="explanation-text">JSON是API常用的数据格式，需要学会解析和处理。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section4-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter5">
+                        <h3 class="chapter-title">第5章 文件数据采集</h3>
+                        <div class="section" id="section5-1">
+                            <h4 class="section-title">5.1 CSV文件</h4>
+                            <p class="explanation-text">CSV是逗号分隔值文件，简单通用，易于处理。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section5-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section5-2">
+                            <h4 class="section-title">5.2 Excel文件</h4>
+                            <p class="explanation-text">Excel是常用的电子表格，需要使用专门的库读取。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section5-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section5-3">
+                            <h4 class="section-title">5.3 JSON文件</h4>
+                            <p class="explanation-text">JSON文件存储结构化数据，格式灵活。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section5-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section5-4">
+                            <h4 class="section-title">5.4 XML文件</h4>
+                            <p class="explanation-text">XML是可扩展标记语言，适合存储层次化数据。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section5-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter6">
+                        <h3 class="chapter-title">第6章 数据库数据采集</h3>
+                        <div class="section" id="section6-1">
+                            <h4 class="section-title">6.1 连接数据库</h4>
+                            <p class="explanation-text">使用数据库驱动程序连接数据库。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section6-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section6-2">
+                            <h4 class="section-title">6.2 执行查询</h4>
+                            <p class="explanation-text">使用SQL语句查询和提取数据。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section6-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section6-3">
+                            <h4 class="section-title">6.3 数据导出</h4>
+                            <p class="explanation-text">将数据库数据导出为各种格式。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section6-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section6-4">
+                            <h4 class="section-title">6.4 数据迁移</h4>
+                            <p class="explanation-text">在不同数据库之间迁移数据。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section6-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter7">
+                        <h3 class="chapter-title">第7章 数据清洗</h3>
+                        <div class="section" id="section7-1">
+                            <h4 class="section-title">7.1 缺失值处理</h4>
+                            <p class="explanation-text">缺失值需要删除、填充或插值处理。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section7-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section7-2">
+                            <h4 class="section-title">7.2 异常值检测</h4>
+                            <p class="explanation-text">通过统计方法检测和处理异常值。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section7-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section7-3">
+                            <h4 class="section-title">7.3 重复值处理</h4>
+                            <p class="explanation-text">识别并删除重复的数据记录。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section7-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section7-4">
+                            <h4 class="section-title">7.4 数据类型转换</h4>
+                            <p class="explanation-text">将数据转换为合适的类型以便分析。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section7-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter8">
+                        <h3 class="chapter-title">第8章 数据转换</h3>
+                        <div class="section" id="section8-1">
+                            <h4 class="section-title">8.1 数据标准化</h4>
+                            <p class="explanation-text">将数据转换为标准正态分布。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section8-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section8-2">
+                            <h4 class="section-title">8.2 数据归一化</h4>
+                            <p class="explanation-text">将数据缩放到[0,1]或[-1,1]区间。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section8-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section8-3">
+                            <h4 class="section-title">8.3 特征编码</h4>
+                            <p class="explanation-text">将分类数据转换为数值数据。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section8-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section8-4">
+                            <h4 class="section-title">8.4 数据分箱</h4>
+                            <p class="explanation-text">将连续数据离散化为区间。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section8-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter9">
+                        <h3 class="chapter-title">第9章 数据集成</h3>
+                        <div class="section" id="section9-1">
+                            <h4 class="section-title">9.1 数据合并</h4>
+                            <p class="explanation-text">将多个数据集按行或列合并。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section9-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section9-2">
+                            <h4 class="section-title">9.2 数据连接</h4>
+                            <p class="explanation-text">通过共同字段连接不同数据表。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section9-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section9-3">
+                            <h4 class="section-title">9.3 实体对齐</h4>
+                            <p class="explanation-text">识别不同数据源中的同一实体。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section9-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section9-4">
+                            <h4 class="section-title">9.4 数据融合</h4>
+                            <p class="explanation-text">整合多个数据源的信息。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section9-4')">标记已学习</button>
+                        </div>
+                    </div>
+
+                    <div class="chapter" id="chapter10">
+                        <h3 class="chapter-title">第10章 数据存储与管理</h3>
+                        <div class="section" id="section10-1">
+                            <h4 class="section-title">10.1 文件存储</h4>
+                            <p class="explanation-text">将数据保存为CSV、JSON、Excel等格式。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section10-1')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section10-2">
+                            <h4 class="section-title">10.2 数据库存储</h4>
+                            <p class="explanation-text">将数据存储到关系型或非关系型数据库。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section10-2')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section10-3">
+                            <h4 class="section-title">10.3 数据仓库</h4>
+                            <p class="explanation-text">数据仓库用于存储和分析历史数据。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section10-3')">标记已学习</button>
+                        </div>
+                        <div class="section" id="section10-4">
+                            <h4 class="section-title">10.4 数据安全</h4>
+                            <p class="explanation-text">保护数据免受未授权访问和泄露。</p>
+                            <button class="mark-learned-btn" onclick="toggleLearned('dc-section10-4')">标记已学习</button>
+                        </div>
+                    </div>
+                    
+                    <a href="../index.html#courses" class="back-link">返回课程列表</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 张茵茵的个人学习页面</p>
+        </div>
+    </footer>
+
+    <script>
+        const COURSE_ID = 'data-collection';
+        
+        const quizAnswers = {
+            q1: { answer: 'C', explanation: '云朵不是常见的数据来源，其他选项都是有效的数据来源。' },
+            q2: { answer: 'A', explanation: '企业销售记录属于企业内部数据。' },
+            q3: { answer: 'B', explanation: 'Kaggle是知名的公开数据集平台。' },
+            q4: { answer: 'B', explanation: '社交媒体评论属于非结构化文本数据。' },
+            q5: { answer: 'C', explanation: '数据的可靠性是选择数据来源时最重要的考虑因素。' },
+            q6: { answer: 'B', explanation: '智能手环心率数据是传感器产生的。' },
+            q7: { answer: 'B', explanation: '政府公开数据通常具有较高的权威性。' },
+            q8: { answer: 'B', explanation: '数据采集的第一步是明确需求，知道需要什么数据。' },
+            q9: { answer: 'C', explanation: '内部数据通常与业务需求高度相关。' },
+            q10: { answer: 'C', explanation: '需要评估数据的质量和适用性，选择最合适的数据来源。' }
+        };
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initSidebar();
+            initCourseOutline();
+            loadLearnedSections();
+            initScrollToTop();
+            initQuiz();
+            highlightActiveSection();
+        });
+        
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            const toggle = document.querySelector('.sidebar-toggle');
+            
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+        
+        function initSidebar() {
+            const chapters = document.querySelectorAll('.sidebar-chapter');
+            chapters.forEach(chapter => {
+                const link = chapter.querySelector('a');
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    chapter.classList.toggle('collapsed');
+                });
+            });
+            
+            const sectionLinks = document.querySelectorAll('.sidebar-sections a');
+            sectionLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        }
+        
+        function initCourseOutline() {
+            const items = document.querySelectorAll('.course-outline-item');
+            items.forEach((item, index) => {
+                const headerRow = item.querySelector('.course-outline-header-row');
+                const toggleBtn = item.querySelector('.course-outline-toggle');
+                if (index === 0) {
+                    item.classList.remove('collapsed');
+                    if (toggleBtn) toggleBtn.innerHTML = '<span class="toggle-icon">▼</span> 收起';
+                } else {
+                    item.classList.add('collapsed');
+                    if (toggleBtn) toggleBtn.innerHTML = '<span class="toggle-icon">▶</span> 展开';
+                }
+                headerRow.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    item.classList.toggle('collapsed');
+                    if (toggleBtn) {
+                        if (item.classList.contains('collapsed')) {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▶</span> 展开';
+                        } else {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▼</span> 收起';
+                        }
+                    }
+                });
+                if (toggleBtn) {
+                    toggleBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        item.classList.toggle('collapsed');
+                        if (item.classList.contains('collapsed')) {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▶</span> 展开';
+                        } else {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▼</span> 收起';
+                        }
+                    });
+                }
+            });
+            const sectionLinks = document.querySelectorAll('.course-outline-section a');
+            sectionLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
+
+        // 小节链接点击 - 显示对应内容
+        function initSectionClicks() {
+            const sectionLinks = document.querySelectorAll('.course-outline-section a');
+            sectionLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    const targetId = href.substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        // 隐藏所有小节
+                        document.querySelectorAll('.section').forEach(section => {
+                            section.classList.remove('active');
+                        });
+
+                        // 显示目标小节
+                        targetSection.classList.add('active');
+
+                        // 展开对应的章节
+                        const chapterItem = targetSection.closest('.chapter');
+                        if (chapterItem) {
+                            chapterItem.style.display = 'block';
+                        }
+
+                        // 平滑滚动到目标位置
+                        setTimeout(() => {
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 100);
+                    }
+                });
+            });
+        }
+
+        // 初始化小节可见性
+        function initSectionsVisibility() {
+            const sections = document.querySelectorAll('.section');
+            if (sections.length > 0) {
+                // 默认隐藏所有小节内容
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // 检查URL是否有锚点
+                const hash = window.location.hash;
+                if (hash) {
+                    const targetSection = document.querySelector(hash);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                        setTimeout(() => {
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 100);
+                    }
+                }
+            }
+        }
+        
+        function highlightActiveSection() {
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('.section');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                const activeLink = document.querySelector(`.sidebar-nav a[href="#${currentSection}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            });
+        }
+        
+        function loadLearnedSections() {
+            const learned = JSON.parse(localStorage.getItem(`${COURSE_ID}-learned`) || '[]');
+            learned.forEach(id => {
+                const btn = document.querySelector(`button[onclick="toggleLearned('${id}')"]`);
+                if (btn) {
+                    btn.classList.add('learned');
+                    btn.textContent = '✓ 已学习';
+                }
+            });
+        }
+        
+        function toggleLearned(sectionId) {
+            const btn = document.querySelector(`button[onclick="toggleLearned('${sectionId}')"]`);
+            let learned = JSON.parse(localStorage.getItem(`${COURSE_ID}-learned`) || '[]');
+            
+            if (learned.includes(sectionId)) {
+                learned = learned.filter(id => id !== sectionId);
+                btn.classList.remove('learned');
+                btn.textContent = '标记已学习';
+            } else {
+                learned.push(sectionId);
+                btn.classList.add('learned');
+                btn.textContent = '✓ 已学习';
+            }
+            
+            localStorage.setItem(`${COURSE_ID}-learned`, JSON.stringify(learned));
+        }
+        
+        function initScrollToTop() {
+            const btn = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            });
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const code = codeElement.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = codeElement.closest('.example-box')?.querySelector('.copy-btn');
+                if (btn) {
+                    btn.textContent = '✓ 已复制';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = '复制';
+                        btn.classList.remove('copied');
+                    }, 2000);
+                }
+            });
+        }
+        
+        function initQuiz() {
+            const savedAnswers = JSON.parse(localStorage.getItem(`${COURSE_ID}-quiz`) || '{}');
+            
+            Object.keys(savedAnswers).forEach(qId => {
+                const radio = document.querySelector(`input[name="${qId}"][value="${savedAnswers[qId]}"]`);
+                if (radio) {
+                    radio.checked = true;
+                    showExplanation(qId, savedAnswers[qId]);
+                }
+            });
+            
+            const radios = document.querySelectorAll('.question input[type="radio"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const qId = this.name;
+                    const userAnswer = this.value;
+                    showExplanation(qId, userAnswer);
+                    savedAnswers[qId] = userAnswer;
+                    localStorage.setItem(`${COURSE_ID}-quiz`, JSON.stringify(savedAnswers));
+                });
+            });
+        }
+        
+        function showExplanation(qId, userAnswer) {
+            const correctAnswer = quizAnswers[qId]?.answer;
+            const explanation = quizAnswers[qId]?.explanation || '练习题完善中...';
+            const explanationDiv = document.getElementById(`${qId}-explanation`);
+            const options = document.querySelectorAll(`input[name="${qId}"]`);
+            
+            options.forEach(opt => {
+                const li = opt.closest('.option');
+                li.classList.add('disabled');
+                if (correctAnswer && opt.value === correctAnswer) {
+                    li.classList.add('correct');
+                } else if (opt.checked && correctAnswer && opt.value !== correctAnswer) {
+                    li.classList.add('incorrect');
+                }
+            });
+            
+            if (explanationDiv) {
+                if (userAnswer === correctAnswer) {
+                    explanationDiv.innerHTML = `<strong>✓ 正确！</strong>${explanation}`;
+                    explanationDiv.classList.remove('incorrect');
+                    explanationDiv.classList.add('correct');
+                } else if (correctAnswer) {
+                    explanationDiv.innerHTML = `<strong>✗ 错误！</strong>正确答案是 ${correctAnswer}。${explanation}`;
+                    explanationDiv.classList.remove('correct');
+                    explanationDiv.classList.add('incorrect');
+                }
+                explanationDiv.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

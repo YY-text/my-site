@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缺失值处理 - 练习题 | 数据采集与处理</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .quiz-result { margin-top: 2rem; padding: 1.5rem; border-radius: 12px; background: linear-gradient(135deg, #FFFACD 0%, #FFEFD5 100%); border: 2px solid #DAA520; display: none; }
+        .quiz-result.show { display: block; }
+        .quiz-result h4 { font-size: 1.3rem; color: #8B4513; margin-bottom: 0.5rem; }
+        .quiz-score { font-size: 2.5rem; font-weight: bold; color: #CD853F; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>张茵茵的学习空间</h1>
+            <ul class="nav-links">
+                <li><a href="../../index.html">首页</a></li>
+                <li><a href="../../index.html#courses">课程</a></li>
+                <li><a href="../../learning-path.html">学习路径</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="sidebar-toggle" onclick="toggleSidebar()"></div>
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h4>📥 数据采集与处理 列表</h4>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-back"><a href="section-5-1.html">← 返回小节</a></li>
+            <li class="sidebar-chapter"><a href="section-5-1.html">第1章 数据采集概述</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-1-1.html">1.1 数据来源</a></li>
+                    <li><a href="section-1-2.html">1.2 采集方法</a></li>
+                    <li><a href="section-1-3.html">1.3 数据类型</a></li>
+                    <li><a href="section-1-4.html">1.4 采集原则</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-5-1.html">第2章 网络数据采集</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-2-1.html">2.1 HTTP基础</a></li>
+                    <li><a href="section-2-2.html">2.2 Requests库</a></li>
+                    <li><a href="section-2-3.html">2.3 BeautifulSoup</a></li>
+                    <li><a href="section-2-4.html">2.4 Scrapy框架</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-5-1.html">第3章 数据库数据提取</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-3-1.html">3.1 SQL基础</a></li>
+                    <li><a href="section-3-2.html">3.2 MySQL连接</a></li>
+                    <li><a href="section-3-3.html">3.3 SQLite使用</a></li>
+                    <li><a href="section-3-4.html">3.4 数据导出</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-5-1.html">第4章 API数据获取</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-4-1.html">4.1 RESTful API</a></li>
+                    <li><a href="section-4-2.html">4.2 API认证</a></li>
+                    <li><a href="section-4-3.html">4.3 JSON解析</a></li>
+                    <li><a href="section-4-4.html">4.4 分页处理</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-5-1.html">第5章 数据清洗基础</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-5-1.html">5.1 缺失值处理</a></li>
+                    <li><a href="section-5-2.html">5.2 异常值检测</a></li>
+                    <li><a href="section-5-3.html">5.3 数据类型转换</a></li>
+                    <li><a href="section-5-4.html">5.4 重复数据处理</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-5-1.html">第6章 数据转换</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-6-1.html">6.1 数据标准化</a></li>
+                    <li><a href="section-6-2.html">6.2 数据归一化</a></li>
+                    <li><a href="section-6-3.html">6.3 特征编码</a></li>
+                    <li><a href="section-6-4.html">6.4 数据聚合</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-5-1.html">第7章 数据验证</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-7-1.html">7.1 数据完整性</a></li>
+                    <li><a href="section-7-2.html">7.2 数据一致性</a></li>
+                    <li><a href="section-7-3.html">7.3 数据准确性</a></li>
+                    <li><a href="section-7-4.html">7.4 数据质量报告</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-5-1.html">第8章 数据存储</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-8-1.html">8.1 CSV格式</a></li>
+                    <li><a href="section-8-2.html">8.2 Excel格式</a></li>
+                    <li><a href="section-8-3.html">8.3 JSON格式</a></li>
+                    <li><a href="section-8-4.html">8.4 数据库存储</a></li>
+                </ul></li>
+        </ul>
+    </aside>
+    <section class="course-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="content-main">
+                    <div class="breadcrumb-nav">
+                        <a href="section-5-1.html">← 返回小节</a>
+                    </div>
+                    <div class="section-page">
+                        <h2 class="section-main-title">📝 缺失值处理 - 练习题</h2>
+                        <div class="section-sub-title">
+                            <h3>第5章 数据清洗基础</h3>
+                        </div>
+                        <div class="knowledge-section">
+                        <div class="question">
+                            <p class="question-text">1. 关于缺失值处理，以下说法正确的是？</p>
+                            <ul class="options">
+                                <li class="option"><input type="radio" name="q1" id="q1-a" value="A"><label for="q1-a">A. 识别缺失值：isnull()</label></li>
+                                <li class="option"><input type="radio" name="q1" id="q1-b" value="B"><label for="q1-b">B. 只了解理论即可</label></li>
+                                <li class="option"><input type="radio" name="q1" id="q1-c" value="C"><label for="q1-c">C. 不需要实践</label></li>
+                                <li class="option"><input type="radio" name="q1" id="q1-d" value="D"><label for="q1-d">D. 可以随便学习</label></li>
+                            </ul>
+                            <div class="explanation" id="q1-explanation"></div>
+                        </div>
+                        <div class="question">
+                            <p class="question-text">2. 缺失值处理在实际工作中的应用场景包括？</p>
+                            <ul class="options">
+                                <li class="option"><input type="radio" name="q2" id="q2-a" value="A"><label for="q2-a">A. 理论学习</label></li>
+                                <li class="option"><input type="radio" name="q2" id="q2-b" value="B"><label for="q2-b">B. 考试做题</label></li>
+                                <li class="option"><input type="radio" name="q2" id="q2-c" value="C"><label for="q2-c">C. 根据业务选择方法</label></li>
+                                <li class="option"><input type="radio" name="q2" id="q2-d" value="D"><label for="q2-d">D. 以上都不对</label></li>
+                            </ul>
+                            <div class="explanation" id="q2-explanation"></div>
+                        </div>
+                        <div class="question">
+                            <p class="question-text">3. 学习缺失值处理的最佳方法是？</p>
+                            <ul class="options">
+                                <li class="option"><input type="radio" name="q3" id="q3-a" value="A"><label for="q3-a">A. 只看不练</label></li>
+                                <li class="option"><input type="radio" name="q3" id="q3-b" value="B"><label for="q3-b">B. 边学边练</label></li>
+                                <li class="option"><input type="radio" name="q3" id="q3-c" value="C"><label for="q3-c">C. 只练不看</label></li>
+                                <li class="option"><input type="radio" name="q3" id="q3-d" value="D"><label for="q3-d">D. 临时抱佛脚</label></li>
+                            </ul>
+                            <div class="explanation" id="q3-explanation"></div>
+                        </div>
+                        <div class="question">
+                            <p class="question-text">4. 缺失值处理需要注意的事项是？</p>
+                            <ul class="options">
+                                <li class="option"><input type="radio" name="q4" id="q4-a" value="A"><label for="q4-a">A. 不需要注意</label></li>
+                                <li class="option"><input type="radio" name="q4" id="q4-b" value="B"><label for="q4-b">B. 删除：dropna()</label></li>
+                                <li class="option"><input type="radio" name="q4" id="q4-c" value="C"><label for="q4-c">C. 随便学习就行</label></li>
+                                <li class="option"><input type="radio" name="q4" id="q4-d" value="D"><label for="q4-d">D. 只看不做</label></li>
+                            </ul>
+                            <div class="explanation" id="q4-explanation"></div>
+                        </div>
+                        <div class="question">
+                            <p class="question-text">5. 掌握缺失值处理后可以？</p>
+                            <ul class="options">
+                                <li class="option"><input type="radio" name="q5" id="q5-a" value="A"><label for="q5-a">A. 解决基础问题</label></li>
+                                <li class="option"><input type="radio" name="q5" id="q5-b" value="B"><label for="q5-b">B. 独立完成相关任务</label></li>
+                                <li class="option"><input type="radio" name="q5" id="q5-c" value="C"><label for="q5-c">C. 进行深入研究</label></li>
+                                <li class="option"><input type="radio" name="q5" id="q5-d" value="D"><label for="q5-d">D. 以上全部</label></li>
+                            </ul>
+                            <div class="explanation" id="q5-explanation"></div>
+                        </div>
+                        <div class="question">
+                            <p class="question-text">6. 缺失值处理与其他知识的关系是？</p>
+                            <ul class="options">
+                                <li class="option"><input type="radio" name="q6" id="q6-a" value="A"><label for="q6-a">A. 相互独立</label></li>
+                                <li class="option"><input type="radio" name="q6" id="q6-b" value="B"><label for="q6-b">B. 填充：fillna()</label></li>
+                                <li class="option"><input type="radio" name="q6" id="q6-c" value="C"><label for="q6-c">C. 毫不相关</label></li>
+                                <li class="option"><input type="radio" name="q6" id="q6-d" value="D"><label for="q6-d">D. 完全相同</label></li>
+                            </ul>
+                            <div class="explanation" id="q6-explanation"></div>
+                        </div>
+                        <div class="question">
+                            <p class="question-text">7. 评估缺失值处理掌握程度的方法是？</p>
+                            <ul class="options">
+                                <li class="option"><input type="radio" name="q7" id="q7-a" value="A"><label for="q7-a">A. 做练习题</label></li>
+                                <li class="option"><input type="radio" name="q7" id="q7-b" value="B"><label for="q7-b">B. 完成实际任务</label></li>
+                                <li class="option"><input type="radio" name="q7" id="q7-c" value="C"><label for="q7-c">C. A和B都正确</label></li>
+                                <li class="option"><input type="radio" name="q7" id="q7-d" value="D"><label for="q7-d">D. 无法评估</label></li>
+                            </ul>
+                            <div class="explanation" id="q7-explanation"></div>
+                        </div>
+                        <div class="question">
+                            <p class="question-text">8. 学习缺失值处理的难点在于？</p>
+                            <ul class="options">
+                                <li class="option"><input type="radio" name="q8" id="q8-a" value="A"><label for="q8-a">A. 概念理解</label></li>
+                                <li class="option"><input type="radio" name="q8" id="q8-b" value="B"><label for="q8-b">B. 方法运用</label></li>
+                                <li class="option"><input type="radio" name="q8" id="q8-c" value="C"><label for="q8-c">C. 均值/中位数填充</label></li>
+                                <li class="option"><input type="radio" name="q8" id="q8-d" value="D"><label for="q8-d">D. 以上都不是</label></li>
+                            </ul>
+                            <div class="explanation" id="q8-explanation"></div>
+                        </div>
+                        <div class="question">
+                            <p class="question-text">9. 关于缺失值处理的学习建议是？</p>
+                            <ul class="options">
+                                <li class="option"><input type="radio" name="q9" id="q9-a" value="A"><label for="q9-a">A. 坚持练习</label></li>
+                                <li class="option"><input type="radio" name="q9" id="q9-b" value="B"><label for="q9-b">B. 多思考多总结</label></li>
+                                <li class="option"><input type="radio" name="q9" id="q9-c" value="C"><label for="q9-c">C. A和B都采纳</label></li>
+                                <li class="option"><input type="radio" name="q9" id="q9-d" value="D"><label for="q9-d">D. 随便学学就行</label></li>
+                            </ul>
+                            <div class="explanation" id="q9-explanation"></div>
+                        </div>
+                        <div class="question">
+                            <p class="question-text">10. 缺失值处理的核心价值在于？</p>
+                            <ul class="options">
+                                <li class="option"><input type="radio" name="q10" id="q10-a" value="A"><label for="q10-a">A. 考试拿高分</label></li>
+                                <li class="option"><input type="radio" name="q10" id="q10-b" value="B"><label for="q10-b">B. 解决实际问题</label></li>
+                                <li class="option"><input type="radio" name="q10" id="q10-c" value="C"><label for="q10-c">C. 应付作业</label></li>
+                                <li class="option"><input type="radio" name="q10" id="q10-d" value="D"><label for="q10-d">D. 没有实际作用</label></li>
+                            </ul>
+                            <div class="explanation" id="q10-explanation"></div>
+                        </div>
+                            <div class="quiz-actions">
+                                <button class="submit-quiz-btn" onclick="submitQuiz()">提交答案</button>
+                                <button class="reset-quiz-btn" onclick="resetQuiz()">重置答案</button>
+                            </div>
+                            <div class="quiz-result" id="quizResult">
+                                <h4>答题结果</h4>
+                                <div class="quiz-score" id="scoreDisplay">0/10</div>
+                                <p id="scoreComment">提交答案后查看详细解析</p>
+                            </div>
+                        </div>
+                        <div class="section-navigation">
+                            <a href="section-5-1.html" class="nav-btn prev-btn">← 返回小节详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer"><p>张茵茵的学习空间</p></footer>
+    <script>
+        const sectionId = "data-collection-section-5-1";
+        const correctAnswers = {"q1": "A", "q2": "C", "q3": "B", "q4": "B", "q5": "D", "q6": "B", "q7": "C", "q8": "C", "q9": "C", "q10": "B"};
+        const explanations = {"q1": "识别缺失值：isnull()", "q2": "根据业务选择方法", "q3": "边学边练是最好的学习方法，可以加深理解和记忆。", "q4": "删除：dropna()", "q5": "掌握缺失值处理后可以进行多种应用和发展。", "q6": "填充：fillna()", "q7": "可以通过做题和实践来评估缺失值处理的掌握程度。", "q8": "均值/中位数填充", "q9": "学习缺失值处理建议坚持练习并多思考多总结。", "q10": "缺失值处理的核心价值在于解决实际问题，这也是学习的真正目的。"};
+
+        function submitQuiz() {
+            let score = 0;
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector('input[name="q' + i + '"]:checked');
+                const explanationEl = document.getElementById('q' + i + '-explanation');
+                if (selected) {
+                    const selectedValue = selected.value;
+                    const correctValue = correctAnswers['q' + i];
+                    if (selectedValue === correctValue) {
+                        score++;
+                        explanationEl.innerHTML = '<span class="correct">回答正确！</span> ' + explanations['q' + i];
+                        selected.parentElement.classList.add('correct');
+                    } else {
+                        explanationEl.innerHTML = '<span class="wrong">回答错误！</span> ' + explanations['q' + i];
+                        selected.parentElement.classList.add('incorrect');
+                        const correctOption = document.querySelector('input[name="q' + i + '"][value="' + correctValue + '"]');
+                        if (correctOption) correctOption.parentElement.classList.add('correct');
+                    }
+                } else {
+                    explanationEl.innerHTML = '<span style="color:#999;">未作答</span> - ' + explanations['q' + i];
+                }
+                explanationEl.classList.add('show');
+            }
+            document.getElementById('scoreDisplay').textContent = score + '/10';
+            document.getElementById('quizResult').classList.add('show');
+            var quizResult = { sectionId: sectionId, score: score, total: 10, answers: {} };
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector('input[name="q' + i + '"]:checked');
+                quizResult.answers['q' + i] = selected ? selected.value : null;
+            }
+            localStorage.setItem('quiz-' + sectionId, JSON.stringify(quizResult));
+            document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetQuiz() {
+            for (let i = 1; i <= 10; i++) {
+                const options = document.querySelectorAll('input[name="q' + i + '"]');
+                options.forEach(opt => {
+                    opt.checked = false;
+                    opt.parentElement.classList.remove('correct', 'incorrect');
+                });
+                const explanationEl = document.getElementById('q' + i + '-explanation');
+                explanationEl.classList.remove('show');
+                explanationEl.innerHTML = '';
+            }
+            document.getElementById('quizResult').classList.remove('show');
+            document.getElementById('scoreDisplay').textContent = '0/10';
+        }
+
+        function toggleSidebar() {
+            document.body.classList.toggle('sidebar-open');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const saved = localStorage.getItem('quiz-' + sectionId);
+            if (saved) {
+                const quizResult = JSON.parse(saved);
+                for (let i = 1; i <= 10; i++) {
+                    const answer = quizResult.answers['q' + i];
+                    if (answer) {
+                        const radio = document.querySelector('input[name="q' + i + '"][value="' + answer + '"]');
+                        if (radio) radio.checked = true;
+                    }
+                }
+                document.getElementById('scoreDisplay').textContent = quizResult.score + '/10';
+                document.getElementById('quizResult').classList.add('show');
+            }
+            if (window.innerWidth < 768) {
+                const sidebarLinks = document.querySelectorAll('.sidebar a');
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        document.body.classList.remove('sidebar-open');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

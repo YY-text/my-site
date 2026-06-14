@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分布形态 - Python实操 | 数据分析技术</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .practice-container { background: #fff; border-radius: 12px; padding: 2rem; margin-top: 1.5rem; border: 1px solid #e2e8f0; }
+        .practice-title { font-size: 1.3rem; color: #1e3a5f; margin-bottom: 0.5rem; font-weight: 600; }
+        .practice-desc { color: #4a5568; margin-bottom: 1.5rem; padding: 1rem; background: #f7fafc; border-radius: 8px; border-left: 4px solid #38a169; }
+        .example-box { border: 1px solid #cbd5e0; border-radius: 8px; padding: 1.2rem; margin-bottom: 1.5rem; background: #fff; }
+        .example-title { color: #2b6cb0; font-weight: 600; margin-bottom: 0.8rem; font-size: 1.05rem; }
+        .code-block { background: #1e293b; color: #e2e8f0; padding: 1.2rem; border-radius: 8px; margin: 0.5rem 0; font-family: Consolas, "Courier New", monospace; overflow-x: auto; white-space: pre-wrap; line-height: 1.6; font-size: 0.92rem; }
+        .result-block { background: #f0fdf4; border: 1px dashed #86efac; color: #166534; padding: 1rem; border-radius: 8px; margin-top: 0.8rem; font-family: Consolas, monospace; white-space: pre-wrap; font-size: 0.92rem; }
+        .result-block::before { content: "运行结果:"; display: block; font-weight: bold; margin-bottom: 0.5rem; color: #15803d; }
+        .copy-btn { background: #38a169; color: white; border: none; padding: 0.4rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; float: right; }
+        .copy-btn:hover { background: #276749; }
+        .practice-area { background: #1e293b; border: 2px solid #38a169; border-radius: 12px; padding: 1.8rem; margin-top: 1.5rem; }
+        .practice-area-title { color: #86efac; font-weight: 600; font-size: 1.2rem; margin-bottom: 1rem; }
+        .practice-task { background: #0f172a; border-left: 4px solid #38a169; padding: 0.9rem 1.2rem; margin-bottom: 0.7rem; border-radius: 6px; color: #e2e8f0; font-size: 0.95rem; }
+        .practice-task strong { color: #fbbf24; }
+        .practice-placeholder { background: #0f172a; border: 1px dashed #475569; border-radius: 8px; padding: 2rem; margin-top: 1.2rem; color: #94a3b8; text-align: center; font-style: italic; min-height: 100px; font-family: Consolas, monospace; font-size: 0.95rem; }
+        .solution-box { background: #f7fafc; border-radius: 8px; padding: 1.2rem; margin-top: 1.2rem; border: 1px solid #e2e8f0; }
+        .solution-box summary { cursor: pointer; color: #2b6cb0; font-weight: 600; user-select: none; }
+        .online-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
+        .online-links a { background: #4299e1; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-size: 0.9rem; }
+        .online-links a:hover { background: #2b6cb0; }
+        .kp-list { margin: 0.5rem 0; padding-left: 1.5rem; color: #2d3748; }
+        .kp-list li { margin: 0.3rem 0; }
+        .section-main-title { margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>张茵茵的学习空间</h1>
+            <ul class="nav-links">
+                <li><a href="../../index.html">首页</a></li>
+                <li><a href="../../index.html#courses">课程</a></li>
+                <li><a href="../../learning-path.html">学习路径</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="sidebar-toggle" onclick="toggleSidebar()"></div>
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <aside class="sidebar">
+        <div class="sidebar-header"><h4>📊 数据分析技术 列表</h4></div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-back"><a href="section-2-3.html">← 返回小节</a></li>
+            <li class="sidebar-chapter"><a href="section-2-3.html">第1章 数据分析概述</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-1-1.html">1.1 数据分析流程</a></li>
+                    <li><a href="section-1-2.html">1.2 分析方法分类</a></li>
+                    <li><a href="section-1-3.html">1.3 常用工具介绍</a></li>
+                    <li><a href="section-1-4.html">1.4 商业应用场景</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-2-3.html">第2章 描述性统计</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-2-1.html">2.1 集中趋势</a></li>
+                    <li><a href="section-2-2.html">2.2 离散程度</a></li>
+                    <li><a href="section-2-3.html">2.3 分布形态</a></li>
+                    <li><a href="section-2-4.html">2.4 统计表图</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-2-3.html">第3章 数据可视化</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-3-1.html">3.1 可视化原则</a></li>
+                    <li><a href="section-3-2.html">3.2 常用图表</a></li>
+                    <li><a href="section-3-3.html">3.3 配色设计</a></li>
+                    <li><a href="section-3-4.html">3.4 交互图表</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-2-3.html">第4章 相关性分析</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-4-1.html">4.1 相关系数</a></li>
+                    <li><a href="section-4-2.html">4.2 散点图分析</a></li>
+                    <li><a href="section-4-3.html">4.3 协方差矩阵</a></li>
+                    <li><a href="section-4-4.html">4.4 因果与相关</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-2-3.html">第5章 假设检验</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-5-1.html">5.1 基本概念</a></li>
+                    <li><a href="section-5-2.html">5.2 t检验</a></li>
+                    <li><a href="section-5-3.html">5.3 卡方检验</a></li>
+                    <li><a href="section-5-4.html">5.4 方差分析</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-2-3.html">第6章 回归分析</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-6-1.html">6.1 线性回归</a></li>
+                    <li><a href="section-6-2.html">6.2 多元回归</a></li>
+                    <li><a href="section-6-3.html">6.3 逻辑回归</a></li>
+                    <li><a href="section-6-4.html">6.4 模型评估</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-2-3.html">第7章 聚类分析</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-7-1.html">7.1 K-means聚类</a></li>
+                    <li><a href="section-7-2.html">7.2 层次聚类</a></li>
+                    <li><a href="section-7-3.html">7.3 DBSCAN</a></li>
+                    <li><a href="section-7-4.html">7.4 聚类评估</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-2-3.html">第8章 分类分析</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-8-1.html">8.1 决策树</a></li>
+                    <li><a href="section-8-2.html">8.2 随机森林</a></li>
+                    <li><a href="section-8-3.html">8.3 逻辑回归</a></li>
+                    <li><a href="section-8-4.html">8.4 模型评估指标</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-2-3.html">第9章 时间序列分析</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-9-1.html">9.1 时间序列分解</a></li>
+                    <li><a href="section-9-2.html">9.2 移动平均</a></li>
+                    <li><a href="section-9-3.html">9.3 ARIMA模型</a></li>
+                    <li><a href="section-9-4.html">9.4 预测方法</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-2-3.html">第10章 文本分析</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-10-1.html">10.1 文本预处理</a></li>
+                    <li><a href="section-10-2.html">10.2 词频统计</a></li>
+                    <li><a href="section-10-3.html">10.3 情感分析</a></li>
+                    <li><a href="section-10-4.html">10.4 主题模型</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-2-3.html">第11章 数据分析实战</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-11-1.html">11.1 项目流程</a></li>
+                    <li><a href="section-11-2.html">11.2 案例分析</a></li>
+                    <li><a href="section-11-3.html">11.3 报告撰写</a></li>
+                    <li><a href="section-11-4.html">11.4 结果展示</a></li>
+                </ul></li>
+        </ul>
+    </aside>
+    <section class="course-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="content-main">
+                    <div class="breadcrumb-nav"><a href="section-2-3.html">← 返回小节</a></div>
+                    <div class="section-page">
+                        <h2 class="section-main-title">💻 分布形态 - Python实操</h2>
+                        <div class="section-sub-title"><h3>第2章 描述性统计</h3></div>
+                    <div class="practice-container">
+                        <div class="practice-title">分布形态练习</div>
+                        <div class="practice-desc">分布形态实操练习：偏度：数据分布的对称程度、右偏（正偏）：均值大于中位数、左偏（负偏）：均值小于中位数、峰度：分布的尖锐程度、正态分布：对称、钟形、标准正态分布：均值0、标准差1、偏度和峰度用于正态性检验</div>
+                        <div style="margin: 1rem 0; padding: 1rem; background: #ebf8ff; border-radius: 6px;">
+                            <strong>本节知识点：</strong>
+                            <ul class="kp-list">
+                                <li>偏度：数据分布的对称程度</li>
+                                <li>右偏（正偏）：均值大于中位数</li>
+                                <li>左偏（负偏）：均值小于中位数</li>
+                                <li>峰度：分布的尖锐程度</li>
+                                <li>正态分布：对称、钟形</li>
+                                <li>标准正态分布：均值0、标准差1</li>
+                                <li>偏度和峰度用于正态性检验</li>
+                            </ul>
+                        </div>
+                    <h3 style="color: #2b6cb0; margin-top: 1.5rem; margin-bottom: 1rem;">📖 参考示例</h3>
+                    <div class="example-box">
+                        <div class="example-title">示例1：好的注释</div>
+                        <button class="copy-btn" onclick="copyCode('code-2-3-1')">复制代码</button>
+                        <div style="clear: both;"></div>
+                        <div class="code-block" id="code-2-3-1"># 计算两个数之和
+# 作者: 小明
+# 日期: 2024
+
+a = 10  # 第一个加数
+b = 20  # 第二个加数
+result = a + b  # 求和
+print(f"{a} + {b} = {result}")  # 打印结果</div>
+                        <div class="result-block">10 + 20 = 30</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-title">示例2：什么时候写注释</div>
+                        <button class="copy-btn" onclick="copyCode('code-2-3-2')">复制代码</button>
+                        <div style="clear: both;"></div>
+                        <div class="code-block" id="code-2-3-2"># 写注释的黄金法则：解释为什么，而不是做了什么
+
+# 价格计算（因为VIP用户有特殊折扣）
+price = 100
+discount = 0.2  # 20%的VIP折扣
+final_price = price * (1 - discount)
+
+print(f"原价: {price}元")
+print(f"折扣后: {final_price:.0f}元")</div>
+                        <div class="result-block">原价: 100元
+折扣后: 80元</div>
+                    </div>
+                    <div class="practice-area">
+                        <div class="practice-area-title">✍️ 动手练习区</div>
+                        <p style="color: #cbd5e1; margin-bottom: 1rem; font-size: 0.95rem;">请在本地Python环境中完成以下练习。点击下方链接可以使用在线编辑器！</p>
+                        <div class="practice-task"><strong>练习1：</strong>写一个计算圆面积的程序，每一行都加适当注释</div>
+                        <div class="practice-task"><strong>练习2：</strong>写一个计算BMI的程序（体重除以身高平方），加上详细注释</div>
+                        <div class="practice-placeholder">（在此理解代码后，尝试自己动手写一写）</div>
+                        <details class="solution-box">
+                            <summary>👀 查看参考答案（建议先自己写再看）</summary>
+                            <div class="code-block"># 练习参考答案
+# 圆面积 = π * r^2
+r = 5  # 半径
+pi = 3.14159  # 圆周率
+area = pi * r * r  # 计算面积
+print(f"半径为{r}的圆面积是: {area:.2f}")</div>
+                        </details>
+                        <div style="margin-top: 2rem;">
+                            <strong style="color: #e2e8f0;">🚀 在线运行Python代码（复制代码后到以下网站粘贴运行）：</strong>
+                            <div class="online-links">
+                                <a href="https://www.runoob.com/try/runcode.php?filename=HelloWorld&type=python3" target="_blank">菜鸟教程在线编辑器</a>
+                                <a href="https://www.online-python.com/" target="_blank">Online-Python</a>
+                                <a href="https://pythontutor.com/python-compiler.html" target="_blank">PythonTutor可视化</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <a href="section-2-3.html" class="nav-btn prev-btn">← 返回小节详情</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer"><p>张茵茵的学习空间</p></footer>
+    <script>
+        function copyCode(id) {
+            const text = document.getElementById(id).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                const original = btn.textContent;
+                btn.textContent = "✓ 已复制";
+                setTimeout(() => btn.textContent = original, 1500);
+            }).catch(err => alert("复制失败，请手动选择复制"));
+        }
+        function toggleSidebar() {
+            document.body.classList.toggle("sidebar-open");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习路径 - 张茵茵的学习空间</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* 学习路径页面特定样式 */
+        .learning-path-section {
+            padding: 3rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .path-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .path-intro h2 {
+            color: #1F2937;
+            margin-bottom: 1rem;
+        }
+
+        .path-intro p {
+            color: #6B7280;
+            font-size: 1.1rem;
+        }
+
+        .path-progress-bar {
+            background: #E5E7EB;
+            border-radius: 10px;
+            height: 12px;
+            margin-top: 1.5rem;
+            overflow: hidden;
+        }
+
+        .path-progress-fill {
+            background: linear-gradient(90deg, #3B82F6, #60A5FA);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .path-progress-text {
+            text-align: center;
+            margin-top: 0.5rem;
+            color: #6B7280;
+            font-size: 0.9rem;
+        }
+
+        /* 时间轴样式 */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: #E5E7EB;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-content {
+            width: 42%;
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 左侧内容 */
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+            text-align: right;
+        }
+
+        /* 右侧内容 */
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            text-align: left;
+        }
+
+        /* 时间轴节点 */
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #9CA3AF;
+            border: 4px solid #f9fafb;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item.completed .timeline-dot {
+            background: #10B981;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .timeline-item.current .timeline-dot {
+            background: #3B82F6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2); }
+            50% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.1); }
+        }
+
+        /* 已完成状态 */
+        .timeline-item.completed .timeline-content {
+            border: 2px solid #10B981;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+        }
+
+        .timeline-item.completed .timeline-content h3 {
+            color: #059669;
+        }
+
+        /* 当前进行状态 */
+        .timeline-item.current .timeline-content {
+            border: 2px solid #3B82F6;
+            background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+        }
+
+        /* 未完成状态 - 置灰 */
+        .timeline-item.locked .timeline-content {
+            background: #f3f4f6;
+            opacity: 0.7;
+        }
+
+        .timeline-item.locked .timeline-content h3,
+        .timeline-item.locked .timeline-content p {
+            color: #9CA3AF;
+        }
+
+        .timeline-item.locked .timeline-meta span {
+            background: #E5E7EB;
+            color: #9CA3AF;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            color: #1F2937;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-meta span {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .meta-difficulty {
+            background: #FEF3C7;
+            color: #D97706;
+        }
+
+        .meta-hours {
+            background: #DBEAFE;
+            color: #2563EB;
+        }
+
+        .timeline-objectives {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .timeline-objectives h4 {
+            font-size: 0.95rem;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-objectives ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .timeline-objectives li {
+            font-size: 0.9rem;
+            color: #6B7280;
+            padding-left: 1.25rem;
+            position: relative;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-objectives li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #3B82F6;
+        }
+
+        .timeline-prerequisites {
+            font-size: 0.9rem;
+            color: #6B7280;
+            padding-top: 0.75rem;
+            border-top: 1px dashed #E5E7EB;
+        }
+
+        .timeline-prerequisites strong {
+            color: #374151;
+        }
+
+        /* 箭头指示 */
+        .timeline-arrow {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #D1D5DB;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-arrow {
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(even) .timeline-arrow {
+            left: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* 标记完成按钮 */
+        .mark-complete-btn {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:not(.locked) .mark-complete-btn {
+            background: #10B981;
+            color: white;
+        }
+
+        .timeline-item:not(.locked) .mark-complete-btn:hover {
+            background: #059669;
+        }
+
+        .timeline-item.completed .mark-complete-btn {
+            background: #E5E7EB;
+            color: #6B7280;
+        }
+
+        .timeline-item.locked .mark-complete-btn {
+            background: #E5E7EB;
+            color: #9CA3AF;
+            cursor: not-allowed;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-item {
+                justify-content: flex-start;
+                padding-left: 50px;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline-arrow {
+                display: none;
+            }
+        }
+
+        /* 学习路径卡片样式 */
+        .path-card {
+            display: inline-block;
+            background: white;
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            width: 100%;
+        }
+
+        .path-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .path-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+
+        .path-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .path-card-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            background: #3B82F6;
+            color: white;
+        }
+
+        .path-card-desc {
+            font-size: 0.9rem;
+            color: #6B7280;
+            margin-bottom: 1rem;
+        }
+
+        .path-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .path-card-meta {
+            font-size: 0.85rem;
+            color: #9CA3AF;
+        }
+
+        .path-card-link {
+            font-size: 0.9rem;
+            color: #3B82F6;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <h1>张茵茵的学习空间</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#courses">课程</a></li>
+                <li><a href="learning-path.html">学习路径</a></li>
+                <li><a href="index.html#about">关于我</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 学习路径部分 -->
+    <section class="learning-path-section">
+        <div class="container">
+            <div class="path-intro">
+                <h2>零基础数据分析学习路线</h2>
+                <p>按照以下路径系统学习，从零基础开始逐步掌握数据分析技能，完成所有课程后，你将具备供应链数据分析的完整能力。</p>
+                <div class="path-progress-bar">
+                    <div class="path-progress-fill" id="progressFill"></div>
+                </div>
+                <p class="path-progress-text">学习进度：<span id="progressText">0</span>/5 阶段完成</p>
+            </div>
+
+            <div class="timeline" id="learningTimeline">
+                <!-- 时间轴内容由JS动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 张茵茵的个人学习页面</p>
+        </div>
+    </footer>
+
+    <script>
+        // 学习路径数据
+        const learningPath = [
+            {
+                id: 'python',
+                title: 'Python基础',
+                difficulty: '入门',
+                hours: '40学时',
+                objectives: [
+                    '掌握Python基本语法和编程规范',
+                    '理解Python数据结构（列表、元组、字典）',
+                    '学会使用Python函数和模块',
+                    '能够编写简单的Python程序'
+                ],
+                prerequisites: '无前置要求，适合零基础学习',
+                link: 'courses/python.html'
+            },
+            {
+                id: 'database',
+                title: '数据库原理与应用',
+                difficulty: '入门',
+                hours: '36学时',
+                objectives: [
+                    '理解数据库基本原理',
+                    '掌握SQL语言查询与操作',
+                    '学会数据库设计与规范化',
+                    '能够进行数据库管理维护'
+                ],
+                prerequisites: '建议先完成Python基础',
+                link: 'courses/database.html'
+            },
+            {
+                id: 'data-collection',
+                title: '数据采集与处理',
+                difficulty: '进阶',
+                hours: '32学时',
+                objectives: [
+                    '掌握多种数据采集方法',
+                    '学会数据清洗与预处理技术',
+                    '能够处理缺失值和异常值',
+                    '理解数据质量管理'
+                ],
+                prerequisites: '需掌握Python基础和数据库基本操作',
+                link: 'courses/data-collection.html'
+            },
+            {
+                id: 'data-analysis',
+                title: '数据分析技术',
+                difficulty: '进阶',
+                hours: '40学时',
+                objectives: [
+                    '掌握数据可视化技术',
+                    '学会描述性统计与推断性统计',
+                    '能够进行数据建模与分析',
+                    '理解数据分析流程'
+                ],
+                prerequisites: '需掌握数据采集与处理基础',
+                link: 'courses/data-analysis.html'
+            },
+            {
+                id: 'supply-chain',
+                title: '供应链数据分析',
+                difficulty: '高级',
+                hours: '36学时',
+                objectives: [
+                    '理解供应链管理核心概念',
+                    '掌握供应链数据分析方法',
+                    '能够进行需求预测与库存优化',
+                    '学会供应链可视化与决策支持'
+                ],
+                prerequisites: '需完成数据分析技术课程',
+                link: 'courses/supply-chain.html'
+            }
+        ];
+
+        // 从localStorage读取学习记录
+        function getCompletedCourses() {
+            const stored = localStorage.getItem('completedCourses');
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        // 保存学习记录到localStorage
+        function saveCompletedCourses(completed) {
+            localStorage.setItem('completedCourses', JSON.stringify(completed));
+        }
+
+        // 标记课程完成
+        function markComplete(courseId) {
+            const completed = getCompletedCourses();
+            if (!completed.includes(courseId)) {
+                completed.push(courseId);
+                saveCompletedCourses(completed);
+            }
+            renderTimeline();
+        }
+
+        // 取消完成标记
+        function unmarkComplete(courseId) {
+            let completed = getCompletedCourses();
+            completed = completed.filter(id => id !== courseId);
+            saveCompletedCourses(completed);
+            renderTimeline();
+        }
+
+        // 渲染时间轴
+        function renderTimeline() {
+            const timeline = document.getElementById('learningTimeline');
+            const completed = getCompletedCourses();
+            let currentIndex = 0;
+
+            // 找到第一个未完成课程的索引
+            for (let i = 0; i < learningPath.length; i++) {
+                if (!completed.includes(learningPath[i].id)) {
+                    currentIndex = i;
+                    break;
+                }
+                if (i === learningPath.length - 1) {
+                    currentIndex = learningPath.length; // 全部完成
+                }
+            }
+
+            let html = '';
+
+            learningPath.forEach((course, index) => {
+                const isCompleted = completed.includes(course.id);
+                const isCurrent = index === currentIndex;
+                const isLocked = index > currentIndex;
+
+                let statusClass = '';
+                if (isCompleted) statusClass = 'completed';
+                else if (isCurrent) statusClass = 'current';
+                else if (isLocked) statusClass = 'locked';
+
+                const difficultyColor = course.difficulty === '入门' ? '#10B981' : course.difficulty === '进阶' ? '#F59E0B' : '#EF4444';
+
+                html += `
+                    <div class="timeline-item ${statusClass}">
+                        <div class="timeline-dot"></div>
+                        ${index > 0 ? '<span class="timeline-arrow">→</span>' : ''}
+                        <div class="timeline-content">
+                            <h3>${course.title}</h3>
+                            <div class="timeline-meta">
+                                <span class="meta-difficulty" style="background: ${difficultyColor}20; color: ${difficultyColor}">${course.difficulty}</span>
+                                <span class="meta-hours">${course.hours}</span>
+                            </div>
+                            <div class="timeline-objectives">
+                                <h4>学习目标</h4>
+                                <ul>
+                                    ${course.objectives.map(obj => `<li>${obj}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="timeline-prerequisites">
+                                <strong>前置要求：</strong>${course.prerequisites}
+                            </div>
+                            <button class="mark-complete-btn" onclick="${isCompleted ? `unmarkComplete('${course.id}')` : `markComplete('${course.id}')`}">
+                                ${isCompleted ? '✓ 已完成' : (isLocked ? '🔒 锁定' : '标记完成')}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            timeline.innerHTML = html;
+
+            // 更新进度条
+            const progress = (completed.length / learningPath.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = completed.length;
+        }
+
+        // 页面加载时渲染时间轴
+        document.addEventListener('DOMContentLoaded', renderTimeline);
+    </script>
+</body>
+</html>

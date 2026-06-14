@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python基础 - 张茵茵的学习空间</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <h1>张茵茵的学习空间</h1>
+            <ul class="nav-links">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="../index.html#courses">课程</a></li>
+                <li><a href="../learning-path.html">学习路径</a></li>
+                <li><a href="../index.html#about">关于我</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 侧边栏切换按钮 -->
+    <div class="sidebar-toggle" onclick="toggleSidebar()"></div>
+    
+    <!-- 侧边栏遮罩 -->
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    
+    <!-- 侧边栏导航 -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h4>📚 Python基础</h4>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第1章 Python入门认知</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section1-1"><span class="sidebar-section-num">1.1</span> 语言简介</a></li>
+                    <li><a href="#section1-2"><span class="sidebar-section-num">1.2</span> 环境安装</a></li>
+                    <li><a href="#section1-3"><span class="sidebar-section-num">1.3</span> 运行方式</a></li>
+                    <li><a href="#section1-4"><span class="sidebar-section-num">1.4</span> 编辑器使用</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第2章 基础输出与注释</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section2-1"><span class="sidebar-section-num">2.1</span> print输出</a></li>
+                    <li><a href="#section2-2"><span class="sidebar-section-num">2.2</span> 格式输出</a></li>
+                    <li><a href="#section2-3"><span class="sidebar-section-num">2.3</span> 单行注释</a></li>
+                    <li><a href="#section2-4"><span class="sidebar-section-num">2.4</span> 多行注释</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第3章 变量与命名规范</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section3-1"><span class="sidebar-section-num">3.1</span> 变量定义</a></li>
+                    <li><a href="#section3-2"><span class="sidebar-section-num">3.2</span> 命名规则</a></li>
+                    <li><a href="#section3-3"><span class="sidebar-section-num">3.3</span> 变量赋值</a></li>
+                    <li><a href="#section3-4"><span class="sidebar-section-num">3.4</span> 变量交换</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第4章 基础数据类型</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section4-1"><span class="sidebar-section-num">4.1</span> 整数类型</a></li>
+                    <li><a href="#section4-2"><span class="sidebar-section-num">4.2</span> 浮点类型</a></li>
+                    <li><a href="#section4-3"><span class="sidebar-section-num">4.3</span> 字符串类型</a></li>
+                    <li><a href="#section4-4"><span class="sidebar-section-num">4.4</span> 布尔类型</a></li>
+                    <li><a href="#section4-5"><span class="sidebar-section-num">4.5</span> 类型转换</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第5章 输入与运算符</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section5-1"><span class="sidebar-section-num">5.1</span> input输入</a></li>
+                    <li><a href="#section5-2"><span class="sidebar-section-num">5.2</span> 算术运算符</a></li>
+                    <li><a href="#section5-3"><span class="sidebar-section-num">5.3</span> 比较运算符</a></li>
+                    <li><a href="#section5-4"><span class="sidebar-section-num">5.4</span> 逻辑运算符</a></li>
+                    <li><a href="#section5-5"><span class="sidebar-section-num">5.5</span> 运算符优先级</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第6章 条件判断语句</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section6-1"><span class="sidebar-section-num">6.1</span> if单分支</a></li>
+                    <li><a href="#section6-2"><span class="sidebar-section-num">6.2</span> if-else双分支</a></li>
+                    <li><a href="#section6-3"><span class="sidebar-section-num">6.3</span> if-elif多分支</a></li>
+                    <li><a href="#section6-4"><span class="sidebar-section-num">6.4</span> 条件语句嵌套</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第7章 循环语句</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section7-1"><span class="sidebar-section-num">7.1</span> for循环基础</a></li>
+                    <li><a href="#section7-2"><span class="sidebar-section-num">7.2</span> range函数</a></li>
+                    <li><a href="#section7-3"><span class="sidebar-section-num">7.3</span> while循环</a></li>
+                    <li><a href="#section7-4"><span class="sidebar-section-num">7.4</span> break跳出循环</a></li>
+                    <li><a href="#section7-5"><span class="sidebar-section-num">7.5</span> continue跳过循环</a></li>
+                    <li><a href="#section7-6"><span class="sidebar-section-num">7.6</span> 循环嵌套</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第8章 列表使用</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section8-1"><span class="sidebar-section-num">8.1</span> 列表创建</a></li>
+                    <li><a href="#section8-2"><span class="sidebar-section-num">8.2</span> 增删操作</a></li>
+                    <li><a href="#section8-3"><span class="sidebar-section-num">8.3</span> 修改查询</a></li>
+                    <li><a href="#section8-4"><span class="sidebar-section-num">8.4</span> 列表常用方法</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第9章 字典使用</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section9-1"><span class="sidebar-section-num">9.1</span> 字典创建</a></li>
+                    <li><a href="#section9-2"><span class="sidebar-section-num">9.2</span> 键值查询</a></li>
+                    <li><a href="#section9-3"><span class="sidebar-section-num">9.3</span> 增删改操作</a></li>
+                    <li><a href="#section9-4"><span class="sidebar-section-num">9.4</span> 字典遍历</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第10章 函数基础</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section10-1"><span class="sidebar-section-num">10.1</span> 函数定义</a></li>
+                    <li><a href="#section10-2"><span class="sidebar-section-num">10.2</span> 位置参数</a></li>
+                    <li><a href="#section10-3"><span class="sidebar-section-num">10.3</span> 函数返回值</a></li>
+                    <li><a href="#section10-4"><span class="sidebar-section-num">10.4</span> 函数调用</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <div class="sidebar-chapter-header">
+                    <span class="sidebar-chapter-title">第11章 综合实战项目</span>
+                    <button class="sidebar-toggle-btn"></button>
+                </div>
+                <ul class="sidebar-sections">
+                    <li><a href="#section11-1"><span class="sidebar-section-num">11.1</span> 简易计算器</a></li>
+                    <li><a href="#section11-2"><span class="sidebar-section-num">11.2</span> 成绩查询工具</a></li>
+                    <li><a href="#section11-3"><span class="sidebar-section-num">11.3</span> 数据遍历小案例</a></li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- 课程详情部分 -->
+    <section class="course-detail">
+        <div class="container">
+            <div class="course-content-wrapper">
+                <div class="course-header">
+                    <h2>Python基础</h2>
+                    <p>商务数据分析与应用专业核心课程</p>
+                </div>
+                
+                <div class="course-content">
+                    <h3>课程介绍</h3>
+                    <p>Python基础课程是商务数据分析与应用专业的入门课程，主要介绍Python编程语言的基础知识和应用。通过本课程的学习，学生将掌握Python的基本语法、数据结构、函数定义与使用等核心概念，为后续的数据分析课程打下坚实的基础。</p>
+                    
+                    <h3>课程目标</h3>
+                    <p>1. 掌握Python的基本语法和编程规范<br>
+                    2. 理解Python的数据结构，包括列表、字典等<br>
+                    3. 学会使用Python函数和控制流语句<br>
+                    4. 能够编写简单的Python程序解决实际问题</p>
+
+                    <!-- 课程目录 -->
+                    <div class="course-outline">
+                        <div class="course-outline-header">
+                            <h3>课程目录</h3>
+                        </div>
+                        <ul class="course-outline-list">
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="1">
+                                    <span class="chapter-name">第1章 Python入门认知</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section1-1">1.1 语言简介</a></li>
+                                    <li class="course-outline-section"><a href="#section1-2">1.2 环境安装</a></li>
+                                    <li class="course-outline-section"><a href="#section1-3">1.3 运行方式</a></li>
+                                    <li class="course-outline-section"><a href="#section1-4">1.4 编辑器使用</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="2">
+                                    <span class="chapter-name">第2章 基础输出与注释</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section2-1">2.1 print输出</a></li>
+                                    <li class="course-outline-section"><a href="#section2-2">2.2 格式输出</a></li>
+                                    <li class="course-outline-section"><a href="#section2-3">2.3 单行注释</a></li>
+                                    <li class="course-outline-section"><a href="#section2-4">2.4 多行注释</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="3">
+                                    <span class="chapter-name">第3章 变量与命名规范</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section3-1">3.1 变量定义</a></li>
+                                    <li class="course-outline-section"><a href="#section3-2">3.2 命名规则</a></li>
+                                    <li class="course-outline-section"><a href="#section3-3">3.3 变量赋值</a></li>
+                                    <li class="course-outline-section"><a href="#section3-4">3.4 变量交换</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="4">
+                                    <span class="chapter-name">第4章 基础数据类型</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section4-1">4.1 整数类型</a></li>
+                                    <li class="course-outline-section"><a href="#section4-2">4.2 浮点类型</a></li>
+                                    <li class="course-outline-section"><a href="#section4-3">4.3 字符串类型</a></li>
+                                    <li class="course-outline-section"><a href="#section4-4">4.4 布尔类型</a></li>
+                                    <li class="course-outline-section"><a href="#section4-5">4.5 类型转换</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="5">
+                                    <span class="chapter-name">第5章 输入与运算符</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section5-1">5.1 input输入</a></li>
+                                    <li class="course-outline-section"><a href="#section5-2">5.2 算术运算符</a></li>
+                                    <li class="course-outline-section"><a href="#section5-3">5.3 比较运算符</a></li>
+                                    <li class="course-outline-section"><a href="#section5-4">5.4 逻辑运算符</a></li>
+                                    <li class="course-outline-section"><a href="#section5-5">5.5 运算符优先级</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="6">
+                                    <span class="chapter-name">第6章 条件判断语句</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section6-1">6.1 if单分支</a></li>
+                                    <li class="course-outline-section"><a href="#section6-2">6.2 if-else双分支</a></li>
+                                    <li class="course-outline-section"><a href="#section6-3">6.3 if-elif多分支</a></li>
+                                    <li class="course-outline-section"><a href="#section6-4">6.4 条件语句嵌套</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="7">
+                                    <span class="chapter-name">第7章 循环语句</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section7-1">7.1 for循环基础</a></li>
+                                    <li class="course-outline-section"><a href="#section7-2">7.2 range函数</a></li>
+                                    <li class="course-outline-section"><a href="#section7-3">7.3 while循环</a></li>
+                                    <li class="course-outline-section"><a href="#section7-4">7.4 break跳出循环</a></li>
+                                    <li class="course-outline-section"><a href="#section7-5">7.5 continue跳过循环</a></li>
+                                    <li class="course-outline-section"><a href="#section7-6">7.6 循环嵌套</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="8">
+                                    <span class="chapter-name">第8章 列表使用</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section8-1">8.1 列表创建</a></li>
+                                    <li class="course-outline-section"><a href="#section8-2">8.2 增删操作</a></li>
+                                    <li class="course-outline-section"><a href="#section8-3">8.3 修改查询</a></li>
+                                    <li class="course-outline-section"><a href="#section8-4">8.4 列表常用方法</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="9">
+                                    <span class="chapter-name">第9章 字典使用</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section9-1">9.1 字典创建</a></li>
+                                    <li class="course-outline-section"><a href="#section9-2">9.2 键值查询</a></li>
+                                    <li class="course-outline-section"><a href="#section9-3">9.3 增删改操作</a></li>
+                                    <li class="course-outline-section"><a href="#section9-4">9.4 字典遍历</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="10">
+                                    <span class="chapter-name">第10章 函数基础</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section10-1">10.1 函数定义</a></li>
+                                    <li class="course-outline-section"><a href="#section10-2">10.2 参数传递</a></li>
+                                    <li class="course-outline-section"><a href="#section10-3">10.3 返回值</a></li>
+                                    <li class="course-outline-section"><a href="#section10-4">10.4 作用域</a></li>
+                                    <li class="course-outline-section"><a href="#section10-5">10.5 匿名函数</a></li>
+                                </ul>
+                            </li>
+                            <li class="course-outline-item">
+                                <div class="course-outline-header-row" data-chapter="11">
+                                    <span class="chapter-name">第11章 综合实战项目</span>
+                                    <button class="course-outline-toggle"><span class="toggle-icon">▼</span> 收起</button>
+                                </div>
+                                <ul class="course-outline-sections">
+                                    <li class="course-outline-section"><a href="#section11-1">11.1 项目准备</a></li>
+                                    <li class="course-outline-section"><a href="#section11-2">11.2 数据分析</a></li>
+                                    <li class="course-outline-section"><a href="#section11-3">11.3 数据展示</a></li>
+                                    <li class="course-outline-section"><a href="#section11-4">11.4 项目总结</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /课程目录 -->
+
+                    <!-- 提示信息 -->
+                    <div class="course-outline-hint">
+                        <div class="hint-icon">👆</div>
+                        <p>请点击上方目录中的小节开始学习</p>
+                    </div>
+
+                    <!-- 第1章 Python入门认知 -->
+                    <div class="chapter" id="chapter1">
+                        <h3 class="chapter-title">第1章 Python入门认知</h3>
+                        
+                        <!-- 1.1 语言简介 -->
+                        <div class="section" id="section1-1">
+                            <h4 class="section-title">1.1 语言简介</h4>
+                            
+                            <div class="explanation-box">
+                                <h5 class="explanation-title">通俗讲解</h5>
+                                <p class="explanation-text">Python是一种简单易懂又非常强大的编程语言，由Guido van Rossum在1991年创建。它就像一把瑞士军刀，可以用来做网站开发、数据分析、人工智能等各种事情。Python的特点是代码简洁，读起来像英文，非常适合零基础学习。</p>
+                            </div>
+                            
+                            <div class="key-points-box">
+                                <h5 class="key-points-title">核心知识点</h5>
+                                <ul class="key-points-list">
+                                    <li>Python是一种解释型语言，无需编译即可运行</li>
+                                    <li>Python语法简洁，可读性强，学习成本低</li>
+                                    <li>Python拥有丰富的第三方库，生态系统完善</li>
+                                    <li>Python广泛应用于数据分析、Web开发、AI等领域</li>
+                                    <li>Python跨平台，Windows、Mac、Linux都能运行</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="example-box">
+                                <div class="example-header">
+                                    <span class="example-title">示例：Python简单代码</span>
+                                    <button class="copy-btn" onclick="copyCode('code1-1')">复制</button>
+                                </div>
+                                <div class="example-code">
+                                    <pre id="code1-1"><code><span class="keyword">print</span>(<span class="string">"Hello, Python!"</span>)
+<span class="comment"># 输出：Hello, Python!</span>
+
+<span class="comment"># 简单计算</span>
+result = 1 + 2 * 3
+<span class="keyword">print</span>(result)  <span class="comment"># 输出：7</span></code></pre>
+                                </div>
+                            </div>
+
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('python-section1-1')">标记已学习</button>
+                            </div>
+                            
+                            <!-- 练习题 -->
+                            <div class="quiz-section">
+                                <h4 class="quiz-title">本节练习</h4>
+                                <div class="question">
+                                    <p class="question-text">1. Python是在哪一年首次发布的？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q1" id="q1-a" value="A"><label for="q1-a">A. 1995</label></li>
+                                        <li class="option"><input type="radio" name="q1" id="q1-b" value="B"><label for="q1-b">B. 2000</label></li>
+                                        <li class="option"><input type="radio" name="q1" id="q1-c" value="C"><label for="q1-c">C. 1991</label></li>
+                                        <li class="option"><input type="radio" name="q1" id="q1-d" value="D"><label for="q1-d">D. 1985</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q1-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">2. Python的创始人是谁？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q2" id="q2-a" value="A"><label for="q2-a">A. Bill Gates</label></li>
+                                        <li class="option"><input type="radio" name="q2" id="q2-b" value="B"><label for="q2-b">B. Guido van Rossum</label></li>
+                                        <li class="option"><input type="radio" name="q2" id="q2-c" value="C"><label for="q2-c">C. Mark Zuckerberg</label></li>
+                                        <li class="option"><input type="radio" name="q2" id="q2-d" value="D"><label for="q2-d">D. Steve Jobs</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q2-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">3. Python属于什么类型的语言？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q3" id="q3-a" value="A"><label for="q3-a">A. 编译型语言</label></li>
+                                        <li class="option"><input type="radio" name="q3" id="q3-b" value="B"><label for="q3-b">B. 解释型语言</label></li>
+                                        <li class="option"><input type="radio" name="q3" id="q3-c" value="C"><label for="q3-c">C. 汇编语言</label></li>
+                                        <li class="option"><input type="radio" name="q3" id="q3-d" value="D"><label for="q3-d">D. 机器语言</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q3-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">4. 以下哪个不是Python的特点？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q4" id="q4-a" value="A"><label for="q4-a">A. 语法简洁</label></li>
+                                        <li class="option"><input type="radio" name="q4" id="q4-b" value="B"><label for="q4-b">B. 跨平台</label></li>
+                                        <li class="option"><input type="radio" name="q4" id="q4-c" value="C"><label for="q4-c">C. 生态丰富</label></li>
+                                        <li class="option"><input type="radio" name="q4" id="q4-d" value="D"><label for="q4-d">D. 只能用于网站开发</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q4-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">5. Python的设计哲学强调什么？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q5" id="q5-a" value="A"><label for="q5-a">A. 代码的复杂性</label></li>
+                                        <li class="option"><input type="radio" name="q5" id="q5-b" value="B"><label for="q5-b">B. 代码的可读性</label></li>
+                                        <li class="option"><input type="radio" name="q5" id="q5-c" value="C"><label for="q5-c">C. 代码的长度</label></li>
+                                        <li class="option"><input type="radio" name="q5" id="q5-d" value="D"><label for="q5-d">D. 代码的加密</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q5-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">6. Python的文件扩展名通常是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q6" id="q6-a" value="A"><label for="q6-a">A. .txt</label></li>
+                                        <li class="option"><input type="radio" name="q6" id="q6-b" value="B"><label for="q6-b">B. .py</label></li>
+                                        <li class="option"><input type="radio" name="q6" id="q6-c" value="C"><label for="q6-c">C. .java</label></li>
+                                        <li class="option"><input type="radio" name="q6" id="q6-d" value="D"><label for="q6-d">D. .html</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q6-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">7. Python不能运行在哪个操作系统？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q7" id="q7-a" value="A"><label for="q7-a">A. Windows</label></li>
+                                        <li class="option"><input type="radio" name="q7" id="q7-b" value="B"><label for="q7-b">B. MacOS</label></li>
+                                        <li class="option"><input type="radio" name="q7" id="q7-c" value="C"><label for="q7-c">C. Linux</label></li>
+                                        <li class="option"><input type="radio" name="q7" id="q7-d" value="D"><label for="q7-d">D. 以上都能运行</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q7-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">8. Python的第三方库是通过什么安装的？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q8" id="q8-a" value="A"><label for="q8-a">A. pip</label></li>
+                                        <li class="option"><input type="radio" name="q8" id="q8-b" value="B"><label for="q8-b">B. npm</label></li>
+                                        <li class="option"><input type="radio" name="q8" id="q8-c" value="C"><label for="q8-c">C. yarn</label></li>
+                                        <li class="option"><input type="radio" name="q8" id="q8-d" value="D"><label for="q8-d">D. brew</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q8-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">9. 以下哪个不是Python的应用领域？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q9" id="q9-a" value="A"><label for="q9-a">A. 数据分析</label></li>
+                                        <li class="option"><input type="radio" name="q9" id="q9-b" value="B"><label for="q9-b">B. 人工智能</label></li>
+                                        <li class="option"><input type="radio" name="q9" id="q9-c" value="C"><label for="q9-c">C. Web开发</label></li>
+                                        <li class="option"><input type="radio" name="q9" id="q9-d" value="D"><label for="q9-d">D. 操作系统开发</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q9-explanation"></div>
+                                </div>
+                                <div class="question">
+                                    <p class="question-text">10. 对于零基础学习Python，以下说法正确的是？</p>
+                                    <ul class="options">
+                                        <li class="option"><input type="radio" name="q10" id="q10-a" value="A"><label for="q10-a">A. 必须先学其他语言</label></li>
+                                        <li class="option"><input type="radio" name="q10" id="q10-b" value="B"><label for="q10-b">B. Python学习难度很高</label></li>
+                                        <li class="option"><input type="radio" name="q10" id="q10-c" value="C"><label for="q10-c">C. Python非常适合零基础</label></li>
+                                        <li class="option"><input type="radio" name="q10" id="q10-d" value="D"><label for="q10-d">D. Python只能专业人士学习</label></li>
+                                    </ul>
+                                    <div class="explanation" id="q10-explanation"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 剩余章节（内容框架） -->
+                        <div class="section" id="section1-2">
+                            <h4 class="section-title">1.2 环境安装</h4>
+                            <p class="explanation-text">本节内容：Python环境安装步骤、Anaconda介绍、pip使用方法</p>
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('python-section1-2')">标记已学习</button>
+                            </div>
+                        </div>
+                        
+                        <div class="section" id="section1-3">
+                            <h4 class="section-title">1.3 运行方式</h4>
+                            <p class="explanation-text">本节内容：交互式模式、脚本模式、Jupyter Notebook介绍</p>
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('python-section1-3')">标记已学习</button>
+                            </div>
+                        </div>
+                        
+                        <div class="section" id="section1-4">
+                            <h4 class="section-title">1.4 编辑器使用</h4>
+                            <p class="explanation-text">本节内容：VS Code、PyCharm、Jupyter Notebook的使用</p>
+                            <div class="section-progress">
+                                <button class="mark-learned-btn" onclick="toggleLearned('python-section1-4')">标记已学习</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第2-11章 内容框架 -->
+                    <div class="chapter" id="chapter2">
+                        <h3 class="chapter-title">第2章 基础输出与注释</h3>
+                        <div class="section" id="section2-1"><h4 class="section-title">2.1 print输出</h4><p class="explanation-text">print函数的使用方法</p><button class="mark-learned-btn" onclick="toggleLearned('python-section2-1')">标记已学习</button></div>
+                        <div class="section" id="section2-2"><h4 class="section-title">2.2 格式输出</h4><p class="explanation-text">格式化字符串的方法</p><button class="mark-learned-btn" onclick="toggleLearned('python-section2-2')">标记已学习</button></div>
+                        <div class="section" id="section2-3"><h4 class="section-title">2.3 单行注释</h4><p class="explanation-text">#符号的使用</p><button class="mark-learned-btn" onclick="toggleLearned('python-section2-3')">标记已学习</button></div>
+                        <div class="section" id="section2-4"><h4 class="section-title">2.4 多行注释</h4><p class="explanation-text">三引号的使用</p><button class="mark-learned-btn" onclick="toggleLearned('python-section2-4')">标记已学习</button></div>
+                    </div>
+
+                    <div class="chapter" id="chapter3">
+                        <h3 class="chapter-title">第3章 变量与命名规范</h3>
+                        <div class="section" id="section3-1"><h4 class="section-title">3.1 变量定义</h4><p class="explanation-text">变量的基本概念</p><button class="mark-learned-btn" onclick="toggleLearned('python-section3-1')">标记已学习</button></div>
+                        <div class="section" id="section3-2"><h4 class="section-title">3.2 命名规则</h4><p class="explanation-text">变量命名的规则</p><button class="mark-learned-btn" onclick="toggleLearned('python-section3-2')">标记已学习</button></div>
+                        <div class="section" id="section3-3"><h4 class="section-title">3.3 变量赋值</h4><p class="explanation-text">赋值操作</p><button class="mark-learned-btn" onclick="toggleLearned('python-section3-3')">标记已学习</button></div>
+                        <div class="section" id="section3-4"><h4 class="section-title">3.4 变量交换</h4><p class="explanation-text">交换变量值</p><button class="mark-learned-btn" onclick="toggleLearned('python-section3-4')">标记已学习</button></div>
+                    </div>
+
+                    <div class="chapter" id="chapter4">
+                        <h3 class="chapter-title">第4章 基础数据类型</h3>
+                        <div class="section" id="section4-1"><h4 class="section-title">4.1 整数类型</h4><p class="explanation-text">int类型</p><button class="mark-learned-btn" onclick="toggleLearned('python-section4-1')">标记已学习</button></div>
+                        <div class="section" id="section4-2"><h4 class="section-title">4.2 浮点类型</h4><p class="explanation-text">float类型</p><button class="mark-learned-btn" onclick="toggleLearned('python-section4-2')">标记已学习</button></div>
+                        <div class="section" id="section4-3"><h4 class="section-title">4.3 字符串类型</h4><p class="explanation-text">str类型</p><button class="mark-learned-btn" onclick="toggleLearned('python-section4-3')">标记已学习</button></div>
+                        <div class="section" id="section4-4"><h4 class="section-title">4.4 布尔类型</h4><p class="explanation-text">bool类型</p><button class="mark-learned-btn" onclick="toggleLearned('python-section4-4')">标记已学习</button></div>
+                        <div class="section" id="section4-5"><h4 class="section-title">4.5 类型转换</h4><p class="explanation-text">int()/str()/float()</p><button class="mark-learned-btn" onclick="toggleLearned('python-section4-5')">标记已学习</button></div>
+                    </div>
+
+                    <div class="chapter" id="chapter5">
+                        <h3 class="chapter-title">第5章 输入与运算符</h3>
+                        <div class="section" id="section5-1"><h4 class="section-title">5.1 input输入</h4><p class="explanation-text">获取用户输入</p><button class="mark-learned-btn" onclick="toggleLearned('python-section5-1')">标记已学习</button></div>
+                        <div class="section" id="section5-2"><h4 class="section-title">5.2 算术运算符</h4><p class="explanation-text">+ - * / // % **</p><button class="mark-learned-btn" onclick="toggleLearned('python-section5-2')">标记已学习</button></div>
+                        <div class="section" id="section5-3"><h4 class="section-title">5.3 比较运算符</h4><p class="explanation-text">== != > < >= <=</p><button class="mark-learned-btn" onclick="toggleLearned('python-section5-3')">标记已学习</button></div>
+                        <div class="section" id="section5-4"><h4 class="section-title">5.4 逻辑运算符</h4><p class="explanation-text">and or not</p><button class="mark-learned-btn" onclick="toggleLearned('python-section5-4')">标记已学习</button></div>
+                        <div class="section" id="section5-5"><h4 class="section-title">5.5 运算符优先级</h4><p class="explanation-text">优先级规则</p><button class="mark-learned-btn" onclick="toggleLearned('python-section5-5')">标记已学习</button></div>
+                    </div>
+
+                    <div class="chapter" id="chapter6">
+                        <h3 class="chapter-title">第6章 条件判断语句</h3>
+                        <div class="section" id="section6-1"><h4 class="section-title">6.1 if单分支</h4><p class="explanation-text">if语句</p><button class="mark-learned-btn" onclick="toggleLearned('python-section6-1')">标记已学习</button></div>
+                        <div class="section" id="section6-2"><h4 class="section-title">6.2 if-else双分支</h4><p class="explanation-text">if-else语句</p><button class="mark-learned-btn" onclick="toggleLearned('python-section6-2')">标记已学习</button></div>
+                        <div class="section" id="section6-3"><h4 class="section-title">6.3 if-elif多分支</h4><p class="explanation-text">if-elif-else语句</p><button class="mark-learned-btn" onclick="toggleLearned('python-section6-3')">标记已学习</button></div>
+                        <div class="section" id="section6-4"><h4 class="section-title">6.4 条件语句嵌套</h4><p class="explanation-text">嵌套的if语句</p><button class="mark-learned-btn" onclick="toggleLearned('python-section6-4')">标记已学习</button></div>
+                    </div>
+
+                    <div class="chapter" id="chapter7">
+                        <h3 class="chapter-title">第7章 循环语句</h3>
+                        <div class="section" id="section7-1"><h4 class="section-title">7.1 for循环基础</h4><p class="explanation-text">for循环</p><button class="mark-learned-btn" onclick="toggleLearned('python-section7-1')">标记已学习</button></div>
+                        <div class="section" id="section7-2"><h4 class="section-title">7.2 range函数</h4><p class="explanation-text">range()使用</p><button class="mark-learned-btn" onclick="toggleLearned('python-section7-2')">标记已学习</button></div>
+                        <div class="section" id="section7-3"><h4 class="section-title">7.3 while循环</h4><p class="explanation-text">while循环</p><button class="mark-learned-btn" onclick="toggleLearned('python-section7-3')">标记已学习</button></div>
+                        <div class="section" id="section7-4"><h4 class="section-title">7.4 break跳出循环</h4><p class="explanation-text">break语句</p><button class="mark-learned-btn" onclick="toggleLearned('python-section7-4')">标记已学习</button></div>
+                        <div class="section" id="section7-5"><h4 class="section-title">7.5 continue跳过循环</h4><p class="explanation-text">continue语句</p><button class="mark-learned-btn" onclick="toggleLearned('python-section7-5')">标记已学习</button></div>
+                        <div class="section" id="section7-6"><h4 class="section-title">7.6 循环嵌套</h4><p class="explanation-text">嵌套循环</p><button class="mark-learned-btn" onclick="toggleLearned('python-section7-6')">标记已学习</button></div>
+                    </div>
+
+                    <div class="chapter" id="chapter8">
+                        <h3 class="chapter-title">第8章 列表使用</h3>
+                        <div class="section" id="section8-1"><h4 class="section-title">8.1 列表创建</h4><p class="explanation-text">list定义</p><button class="mark-learned-btn" onclick="toggleLearned('python-section8-1')">标记已学习</button></div>
+                        <div class="section" id="section8-2"><h4 class="section-title">8.2 增删操作</h4><p class="explanation-text">append/pop/remove</p><button class="mark-learned-btn" onclick="toggleLearned('python-section8-2')">标记已学习</button></div>
+                        <div class="section" id="section8-3"><h4 class="section-title">8.3 修改查询</h4><p class="explanation-text">索引访问</p><button class="mark-learned-btn" onclick="toggleLearned('python-section8-3')">标记已学习</button></div>
+                        <div class="section" id="section8-4"><h4 class="section-title">8.4 列表常用方法</h4><p class="explanation-text">sort/reverse/len</p><button class="mark-learned-btn" onclick="toggleLearned('python-section8-4')">标记已学习</button></div>
+                    </div>
+
+                    <div class="chapter" id="chapter9">
+                        <h3 class="chapter-title">第9章 字典使用</h3>
+                        <div class="section" id="section9-1"><h4 class="section-title">9.1 字典创建</h4><p class="explanation-text">dict定义</p><button class="mark-learned-btn" onclick="toggleLearned('python-section9-1')">标记已学习</button></div>
+                        <div class="section" id="section9-2"><h4 class="section-title">9.2 键值查询</h4><p class="explanation-text">get方法</p><button class="mark-learned-btn" onclick="toggleLearned('python-section9-2')">标记已学习</button></div>
+                        <div class="section" id="section9-3"><h4 class="section-title">9.3 增删改操作</h4><p class="explanation-text">更新和删除</p><button class="mark-learned-btn" onclick="toggleLearned('python-section9-3')">标记已学习</button></div>
+                        <div class="section" id="section9-4"><h4 class="section-title">9.4 字典遍历</h4><p class="explanation-text">keys/values/items</p><button class="mark-learned-btn" onclick="toggleLearned('python-section9-4')">标记已学习</button></div>
+                    </div>
+
+                    <div class="chapter" id="chapter10">
+                        <h3 class="chapter-title">第10章 函数基础</h3>
+                        <div class="section" id="section10-1"><h4 class="section-title">10.1 函数定义</h4><p class="explanation-text">def关键字</p><button class="mark-learned-btn" onclick="toggleLearned('python-section10-1')">标记已学习</button></div>
+                        <div class="section" id="section10-2"><h4 class="section-title">10.2 位置参数</h4><p class="explanation-text">参数传递</p><button class="mark-learned-btn" onclick="toggleLearned('python-section10-2')">标记已学习</button></div>
+                        <div class="section" id="section10-3"><h4 class="section-title">10.3 函数返回值</h4><p class="explanation-text">return语句</p><button class="mark-learned-btn" onclick="toggleLearned('python-section10-3')">标记已学习</button></div>
+                        <div class="section" id="section10-4"><h4 class="section-title">10.4 函数调用</h4><p class="explanation-text">调用函数</p><button class="mark-learned-btn" onclick="toggleLearned('python-section10-4')">标记已学习</button></div>
+                    </div>
+
+                    <div class="chapter" id="chapter11">
+                        <h3 class="chapter-title">第11章 综合实战项目</h3>
+                        <div class="section" id="section11-1"><h4 class="section-title">11.1 简易计算器</h4><p class="explanation-text">实现加减乘除</p><button class="mark-learned-btn" onclick="toggleLearned('python-section11-1')">标记已学习</button></div>
+                        <div class="section" id="section11-2"><h4 class="section-title">11.2 成绩查询工具</h4><p class="explanation-text">字典存储成绩</p><button class="mark-learned-btn" onclick="toggleLearned('python-section11-2')">标记已学习</button></div>
+                        <div class="section" id="section11-3"><h4 class="section-title">11.3 数据遍历小案例</h4><p class="explanation-text">循环遍历数据</p><button class="mark-learned-btn" onclick="toggleLearned('python-section11-3')">标记已学习</button></div>
+                    </div>
+                    
+                    <a href="../index.html#courses" class="back-link">返回课程列表</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 回到顶部按钮 -->
+    <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 张茵茵的个人学习页面</p>
+        </div>
+    </footer>
+
+    <script>
+        const COURSE_ID = 'python-basic';
+        
+        const quizAnswers = {
+            q1: { answer: 'C', explanation: 'Python于1991年首次发布，由Guido van Rossum设计。' },
+            q2: { answer: 'B', explanation: 'Python的创始人是Guido van Rossum。' },
+            q3: { answer: 'B', explanation: 'Python是解释型语言，不需要编译即可运行。' },
+            q4: { answer: 'D', explanation: 'Python不仅可以用于网站开发，还可以用于数据分析、AI等多个领域。' },
+            q5: { answer: 'B', explanation: 'Python的设计哲学强调代码的可读性。' },
+            q6: { answer: 'B', explanation: 'Python文件的扩展名通常是.py。' },
+            q7: { answer: 'D', explanation: 'Python是跨平台的，可以在Windows、MacOS、Linux等操作系统上运行。' },
+            q8: { answer: 'A', explanation: 'pip是Python的包管理工具，用于安装第三方库。' },
+            q9: { answer: 'D', explanation: 'Python不适合开发操作系统，操作系统通常用C/C++开发。' },
+            q10: { answer: 'C', explanation: 'Python语法简洁，非常适合零基础学习。' },
+        };
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initSidebar();
+            initCourseOutline();
+            initSectionsVisibility();
+            loadLearnedSections();
+            initScrollToTop();
+            initQuiz();
+            highlightActiveSection();
+        });
+        
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            const toggle = document.querySelector('.sidebar-toggle');
+            
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+        
+        function initSidebar() {
+            const chapters = document.querySelectorAll('.sidebar-chapter');
+            chapters.forEach(chapter => {
+                const header = chapter.querySelector('.sidebar-chapter-header');
+                const toggleBtn = chapter.querySelector('.sidebar-toggle-btn');
+                
+                // 点击章节标题或按钮时切换展开/收起
+                header.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    chapter.classList.toggle('collapsed');
+                    saveSidebarState();
+                });
+                
+                toggleBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    chapter.classList.toggle('collapsed');
+                    saveSidebarState();
+                });
+            });
+            
+            const sectionLinks = document.querySelectorAll('.sidebar-sections a');
+            sectionLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+                    // 关闭侧边栏（移动端）
+                    if (window.innerWidth < 768) {
+                        toggleSidebar();
+                    }
+                });
+            });
+            
+            // 恢复保存的状态
+            restoreSidebarState();
+        }
+
+        function initCourseOutline() {
+            const items = document.querySelectorAll('.course-outline-item');
+            const storageKey = 'python-outline-state';
+
+            // 默认展开第1章，其余收起
+            items.forEach((item, index) => {
+                const headerRow = item.querySelector('.course-outline-header-row');
+                const toggleBtn = item.querySelector('.course-outline-toggle');
+
+                if (index === 0) {
+                    item.classList.remove('collapsed');
+                    if (toggleBtn) toggleBtn.innerHTML = '<span class="toggle-icon">▼</span> 收起';
+                } else {
+                    item.classList.add('collapsed');
+                    if (toggleBtn) toggleBtn.innerHTML = '<span class="toggle-icon">▶</span> 展开';
+                }
+
+                headerRow.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    item.classList.toggle('collapsed');
+                    if (toggleBtn) {
+                        if (item.classList.contains('collapsed')) {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▶</span> 展开';
+                        } else {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▼</span> 收起';
+                        }
+                    }
+                });
+
+                if (toggleBtn) {
+                    toggleBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        item.classList.toggle('collapsed');
+                        if (item.classList.contains('collapsed')) {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▶</span> 展开';
+                        } else {
+                            toggleBtn.innerHTML = '<span class="toggle-icon">▼</span> 收起';
+                        }
+                    });
+                }
+            });
+
+            // 小节链接点击 - 显示对应内容
+            const sectionLinks = document.querySelectorAll('.course-outline-section a');
+            sectionLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    const targetId = href.substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        // 隐藏所有小节
+                        document.querySelectorAll('.section').forEach(section => {
+                            section.classList.remove('active');
+                        });
+
+                        // 显示目标小节
+                        targetSection.classList.add('active');
+
+                        // 展开对应的章节
+                        const chapterItem = targetSection.closest('.chapter');
+                        if (chapterItem) {
+                            chapterItem.style.display = 'block';
+                        }
+
+                        // 平滑滚动到目标位置
+                        setTimeout(() => {
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 100);
+                    }
+                });
+            });
+        }
+
+        // 初始化小节可见性
+        function initSectionsVisibility() {
+            const sections = document.querySelectorAll('.section');
+            if (sections.length > 0) {
+                // 默认隐藏所有小节内容
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // 检查URL是否有锚点
+                const hash = window.location.hash;
+                if (hash) {
+                    const targetSection = document.querySelector(hash);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                        setTimeout(() => {
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 100);
+                    }
+                }
+            }
+        }
+        
+        function saveSidebarState() {
+            const chapters = document.querySelectorAll('.sidebar-chapter');
+            const state = {};
+            chapters.forEach((chapter, index) => {
+                state[index] = !chapter.classList.contains('collapsed');
+            });
+            localStorage.setItem(`${COURSE_ID}-sidebar`, JSON.stringify(state));
+        }
+        
+        function restoreSidebarState() {
+            const savedState = localStorage.getItem(`${COURSE_ID}-sidebar`);
+            if (savedState) {
+                const state = JSON.parse(savedState);
+                const chapters = document.querySelectorAll('.sidebar-chapter');
+                chapters.forEach((chapter, index) => {
+                    if (state[index] === false) {
+                        chapter.classList.add('collapsed');
+                    } else {
+                        chapter.classList.remove('collapsed');
+                    }
+                });
+            } else {
+                // 默认全部展开
+                const chapters = document.querySelectorAll('.sidebar-chapter');
+                chapters.forEach(chapter => {
+                    chapter.classList.remove('collapsed');
+                });
+            }
+        }
+        
+        function highlightActiveSection() {
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('.section');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('.sidebar-sections a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                const activeLink = document.querySelector(`.sidebar-sections a[href="#${currentSection}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                    // 展开包含当前小节的章节
+                    const chapter = activeLink.closest('.sidebar-chapter');
+                    if (chapter && chapter.classList.contains('collapsed')) {
+                        chapter.classList.remove('collapsed');
+                    }
+                }
+            });
+        }
+        
+        function loadLearnedSections() {
+            const learned = JSON.parse(localStorage.getItem(`${COURSE_ID}-learned`) || '[]');
+            learned.forEach(id => {
+                const btn = document.querySelector(`button[onclick="toggleLearned('${id}')"]`);
+                if (btn) {
+                    btn.classList.add('learned');
+                    btn.textContent = '✓ 已学习';
+                }
+            });
+        }
+        
+        function toggleLearned(sectionId) {
+            const btn = document.querySelector(`button[onclick="toggleLearned('${sectionId}')"]`);
+            let learned = JSON.parse(localStorage.getItem(`${COURSE_ID}-learned`) || '[]');
+            
+            if (learned.includes(sectionId)) {
+                learned = learned.filter(id => id !== sectionId);
+                btn.classList.remove('learned');
+                btn.textContent = '标记已学习';
+            } else {
+                learned.push(sectionId);
+                btn.classList.add('learned');
+                btn.textContent = '✓ 已学习';
+            }
+            
+            localStorage.setItem(`${COURSE_ID}-learned`, JSON.stringify(learned));
+        }
+        
+        function initScrollToTop() {
+            const btn = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            });
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const code = codeElement.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = codeElement.closest('.example-box')?.querySelector('.copy-btn');
+                if (btn) {
+                    btn.textContent = '✓ 已复制';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = '复制';
+                        btn.classList.remove('copied');
+                    }, 2000);
+                }
+            });
+        }
+        
+        function initQuiz() {
+            const savedAnswers = JSON.parse(localStorage.getItem(`${COURSE_ID}-quiz`) || '{}');
+            
+            Object.keys(savedAnswers).forEach(qId => {
+                const radio = document.querySelector(`input[name="${qId}"][value="${savedAnswers[qId]}"]`);
+                if (radio) {
+                    radio.checked = true;
+                    showExplanation(qId, savedAnswers[qId]);
+                }
+            });
+            
+            const radios = document.querySelectorAll('.question input[type="radio"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const qId = this.name;
+                    const userAnswer = this.value;
+                    showExplanation(qId, userAnswer);
+                    savedAnswers[qId] = userAnswer;
+                    localStorage.setItem(`${COURSE_ID}-quiz`, JSON.stringify(savedAnswers));
+                });
+            });
+        }
+        
+        function showExplanation(qId, userAnswer) {
+            const correctAnswer = quizAnswers[qId]?.answer;
+            const explanation = quizAnswers[qId]?.explanation || '练习题完善中...';
+            const explanationDiv = document.getElementById(`${qId}-explanation`);
+            const options = document.querySelectorAll(`input[name="${qId}"]`);
+            
+            options.forEach(opt => {
+                const li = opt.closest('.option');
+                li.classList.add('disabled');
+                if (correctAnswer && opt.value === correctAnswer) {
+                    li.classList.add('correct');
+                } else if (opt.checked && correctAnswer && opt.value !== correctAnswer) {
+                    li.classList.add('incorrect');
+                }
+            });
+            
+            if (explanationDiv) {
+                if (userAnswer === correctAnswer) {
+                    explanationDiv.innerHTML = `<strong>✓ 正确！</strong>${explanation}`;
+                    explanationDiv.classList.remove('incorrect');
+                    explanationDiv.classList.add('correct');
+                } else if (correctAnswer) {
+                    explanationDiv.innerHTML = `<strong>✗ 错误！</strong>正确答案是 ${correctAnswer}。${explanation}`;
+                    explanationDiv.classList.remove('correct');
+                    explanationDiv.classList.add('incorrect');
+                }
+                explanationDiv.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据标准化 - 数据采集与处理</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>张茵茵的学习空间</h1>
+            <ul class="nav-links">
+                <li><a href="../../index.html">首页</a></li>
+                <li><a href="../../index.html#courses">课程</a></li>
+                <li><a href="../../learning-path.html">学习路径</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="sidebar-toggle" onclick="toggleSidebar()"></div>
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h4>📥 数据采集与处理 列表</h4>
+        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-back">
+                <a href="../data-collection-catalog.html">← 返回目录</a>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter1">第1章 数据采集概述</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section1-1" class="">1.1 数据来源</a></li>
+                    <li><a href="#section1-2" class="">1.2 采集方法</a></li>
+                    <li><a href="#section1-3" class="">1.3 数据类型</a></li>
+                    <li><a href="#section1-4" class="">1.4 采集原则</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter2">第2章 网络数据采集</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section2-1" class="">2.1 HTTP基础</a></li>
+                    <li><a href="#section2-2" class="">2.2 Requests库</a></li>
+                    <li><a href="#section2-3" class="">2.3 BeautifulSoup</a></li>
+                    <li><a href="#section2-4" class="">2.4 Scrapy框架</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter3">第3章 数据库数据提取</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section3-1" class="">3.1 SQL基础</a></li>
+                    <li><a href="#section3-2" class="">3.2 MySQL连接</a></li>
+                    <li><a href="#section3-3" class="">3.3 SQLite使用</a></li>
+                    <li><a href="#section3-4" class="">3.4 数据导出</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter4">第4章 API数据获取</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section4-1" class="">4.1 RESTful API</a></li>
+                    <li><a href="#section4-2" class="">4.2 API认证</a></li>
+                    <li><a href="#section4-3" class="">4.3 JSON解析</a></li>
+                    <li><a href="#section4-4" class="">4.4 分页处理</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter5">第5章 数据清洗基础</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section5-1" class="">5.1 缺失值处理</a></li>
+                    <li><a href="#section5-2" class="">5.2 异常值检测</a></li>
+                    <li><a href="#section5-3" class="">5.3 数据类型转换</a></li>
+                    <li><a href="#section5-4" class="">5.4 重复数据处理</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter6">第6章 数据转换</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section6-1" class="active">6.1 数据标准化</a></li>
+                    <li><a href="#section6-2" class="">6.2 数据归一化</a></li>
+                    <li><a href="#section6-3" class="">6.3 特征编码</a></li>
+                    <li><a href="#section6-4" class="">6.4 数据聚合</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter7">第7章 数据验证</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section7-1" class="">7.1 数据完整性</a></li>
+                    <li><a href="#section7-2" class="">7.2 数据一致性</a></li>
+                    <li><a href="#section7-3" class="">7.3 数据准确性</a></li>
+                    <li><a href="#section7-4" class="">7.4 数据质量报告</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-chapter">
+                <a href="#chapter8">第8章 数据存储</a>
+                <ul class="sidebar-sections">
+                    <li><a href="#section8-1" class="">8.1 CSV格式</a></li>
+                    <li><a href="#section8-2" class="">8.2 Excel格式</a></li>
+                    <li><a href="#section8-3" class="">8.3 JSON格式</a></li>
+                    <li><a href="#section8-4" class="">8.4 数据库存储</a></li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+
+    <section class="course-detail">
+        <div class="container">
+            <div class="course-content-wrapper">
+                <div class="section-nav-top">
+                    <a href="../data-collection-catalog.html" class="back-to-catalog">← 返回课程目录</a>
+                </div>
+                
+                <div class="chapter" id="chapter6">
+                    <h3 class="chapter-title">第6章 数据转换</h3>
+                    
+                    <div class="section active" id="section6-1">
+                        <h4 class="section-title">6.1 数据标准化</h4>
+                        
+                        <div class="explanation-box">
+                            <h5 class="explanation-title">通俗讲解</h5>
+                            <p class="explanation-text">数据标准化是数据转换中的重要内容。本节将详细介绍数据标准化的各个方面，帮助你全面理解并掌握这一知识点。</p>
+                        </div>
+                        
+                        <div class="key-points-box">
+                            <h5 class="key-points-title">核心知识点</h5>
+<ul class="key-points-list">
+                                <li>Z-score标准化：均值0，标准差1</li>
+                                <li>公式：(x-mean)/std</li>
+                                <li>适用于正态分布数据</li>
+                                <li>保留数据分布形状</li>
+                                <li>标准化后可用于模型</li>
+                                <li>sklearn的StandardScaler</li>
+                                <li>outlier会影响结果</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="example-box">
+                            <div class="example-header">
+                                <span class="example-title">示例代码</span>
+                                <button class="copy-btn" onclick="copyCode('example-code')">复制</button>
+                            </div>
+                            <div class="example-code">
+                                <pre id="example-code"><code># 数据标准化示例
+# 这是数据标准化的示例代码
+# 建议动手实践加深理解</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="section-progress">
+                            <button class="mark-learned-btn" onclick="toggleLearned('data-collection-section-6-1')">标记已学习</button>
+                            <span class="progress-text" id="progress-data-collection-section-6-1"></span>
+                        </div>
+
+                        <div class="quiz-card-wrapper">
+                            <a href="quiz-6-1.html" class="quiz-card quiz-card-link">
+                                <div class="quiz-card-icon">📝</div>
+                                <div class="quiz-card-content">
+                                    <div class="quiz-card-title">本节练习</div>
+                                    <div class="quiz-card-desc">10道单选题 · 检测掌握程度 →</div>
+                                </div>
+                                <div class="quiz-card-arrow">→</div>
+                            </a>
+                        </div>
+
+                        <div class="quiz-card-wrapper">
+                            <a href="practice-6-1.html" class="quiz-card quiz-card-link practice-card">
+                                <div class="quiz-card-icon">💻</div>
+                                <div class="quiz-card-content">
+                                    <div class="quiz-card-title">Python实操</div>
+                                    <div class="quiz-card-desc">1道代码实操题 · 动手实践 →</div>
+                                </div>
+                                <div class="quiz-card-arrow">→</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-navigation">
+                    <a href="section-5-4.html" class="nav-btn prev-btn">← 上一节<br><small>第5章 数据清洗基础 - 重复数据处理</small></a>
+                    <a href="section-6-2.html" class="nav-btn next-btn">下一节 →<br><small>第6章 数据转换 - 数据归一化</small></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>张茵茵的学习空间</p>
+    </footer>
+
+    <script>
+        // 答题记录
+        const sectionId = "data-collection-section-6-1";
+        const correctAnswers = {'q1': 'A', 'q2': 'C', 'q3': 'B', 'q4': 'B', 'q5': 'D', 'q6': 'B', 'q7': 'C', 'q8': 'C', 'q9': 'C', 'q10': 'B'};
+        const explanations = {'q1': 'Z-score标准化：均值0，标准差1', 'q2': 'outlier会影响结果', 'q3': '边学边练是最好的学习方法，可以加深理解和记忆。', 'q4': '公式：(x-mean)/std', 'q5': '掌握数据标准化后可以进行多种应用和发展。', 'q6': '适用于正态分布数据', 'q7': '可以通过做题和实践来评估数据标准化的掌握程度。', 'q8': '保留数据分布形状', 'q9': '学习数据标准化需要坚持练习，多思考多总结。', 'q10': '数据标准化的主要作用是解决实际问题。'};
+
+        function submitQuiz() {
+            let score = 0;
+            let answered = 0;
+            
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const explanationEl = document.getElementById(`q${i}-explanation`);
+                
+                if (selected) {
+                    answered++;
+                    const selectedValue = selected.value;
+                    const correctValue = correctAnswers[`q${i}`];
+                    
+                    if (selectedValue === correctValue) {
+                        score++;
+                        explanationEl.innerHTML = `<span class="correct">✓ 回答正确！</span> ${explanations[`q${i}`]}`;
+                        selected.parentElement.classList.add('correct-answer');
+                    } else {
+                        explanationEl.innerHTML = `<span class="wrong">✗ 回答错误！</span> ${explanations[`q${i}`]}`;
+                        selected.parentElement.classList.add('wrong-answer');
+                        const correctOption = document.querySelector(`input[name="q${i}"][value="${correctValue}"]`);
+                        if (correctOption) {
+                            correctOption.parentElement.classList.add('correct-answer');
+                        }
+                    }
+                } else {
+                    explanationEl.innerHTML = `<span class="wrong">请先选择答案！</span>`;
+                }
+            }
+            
+            alert(`你答对了 ${score}/10 题！`);
+            
+            // 保存答题记录
+            const quizResult = {
+                sectionId: sectionId,
+                score: score,
+                total: 10,
+                answers: {}
+            };
+            
+            for (let i = 1; i <= 10; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                quizResult.answers[`q${i}`] = selected ? selected.value : null;
+            }
+            
+            localStorage.setItem(`quiz-${sectionId}`, JSON.stringify(quizResult));
+        }
+        
+        function resetQuiz() {
+            for (let i = 1; i <= 10; i++) {
+                const options = document.querySelectorAll(`input[name="q${i}"]`);
+                options.forEach(opt => {
+                    opt.checked = false;
+                    opt.parentElement.classList.remove('correct-answer', 'wrong-answer');
+                });
+                document.getElementById(`q${i}-explanation`).innerHTML = '';
+            }
+        }
+        
+        function loadQuizResult() {
+            const saved = localStorage.getItem(`quiz-${sectionId}`);
+            if (saved) {
+                const quizResult = JSON.parse(saved);
+                for (let i = 1; i <= 10; i++) {
+                    const answer = quizResult.answers[`q${i}`];
+                    if (answer) {
+                        const radio = document.querySelector(`input[name="q${i}"][value="${answer}"]`);
+                        if (radio) radio.checked = true;
+                    }
+                }
+            }
+        }
+        
+        function toggleLearned(id) {
+            let learned = JSON.parse(localStorage.getItem('learned') || '[]');
+            const index = learned.indexOf(id);
+            
+            if (index > -1) {
+                learned.splice(index, 1);
+                document.getElementById(`progress-${id}`).textContent = '';
+                document.querySelector(`button[onclick="toggleLearned('${id}')"]`).textContent = '标记已学习';
+            } else {
+                learned.push(id);
+                document.getElementById(`progress-${id}`).textContent = '✓ 已学习';
+                document.querySelector(`button[onclick="toggleLearned('${id}')"]`).textContent = '取消标记';
+            }
+            
+            localStorage.setItem('learned', JSON.stringify(learned));
+            
+            const sidebarLink = document.querySelector(`.sidebar a[href="#section${section['id']}"]`);
+            if (sidebarLink) {
+                sidebarLink.classList.toggle('learned', index === -1);
+            }
+        }
+        
+        function copyCode(elementId) {
+            const code = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('代码已复制到剪贴板！');
+            });
+        }
+        
+        function toggleSidebar() {
+            document.body.classList.toggle('sidebar-open');
+        }
+
+        // 练习题在独立子页面中，点击卡片跳转
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuizResult();
+            
+            const learned = JSON.parse(localStorage.getItem('learned') || '[]');
+            if (learned.includes(sectionId)) {
+                document.getElementById(`progress-${sectionId}`).textContent = '✓ 已学习';
+                document.querySelector(`button[onclick="toggleLearned('${sectionId}')"]`).textContent = '取消标记';
+            }
+            
+            if (window.innerWidth < 768) {
+                const sidebarLinks = document.querySelectorAll('.sidebar a');
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        document.body.classList.remove('sidebar-open');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

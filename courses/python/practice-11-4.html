@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目总结 - Python实操 | Python基础</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .practice-container { background: #fff; border-radius: 12px; padding: 2rem; margin-top: 1.5rem; border: 1px solid #e2e8f0; }
+        .practice-title { font-size: 1.3rem; color: #1e3a5f; margin-bottom: 0.5rem; font-weight: 600; }
+        .practice-desc { color: #4a5568; margin-bottom: 1.5rem; padding: 1rem; background: #f7fafc; border-radius: 8px; border-left: 4px solid #38a169; }
+        .example-box { border: 1px solid #cbd5e0; border-radius: 8px; padding: 1.2rem; margin-bottom: 1.5rem; background: #fff; }
+        .example-title { color: #2b6cb0; font-weight: 600; margin-bottom: 0.8rem; font-size: 1.05rem; }
+        .code-block { background: #1e293b; color: #e2e8f0; padding: 1.2rem; border-radius: 8px; margin: 0.5rem 0; font-family: Consolas, "Courier New", monospace; overflow-x: auto; white-space: pre-wrap; line-height: 1.6; font-size: 0.92rem; }
+        .result-block { background: #f0fdf4; border: 1px dashed #86efac; color: #166534; padding: 1rem; border-radius: 8px; margin-top: 0.8rem; font-family: Consolas, monospace; white-space: pre-wrap; font-size: 0.92rem; }
+        .result-block::before { content: "运行结果:"; display: block; font-weight: bold; margin-bottom: 0.5rem; color: #15803d; }
+        .copy-btn { background: #38a169; color: white; border: none; padding: 0.4rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; float: right; }
+        .copy-btn:hover { background: #276749; }
+        .practice-area { background: #1e293b; border: 2px solid #38a169; border-radius: 12px; padding: 1.8rem; margin-top: 1.5rem; }
+        .practice-area-title { color: #86efac; font-weight: 600; font-size: 1.2rem; margin-bottom: 1rem; }
+        .practice-task { background: #0f172a; border-left: 4px solid #38a169; padding: 0.9rem 1.2rem; margin-bottom: 0.7rem; border-radius: 6px; color: #e2e8f0; font-size: 0.95rem; }
+        .practice-task strong { color: #fbbf24; }
+        .practice-placeholder { background: #0f172a; border: 1px dashed #475569; border-radius: 8px; padding: 2rem; margin-top: 1.2rem; color: #94a3b8; text-align: center; font-style: italic; min-height: 100px; font-family: Consolas, monospace; font-size: 0.95rem; }
+        .solution-box { background: #f7fafc; border-radius: 8px; padding: 1.2rem; margin-top: 1.2rem; border: 1px solid #e2e8f0; }
+        .solution-box summary { cursor: pointer; color: #2b6cb0; font-weight: 600; user-select: none; }
+        .online-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
+        .online-links a { background: #4299e1; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-size: 0.9rem; }
+        .online-links a:hover { background: #2b6cb0; }
+        .kp-list { margin: 0.5rem 0; padding-left: 1.5rem; color: #2d3748; }
+        .kp-list li { margin: 0.3rem 0; }
+        .section-main-title { margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>张茵茵的学习空间</h1>
+            <ul class="nav-links">
+                <li><a href="../../index.html">首页</a></li>
+                <li><a href="../../index.html#courses">课程</a></li>
+                <li><a href="../../learning-path.html">学习路径</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="sidebar-toggle" onclick="toggleSidebar()"></div>
+    <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    <aside class="sidebar">
+        <div class="sidebar-header"><h4>📚 Python基础 列表</h4></div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-back"><a href="section-11-4.html">← 返回小节</a></li>
+            <li class="sidebar-chapter"><a href="section-11-4.html">第1章 Python入门认知</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-1-1.html">1.1 语言简介</a></li>
+                    <li><a href="section-1-2.html">1.2 环境安装</a></li>
+                    <li><a href="section-1-3.html">1.3 运行方式</a></li>
+                    <li><a href="section-1-4.html">1.4 编辑器使用</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-11-4.html">第2章 基础输出与注释</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-2-1.html">2.1 print输出</a></li>
+                    <li><a href="section-2-2.html">2.2 格式输出</a></li>
+                    <li><a href="section-2-3.html">2.3 单行注释</a></li>
+                    <li><a href="section-2-4.html">2.4 多行注释</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-11-4.html">第3章 变量与命名规范</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-3-1.html">3.1 变量定义</a></li>
+                    <li><a href="section-3-2.html">3.2 命名规则</a></li>
+                    <li><a href="section-3-3.html">3.3 变量赋值</a></li>
+                    <li><a href="section-3-4.html">3.4 变量交换</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-11-4.html">第4章 基础数据类型</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-4-1.html">4.1 整数类型</a></li>
+                    <li><a href="section-4-2.html">4.2 浮点类型</a></li>
+                    <li><a href="section-4-3.html">4.3 字符串类型</a></li>
+                    <li><a href="section-4-4.html">4.4 布尔类型</a></li>
+                    <li><a href="section-4-5.html">4.5 类型转换</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-11-4.html">第5章 输入与运算符</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-5-1.html">5.1 input输入</a></li>
+                    <li><a href="section-5-2.html">5.2 算术运算符</a></li>
+                    <li><a href="section-5-3.html">5.3 比较运算符</a></li>
+                    <li><a href="section-5-4.html">5.4 逻辑运算符</a></li>
+                    <li><a href="section-5-5.html">5.5 运算符优先级</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-11-4.html">第6章 条件判断语句</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-6-1.html">6.1 if单分支</a></li>
+                    <li><a href="section-6-2.html">6.2 if-else双分支</a></li>
+                    <li><a href="section-6-3.html">6.3 if-elif多分支</a></li>
+                    <li><a href="section-6-4.html">6.4 条件语句嵌套</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-11-4.html">第7章 循环语句</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-7-1.html">7.1 for循环基础</a></li>
+                    <li><a href="section-7-2.html">7.2 range函数</a></li>
+                    <li><a href="section-7-3.html">7.3 while循环</a></li>
+                    <li><a href="section-7-4.html">7.4 break跳出循环</a></li>
+                    <li><a href="section-7-5.html">7.5 continue跳过循环</a></li>
+                    <li><a href="section-7-6.html">7.6 循环嵌套</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-11-4.html">第8章 列表使用</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-8-1.html">8.1 列表创建</a></li>
+                    <li><a href="section-8-2.html">8.2 增删操作</a></li>
+                    <li><a href="section-8-3.html">8.3 修改查询</a></li>
+                    <li><a href="section-8-4.html">8.4 列表常用方法</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-11-4.html">第9章 字典使用</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-9-1.html">9.1 字典创建</a></li>
+                    <li><a href="section-9-2.html">9.2 键值查询</a></li>
+                    <li><a href="section-9-3.html">9.3 增删改操作</a></li>
+                    <li><a href="section-9-4.html">9.4 字典遍历</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-11-4.html">第10章 函数基础</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-10-1.html">10.1 函数定义</a></li>
+                    <li><a href="section-10-2.html">10.2 参数传递</a></li>
+                    <li><a href="section-10-3.html">10.3 返回值</a></li>
+                    <li><a href="section-10-4.html">10.4 作用域</a></li>
+                    <li><a href="section-10-5.html">10.5 匿名函数</a></li>
+                </ul></li>
+            <li class="sidebar-chapter"><a href="section-11-4.html">第11章 综合实战项目</a>
+                <ul class="sidebar-sections">
+                    <li><a href="section-11-1.html">11.1 项目准备</a></li>
+                    <li><a href="section-11-2.html">11.2 数据分析</a></li>
+                    <li><a href="section-11-3.html">11.3 数据展示</a></li>
+                    <li><a href="section-11-4.html">11.4 项目总结</a></li>
+                </ul></li>
+        </ul>
+    </aside>
+    <section class="course-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="content-main">
+                    <div class="breadcrumb-nav"><a href="section-11-4.html">← 返回小节</a></div>
+                    <div class="section-page">
+                        <h2 class="section-main-title">💻 项目总结 - Python实操</h2>
+                        <div class="section-sub-title"><h3>第11章 综合实战项目</h3></div>
+                    <div class="practice-container">
+                        <div class="practice-title">项目总结练习</div>
+                        <div class="practice-desc">项目总结实操练习：回顾项目过程、总结遇到的问题、分享解决方案、代码优化建议、性能改进方向、功能扩展思路、项目文档整理</div>
+                        <div style="margin: 1rem 0; padding: 1rem; background: #ebf8ff; border-radius: 6px;">
+                            <strong>本节知识点：</strong>
+                            <ul class="kp-list">
+                                <li>回顾项目过程</li>
+                                <li>总结遇到的问题</li>
+                                <li>分享解决方案</li>
+                                <li>代码优化建议</li>
+                                <li>性能改进方向</li>
+                                <li>功能扩展思路</li>
+                                <li>项目文档整理</li>
+                            </ul>
+                        </div>
+                    <h3 style="color: #2b6cb0; margin-top: 1.5rem; margin-bottom: 1rem;">📖 参考示例</h3>
+                    <div class="example-box">
+                        <div class="example-title">示例1：基础用法</div>
+                        <button class="copy-btn" onclick="copyCode('code-11-4-1')">复制代码</button>
+                        <div style="clear: both;"></div>
+                        <div class="code-block" id="code-11-4-1"># 项目总结 - 基础练习
+# 知识点: 回顾项目过程、总结遇到的问题、分享解决方案、代码优化建议、性能改进方向、功能扩展思路、项目文档整理
+
+# 这里是示例代码
+print("=" * 30)
+print("  项目总结 练习")
+print("=" * 30)
+
+# 简单测试
+value = 10
+print(f"测试值: {value}")
+print(f"加倍: {value * 2}")
+print(f"平方: {value ** 2}")
+print("练习完成!")</div>
+                        <div class="result-block">==============================
+  项目总结 练习
+==============================
+测试值: 10
+加倍: 20
+平方: 100
+练习完成!</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-title">示例2：实际应用</div>
+                        <button class="copy-btn" onclick="copyCode('code-11-4-2')">复制代码</button>
+                        <div style="clear: both;"></div>
+                        <div class="code-block" id="code-11-4-2"># 项目总结 - 实际应用
+# 根据本节知识点编写更复杂的代码
+
+data = [1, 2, 3, 4, 5]
+
+print("=" * 30)
+print("  数据处理示例")
+print("=" * 30)
+
+# 处理数据
+for i, v in enumerate(data):
+    print(f"第{i+1}个: {v}")
+
+print("=" * 30)
+print(f"总计: {sum(data)}")
+print(f"个数: {len(data)}")
+print(f"平均: {sum(data)/len(data):.1f}")</div>
+                        <div class="result-block">==============================
+  数据处理示例
+==============================
+第1个: 1
+第2个: 2
+第3个: 3
+第4个: 4
+第5个: 5
+==============================
+总计: 15
+个数: 5
+平均: 3.0</div>
+                    </div>
+                    <div class="practice-area">
+                        <div class="practice-area-title">✍️ 动手练习区</div>
+                        <p style="color: #cbd5e1; margin-bottom: 1rem; font-size: 0.95rem;">请在本地Python环境中完成以下练习。点击下方链接可以使用在线编辑器！</p>
+                        <div class="practice-task"><strong>练习1：</strong>写一个简单的项目总结程序，打印3行不同的内容</div>
+                        <div class="practice-task"><strong>练习2：</strong>创建一个使用项目总结的实际案例（如计算、转换等）</div>
+                        <div class="practice-task"><strong>练习3：</strong>尝试在项目总结中加入用户输入</div>
+                        <div class="practice-placeholder">（在此理解代码后，尝试自己动手写一写）</div>
+                        <details class="solution-box">
+                            <summary>👀 查看参考答案（建议先自己写再看）</summary>
+                            <div class="code-block"># 项目总结练习参考答案
+print("=" * 30)
+print("  我的练习")
+print("=" * 30)
+
+value = input("请输入一个数字: ")
+print(f"你输入了: {value}")
+print("练习完成!")</div>
+                        </details>
+                        <div style="margin-top: 2rem;">
+                            <strong style="color: #e2e8f0;">🚀 在线运行Python代码（复制代码后到以下网站粘贴运行）：</strong>
+                            <div class="online-links">
+                                <a href="https://www.runoob.com/try/runcode.php?filename=HelloWorld&type=python3" target="_blank">菜鸟教程在线编辑器</a>
+                                <a href="https://www.online-python.com/" target="_blank">Online-Python</a>
+                                <a href="https://pythontutor.com/python-compiler.html" target="_blank">PythonTutor可视化</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-navigation">
+                        <a href="section-11-4.html" class="nav-btn prev-btn">← 返回小节详情</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer"><p>张茵茵的学习空间</p></footer>
+    <script>
+        function copyCode(id) {
+            const text = document.getElementById(id).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                const original = btn.textContent;
+                btn.textContent = "✓ 已复制";
+                setTimeout(() => btn.textContent = original, 1500);
+            }).catch(err => alert("复制失败，请手动选择复制"));
+        }
+        function toggleSidebar() {
+            document.body.classList.toggle("sidebar-open");
+        }
+    </script>
+</body>
+</html>
